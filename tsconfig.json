@@ -1,0 +1,5 @@
+{
+    "compilerOptions": {
+        "checkJs": false,               /* Report errors in .js files. */
+    }
+}
