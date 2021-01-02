@@ -1,14 +1,13 @@
 import * as THREE from '/script/threejs/build/three.module.js';
 import Track3d from '/script/game/3d/track-3d.js';
+import Player from '/script/game/3d/player.js';
 
 export default class SceneManager {
     _renderer;
     _scene;
     _track3dManager;
-    _playerCommon;
-    _playerSphere;
-    _camera;
     _light;
+    _player;
 
     constructor(canvasObj) {
         this.canvasObj = canvasObj;
@@ -58,48 +57,9 @@ export default class SceneManager {
     }
 
     setupPlayer() {
-        this._playerCommon = new THREE.Object3D();
-        // playerCommonObject.position.x = -100;
-
-        this._playerSphere = this.createPlayerSphere();
-        this._playerCommon.add(this._playerSphere);
-        this._playerSphere.position.z = 5;
-        
-        this._camera = this.makeCamera();
-        this._camera.position.y = -45;
-        this._camera.position.z = 15;
-        this._camera.up.set(0, 0, 1);
-        this._playerCommon.add(this._camera);
-
-        this._camera.lookAt(this._playerSphere.position);
-
-        this._scene.add(this._playerCommon);
-    }
-
-    createPlayerSphere() {
-        const radius = 2;
-        const widthSegments = 16;
-        const heightSegments = 16;
-        const sphereGeometry = new THREE.SphereBufferGeometry(
-            radius, widthSegments, heightSegments);
-        
-        // const playerMaterial = new THREE.MeshPhongMaterial({emissive: '#222222'});
-        const playerMaterial = new THREE.MeshPhongMaterial();
-        
-        const hue = Math.random();
-        const saturation = 1;
-        const luminance = .5;
-        playerMaterial.color.setHSL(hue, saturation, luminance);
-
-        const playerMesh = new THREE.Mesh(sphereGeometry, playerMaterial);
-        return playerMesh;
-    }
-
-    makeCamera(fov = 40) {
-        const aspect = 2;  // the canvas default
-        const zNear = 0.1;
-        const zFar = 1000;
-        return new THREE.PerspectiveCamera(fov, aspect, zNear, zFar);
+        this._player = new Player();
+        this._player.init();
+        this._scene.add(this._player.playerCommon);
     }
 
     render(time) {
@@ -107,14 +67,14 @@ export default class SceneManager {
 
         if(this.resizeRendererToDisplaySize(this._renderer)) {
             const canvas = this._renderer.domElement;
-            this._camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            this._camera.updateProjectionMatrix();
+            this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            this._player._camera.updateProjectionMatrix();
         }
 
         // const velocity = 3.0;
-        // this._playerCommon.position.y = this._playerCommon.position.y + velocity;
+        // this._player.playerCommon.position.y = this._player.playerCommon.position.y + velocity;
 
-        this._renderer.render(this._scene, this._camera);
+        this._renderer.render(this._scene, this._player._camera);
         requestAnimationFrame((t) => this.render(t));
     }
 
