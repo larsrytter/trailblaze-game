@@ -5,16 +5,18 @@ export default class Player {
     _playerSphere;
     _camera;
 
+    _cameraDistance = 45;
+
     init() {
         this._playerCommon = new THREE.Object3D();
 
         this._playerSphere = this.createPlayerSphere();
         this._playerCommon.add(this._playerSphere);
-        this._playerSphere.position.z = 20;
+        this._playerSphere.position.z = 15;
 
         this._camera = this.makeCamera();
-        this._camera.position.y = -45;
-        this._camera.position.z = 20;
+        this._camera.position.y = -this._cameraDistance;
+        this._camera.position.z = 15;
         this._camera.up.set(0, 0, 1);
         this._playerCommon.add(this._camera);
 
@@ -35,8 +37,8 @@ export default class Player {
 
     createPlayerSphere() {
         const radius = 2;
-        const widthSegments = 10;
-        const heightSegments = 10;
+        const widthSegments = 16;
+        const heightSegments = 16;
         const sphereGeometry = new THREE.SphereBufferGeometry(
             radius, widthSegments, heightSegments);
         
@@ -52,7 +54,15 @@ export default class Player {
         playerMesh.castShadow = true;
         playerMesh.receiveShadow = false;
 
-        console.log(playerMesh);
+        playerMesh.userData.isPlayer = true;
+        playerMesh.onBeforeRender = () => {
+            this._camera.position.set(
+                this._camera.position.x,
+                playerMesh.position.y - this._cameraDistance,
+                this._camera.position.z
+            );
+        }
+        
         return playerMesh;
     }
 

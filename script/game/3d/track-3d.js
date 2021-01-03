@@ -6,7 +6,7 @@ export default class Track3d {
     _tileRows;
     _allTileMeshes = [];
 
-    _numRowsTotal = 150;
+    _numRowsTotal = 100;
 
     _tileLength = 15;
     _tileWidth = 8;

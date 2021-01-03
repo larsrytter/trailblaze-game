@@ -1,3 +1,4 @@
+import * as THREE from '/script/threejs/build/three.module.js';
 
 export default class Physics {
     _physicsWorld;
@@ -22,12 +23,12 @@ export default class Physics {
     }
 
     setupPlayerSpherePhysicsBody(sphereMesh) {
-        const position = sphereMesh.position;
-        const quat = sphereMesh.quaternion;
+        let position = new THREE.Vector3();
+        sphereMesh.getWorldPosition(position);
+        let quat = new THREE.Quaternion();
+        sphereMesh.getWorldQuaternion(quat);
         const radius = sphereMesh.geometry.parameters.radius;
         const mass = 1;
-
-        console.log('radius', radius);
 
         let transform = new Ammo.btTransform();
         transform.setIdentity();
@@ -44,8 +45,8 @@ export default class Physics {
         let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
         let body = new Ammo.btRigidBody( rbInfo );
 
-        body.setFriction(4);
-        body.setRollingFriction(10);
+        // body.setFriction(4);
+        // body.setRollingFriction(10);
 
         this._physicsWorld.addRigidBody( body );
 
@@ -62,21 +63,24 @@ export default class Physics {
     }
 
     createTilePhysicsBody(tileMesh) {
-        // let pos = {x: 0, y: 0, z: 0};
-        let pos = tileMesh.position;
-        // let scale = {x: 50, y: 2, z: 50};
+        let position = new THREE.Vector3();
+        tileMesh.getWorldPosition(position);
         let scale = tileMesh.scale;
-        // let quat = {x: 0, y: 0, z: 0, w: 1};
-        let quat = tileMesh.quaternion;
+        let quat = new THREE.Quaternion();
+        tileMesh.getWorldQuaternion(quat);
         let mass = 0;
 
         let transform = new Ammo.btTransform();
         transform.setIdentity();
-        transform.setOrigin( new Ammo.btVector3( pos.x, pos.y, pos.z ) );
+        transform.setOrigin( new Ammo.btVector3( position.x, position.y, position.z ) );
         transform.setRotation( new Ammo.btQuaternion( quat.x, quat.y, quat.z, quat.w ) );
         let motionState = new Ammo.btDefaultMotionState( transform );
 
-        let colShape = new Ammo.btBoxShape( new Ammo.btVector3( scale.x * 0.5, scale.y * 0.5, scale.z * 0.5 ) );
+        // TODO: Note - height and depth are switched around
+        let geomParams = tileMesh.geometry.parameters;
+        let colShape = new Ammo.btBoxShape( new Ammo.btVector3( scale.x * geomParams.width, 
+                                                                scale.y * geomParams.height, 
+                                                                scale.z * geomParams.depth ) );
         colShape.setMargin( 0.05 );
 
         let localInertia = new Ammo.btVector3( 0, 0, 0 );
@@ -85,17 +89,12 @@ export default class Physics {
         let rigidBodyInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
         let body = new Ammo.btRigidBody( rigidBodyInfo );
 
-
         this._physicsWorld.addRigidBody( body );
     }
 
     updatePhysics(deltaTime){
         // Step world
         this._physicsWorld.stepSimulation(deltaTime, 10);
-
-        // console.log(this._physicsWorld);
-        // const tmpGravity = this._physicsWorld.getGravity();
-        // console.log('gravity', tmpGravity.x(), tmpGravity.y(), tmpGravity.z());
 
         // Update rigid bodies
         this._rigidBodies.map(objThree => {
@@ -109,5 +108,5 @@ export default class Physics {
                 objThree.quaternion.set(quat.x(), quat.y(), quat.z(), quat.w());
             }
         });
-    }   
+    }
 }

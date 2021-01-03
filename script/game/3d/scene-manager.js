@@ -41,7 +41,7 @@ export default class SceneManager {
             this._physics.createTilePhysicsBody(tileMesh);
         });
 
-        this._physics.setPlayerVelocity(10);
+        this._physics.setPlayerVelocity(25);
     }
 
     setupRenderer() {
