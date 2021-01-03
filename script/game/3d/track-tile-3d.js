@@ -10,6 +10,8 @@ export default class TrackTile3d {
         this._geometry = new THREE.BoxGeometry(width, length, height);
         this._material = new THREE.MeshPhongMaterial({color: tileColor});
         this._mesh = new THREE.Mesh(this._geometry, this._material);
+        this._mesh.castShadow = false;
+        this._mesh.receiveShadow = true;
     }
 
     get geometry() {

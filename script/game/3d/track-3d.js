@@ -4,8 +4,9 @@ import TrackTile3d from '/script/game/3d/track-tile-3d.js';
 export default class Track3d {
     _track;
     _tileRows;
+    _allTileMeshes = [];
 
-    _numRowsTotal = 200;
+    _numRowsTotal = 150;
 
     _tileLength = 15;
     _tileWidth = 8;
@@ -18,6 +19,10 @@ export default class Track3d {
 
     get track() {
         return this._track;
+    }
+
+    get allTileMeshes() {
+        return this._allTileMeshes;
     }
 
     init() {
@@ -59,6 +64,7 @@ export default class Track3d {
             let x = edgePosX + (i * this._tileWidth) + (this._tileWidth/2); // TODO: Why do I need to add half a tileWidth?
             tile.setPosition(x, 0);
             row.add(tile.mesh);
+            this._allTileMeshes.push(tile.mesh);
         }
 
         this._track.add(row);

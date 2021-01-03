@@ -1,6 +1,8 @@
 import * as THREE from '/script/threejs/build/three.module.js';
 import Track3d from '/script/game/3d/track-3d.js';
 import Player from '/script/game/3d/player.js';
+import Physics from '/script/game/physics/physics.js';
+// import * as Ammo from '/script/ammojs/ammo.js';
 
 export default class SceneManager {
     _renderer;
@@ -8,22 +10,38 @@ export default class SceneManager {
     _track3dManager;
     _light;
     _player;
+    _clock;
+    _physics;
 
-    constructor(canvasObj) {
+    constructor(canvasObj, physics) {
         this.canvasObj = canvasObj;
+        this._physics = physics;
     }
 
     init() {
+        this._clock = new THREE.Clock();
         this.setupRenderer();
         this.setupSceneAndLight();
 
         // TODO: Call from outside?
         this.createTrack();
         this.setupPlayer();
+        
+        this.setupPhysics();
 
         console.log('scene', this._scene);
 
         requestAnimationFrame((t) => this.render(t));
+    }
+
+    setupPhysics() {
+        this._physics.setupPlayerSpherePhysicsBody(this._player.playerSphere);
+        
+        this._track3dManager.allTileMeshes.map((tileMesh) => {
+            this._physics.createTilePhysicsBody(tileMesh);
+        });
+
+        this._physics.setPlayerVelocity(10);
     }
 
     setupRenderer() {
@@ -35,15 +53,16 @@ export default class SceneManager {
     setupSceneAndLight() {
         this._scene = new THREE.Scene();    
         const color = 0xFFFFFF;
-        const intensity = 3;
+        const intensity = 0.8;
         // this._light = new THREE.PointLight(color, intensity);
         this._light = new THREE.AmbientLight(color, intensity);
         this._scene.add(this._light);
 
         const light2Color = 0xFFFFFF;
-        const light2Intensity = 2;
+        const light2Intensity = 3;
         const light2 = new THREE.DirectionalLight(light2Color, light2Intensity);
         light2.position.set(-5, -10, 15);
+        light2.castShadow = true;
         this._scene.add(light2);
 
             
@@ -64,6 +83,9 @@ export default class SceneManager {
 
     render(time) {
         time *= 0.001;
+        
+        let deltaTime = this._clock.getDelta();
+        this._physics.updatePhysics(deltaTime);
 
         if(this.resizeRendererToDisplaySize(this._renderer)) {
             const canvas = this._renderer.domElement;
@@ -71,7 +93,7 @@ export default class SceneManager {
             this._player._camera.updateProjectionMatrix();
         }
 
-        // const velocity = 3.0;
+        // const velocity = 3.5;
         // this._player.playerCommon.position.y = this._player.playerCommon.position.y + velocity;
 
         this._renderer.render(this._scene, this._player._camera);
@@ -89,5 +111,4 @@ export default class SceneManager {
         return needResize;
     }
 
-    
 }
