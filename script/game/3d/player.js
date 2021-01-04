@@ -55,7 +55,7 @@ export default class Player {
         playerMesh.receiveShadow = false;
 
         playerMesh.userData.isPlayer = true;
-        playerMesh.onBeforeRender = () => {
+        playerMesh.onAfterRender = () => {
             this._camera.position.set(
                 this._camera.position.x,
                 playerMesh.position.y - this._cameraDistance,
