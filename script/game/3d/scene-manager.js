@@ -32,6 +32,7 @@ export default class SceneManager {
         console.log('scene', this._scene);
 
         requestAnimationFrame((t) => this.render(t));
+        // this._physics.setPlayerMovement();
     }
 
     setupPhysics() {
@@ -84,9 +85,8 @@ export default class SceneManager {
     render(time) {
         time *= 0.001;
         
-        this._physics.setPlayerMovement();
-
         let deltaTime = this._clock.getDelta();
+        // this._physics.setPlayerMovement(deltaTime);
         this._physics.updatePhysics(deltaTime);
 
         if(this.resizeRendererToDisplaySize(this._renderer)) {

@@ -3,9 +3,11 @@ import * as THREE from '/script/threejs/build/three.module.js';
 export default class Player {
     _playerCommon;
     _playerSphere;
-    _camera;
 
+    _camera;
     _cameraDistance = 45;
+
+    _contactTile = null;
 
     init() {
         this._playerCommon = new THREE.Object3D();
@@ -55,6 +57,8 @@ export default class Player {
         playerMesh.receiveShadow = false;
 
         playerMesh.userData.isPlayer = true;
+        playerMesh.userData.playerObject = this;
+
         playerMesh.onAfterRender = () => {
             this._camera.position.set(
                 this._camera.position.x,
@@ -71,5 +75,20 @@ export default class Player {
         const zNear = 0.1;
         const zFar = 1000;
         return new THREE.PerspectiveCamera(fov, aspect, zNear, zFar);
+    }
+
+    handleTileContact(tileObject) {
+        console.log('contact with tile', tileObject);
+        
+        if(this._contactTile != tileObject) {
+            this._contactTile = tileObject;
+
+            const contactEffect = this._contactTile._contactEffect;
+            if(!contactEffect) {
+                console.log('no effect');
+            } else {
+                console.log('effect', contactEffect.effectType);
+            }
+        }
     }
 }
