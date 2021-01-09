@@ -75,6 +75,8 @@ export default class Physics {
         let velocity = 30;
         // let velocityTime = velocity * deltaTime;
 
+        let cv = this._playerBody.getLinearVelocity();
+
         let moveX = this._movementHandler.moveDirection.right - this._movementHandler.moveDirection.left;
         let moveY = 2;
         let moveZ = 0;
@@ -83,27 +85,13 @@ export default class Physics {
 
         let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
         resultantImpulse.op_mul(velocity);
-
-        // let physicsBody = ballObject.userData.physicsBody;
-        // physicsBody.setLinearVelocity(resultantImpulse);
+        
+        resultantImpulse.setZ(cv.z());
 
         this._playerBody.setLinearVelocity(resultantImpulse);
         // this._playerBody.applyImpulse(resultantImpulse);
-        this._playerBody.applyForce(resultantImpulse);
-
-        // let scalingFactor = 20;
-
-        // let moveX =  moveDirection.right - moveDirection.left;
-        // let moveZ =  moveDirection.back - moveDirection.forward;
-        // let moveY =  0; 
-
-        // if( moveX == 0 && moveY == 0 && moveZ == 0) return;
-
-        // let resultantImpulse = new Ammo.btVector3( moveX, moveY, moveZ )
-        // resultantImpulse.op_mul(scalingFactor);
-
-        // let physicsBody = ballObject.userData.physicsBody;
-        // physicsBody.setLinearVelocity( resultantImpulse );
+        // this._playerBody.applyForce(resultantImpulse);
+        
     }
 
     createTilePhysicsBody(tileMesh) {
@@ -155,9 +143,9 @@ export default class Physics {
                 objThree.position.set(position.x(), position.y(), position.z());
                 objThree.quaternion.set(quat.x(), quat.y(), quat.z(), quat.w());
 
-                // if(objThree.userData.isPlayer) {
-                //     this.setPlayerMovement(deltaTime);
-                // }
+                if(objThree.userData.isPlayer) {
+                    this.setPlayerMovement(deltaTime);
+                }
 
             }
         });
@@ -168,6 +156,7 @@ export default class Physics {
 
     detectCollision() {
         let numManifolds = this._dispatcher.getNumManifolds();
+        const collissionTiles = [];
 
         for (let i = 0; i < numManifolds; i++) {
 
@@ -182,8 +171,8 @@ export default class Physics {
 
             let userData0 = threeObject0 ? threeObject0.userData : null;
             let userData1 = threeObject1 ? threeObject1.userData : null;
-            let tag0 = userData0 ? userData0.isPlayer : "not player";
-            let tag1 = userData1 ? userData1.isPlayer : "not player";
+            // let tag0 = userData0 ? userData0.isPlayer : "not player";
+            // let tag1 = userData1 ? userData1.isPlayer : "not player";
 
             let numContacts = contactManifold.getNumContacts();
 
@@ -204,31 +193,52 @@ export default class Physics {
                 let playerObject = userData0.playerObject ? userData0.playerObject : userData1.playerObject
                 let tileObject = userData0.tileObject ? userData0.tileObject : userData1.tileObject;
                 if (playerObject && tileObject) {
-                    playerObject.handleTileContact(tileObject);
+                    collissionTiles.push({
+                        'distance': distance,
+                        'tile': tileObject,
+                        'player': playerObject
+                    });
                 }
-                
-                console.log({
-                    manifoldIndex: i, 
-                    contactIndex: j, 
-                    distance: distance, 
-                    object0:{
-                        tag: tag0,
-                        velocity: {x: velocity0.x(), y: velocity0.y(), z: velocity0.z()},
-                        worldPos: {x: worldPos0.x(), y: worldPos0.y(), z: worldPos0.z()},
-                        localPos: {x: localPos0.x(), y: localPos0.y(), z: localPos0.z()}
-                    },
-                    object1:{
-                        tag: tag1,
-                        velocity: {x: velocity1.x(), y: velocity1.y(), z: velocity1.z()},
-                        worldPos: {x: worldPos1.x(), y: worldPos1.y(), z: worldPos1.z()},
-                        localPos: {x: localPos1.x(), y: localPos1.y(), z: localPos1.z()}
-                    }
-                });
 
-                debugger;
+                
+                // console.log({
+                //     manifoldIndex: i, 
+                //     contactIndex: j, 
+                //     distance: distance, 
+                //     object0:{
+                //         tag: tag0,
+                //         velocity: {x: velocity0.x(), y: velocity0.y(), z: velocity0.z()},
+                //         worldPos: {x: worldPos0.x(), y: worldPos0.y(), z: worldPos0.z()},
+                //         localPos: {x: localPos0.x(), y: localPos0.y(), z: localPos0.z()}
+                //     },
+                //     object1:{
+                //         tag: tag1,
+                //         velocity: {x: velocity1.x(), y: velocity1.y(), z: velocity1.z()},
+                //         worldPos: {x: worldPos1.x(), y: worldPos1.y(), z: worldPos1.z()},
+                //         localPos: {x: localPos1.x(), y: localPos1.y(), z: localPos1.z()}
+                //     }
+                // });
+
+                // debugger;
 
             }
         }
 
+        if(collissionTiles.length > 0) {
+            let closestItem = this.getClosestObject(collissionTiles);
+            closestItem.player.handleTileContact(closestItem.tile);
+        }
+
+    }
+
+    getClosestObject(collissionTiles) {
+        let tileItem = null;
+        collissionTiles.map(item => {
+            if(tileItem === null || item.distance < tileItem.distance) {
+                tileItem = item;
+            }
+        });
+        return tileItem;
+        // return collissionTiles.reduce((min, p) => p.distance < min ? p.distance : min, collissionTiles[0].y);
     }
 }

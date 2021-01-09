@@ -78,16 +78,16 @@ export default class Player {
     }
 
     handleTileContact(tileObject) {
-        console.log('contact with tile', tileObject);
+        // console.log('contact with tile', tileObject);
         
         if(this._contactTile != tileObject) {
             this._contactTile = tileObject;
 
             const contactEffect = this._contactTile._contactEffect;
             if(!contactEffect) {
-                console.log('no effect');
+                // console.log('no effect');
             } else {
-                console.log('effect', contactEffect.effectType);
+                // console.log('effect', contactEffect.effectType);
             }
         }
     }
