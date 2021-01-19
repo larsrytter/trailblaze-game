@@ -18,13 +18,13 @@ export default class SceneManager {
         this._physics = physics;
     }
 
-    init() {
+    init(trackData) {
         this._clock = new THREE.Clock();
         this.setupRenderer();
         this.setupSceneAndLight();
 
         // TODO: Call from outside?
-        this.createTrack();
+        this.createTrack(trackData);
         this.setupPlayer();
         
         this.setupPhysics();
@@ -69,8 +69,9 @@ export default class SceneManager {
             
     }
 
-    createTrack() {
+    createTrack(trackData) {
         this._track3dManager = new Track3d();
+        this._track3dManager.init(trackData);
         let track = this._track3dManager.track;
         this._scene.add(track);
         console.log('Track added', track);

@@ -7,9 +7,12 @@ export default class TrackTile3d {
     _geometry;
     _material;
     _mesh;
+    _tileData;
     _contactEffect = null;
 
-    constructor(width, length, height, tileColor) {       
+    constructor(width, length, height, tileData, colorDefinitions) {
+        const colorData = colorDefinitions.find(def => def.colorName === tileData.colorName);
+        const tileColor = colorData.colorCode;      
         this._geometry = new THREE.BoxGeometry(width, length, height);
         this._material = new THREE.MeshPhongMaterial({color: tileColor});
         this._mesh = new THREE.Mesh(this._geometry, this._material);
@@ -19,29 +22,31 @@ export default class TrackTile3d {
         this._mesh.userData.isTile = true;
         this._mesh.userData.tileObject = this;
 
-        this.setTileEffect(tileColor);
+        this._tileData = tileData;
+
+        this.setTileEffect(tileData);
     }
 
-    setTileEffect(color){
+    setTileEffect(tileData) {
         // TODO: Real implementation
-        switch(color) {
-            case '#12FE12':
-            case '#3334FF':
+        switch(tileData.effect.toUpperCase()) {
+            // case '#12FE12';
+            case 'TURBO':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.TURBO);
                 break;
-            case '#11FEDD':
+            case 'SLOW':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.SLOW);
                 break;
-            case '#FF0033':
-            case '#33EBEB':
-            case '#11BBAA':
+            case 'JUMP':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.JUMP);
                 break;
-            case '#DDEE00':
-            case '#AA11DD':
+            // case '#DDEE00':
+            case 'INVERTCONTROL':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.INVERTCONTROL);
                 break;
+            case 'NONE':
             default:
+                this._contactEffect = new TileContactEffect(EffectTypeEnum.NONE);
                 break;
         }
     }

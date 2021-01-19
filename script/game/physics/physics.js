@@ -1,5 +1,6 @@
 import * as THREE from '/script/threejs/build/three.module.js';
 import MovementHandler from '/script/game/handlers/movement-handler.js';
+import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
 
 export default class Physics {
     _physicsWorld;
@@ -53,8 +54,8 @@ export default class Physics {
         let rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, motionState, colShape, localInertia);
         let body = new Ammo.btRigidBody(rbInfo);
 
-        // body.setFriction(4);
-        // body.setRollingFriction(10);
+        // body.setFriction(1);
+        body.setRollingFriction(0.3);
 
         this._physicsWorld.addRigidBody(body);
         sphereMesh.userData.physicsBody = body;
@@ -77,6 +78,16 @@ export default class Physics {
 
         let cv = this._playerBody.getLinearVelocity();
 
+        let tileEffect = this._playerBody.threeObject.userData.playerObject.tileEffect;
+        if(tileEffect != null && tileEffect.effectType === EffectTypeEnum.TURBO) {
+            velocity = 50;
+            console.log('***TURBO***');
+        }
+        if(tileEffect != null && tileEffect.effectType === EffectTypeEnum.SLOW) {
+            velocity = 15;
+            console.log('***SLOW***');
+        }
+
         let moveX = this._movementHandler.moveDirection.right - this._movementHandler.moveDirection.left;
         let moveY = 2;
         let moveZ = 0;
@@ -86,12 +97,20 @@ export default class Physics {
         let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
         resultantImpulse.op_mul(velocity);
         
-        resultantImpulse.setZ(cv.z());
+        if (tileEffect != null && tileEffect.effectType === EffectTypeEnum.JUMP) {
+            console.log('***JUMP***', tileEffect);
+            resultantImpulse.setZ(10);
+            // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
+            // this._playerBody.applyImpulse(jumpImpulse);
+        } else{
+            console.log('***NOT-JUMP***');
+            resultantImpulse.setZ(cv.z());
+        }
 
         this._playerBody.setLinearVelocity(resultantImpulse);
         // this._playerBody.applyImpulse(resultantImpulse);
         // this._playerBody.applyForce(resultantImpulse);
-        
+
     }
 
     createTilePhysicsBody(tileMesh) {
@@ -110,10 +129,15 @@ export default class Physics {
 
         // TODO: Note - height and depth are switched around
         let geomParams = tileMesh.geometry.parameters;
-        let colShape = new Ammo.btBoxShape( new Ammo.btVector3(scale.x * geomParams.width, 
-                                                               scale.y * geomParams.height, 
-                                                               scale.z * geomParams.depth));
-        colShape.setMargin( 0.05 );
+        // let colShape = new Ammo.btBoxShape( new Ammo.btVector3(geomParams.width, 
+        //                                                        geomParams.height, 
+        //                                                        geomParams.depth));
+        let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
+                                                                (scale.y/2) * geomParams.height, 
+                                                                (scale.z/2) * geomParams.depth));
+        
+        // colShape.setMargin( 0.05 );
+        colShape.setMargin( 0 );
 
         let localInertia = new Ammo.btVector3( 0, 0, 0 );
         colShape.calculateLocalInertia( mass, localInertia );
@@ -122,8 +146,8 @@ export default class Physics {
         let body = new Ammo.btRigidBody( rigidBodyInfo );
         body.threeObject = tileMesh;
 
-        // body.setFriction(4);
-        // body.setRollingFriction(10);
+        // body.setFriction(1);
+        body.setRollingFriction(0.3);
 
         this._physicsWorld.addRigidBody( body );
     }
@@ -183,12 +207,12 @@ export default class Physics {
 
                 if(distance > 0.0) continue;
 
-                let velocity0 = rigidBody0.getLinearVelocity();
-                let velocity1 = rigidBody1.getLinearVelocity();
-                let worldPos0 = contactPoint.get_m_positionWorldOnA();
-                let worldPos1 = contactPoint.get_m_positionWorldOnB();
-                let localPos0 = contactPoint.get_m_localPointA();
-                let localPos1 = contactPoint.get_m_localPointB();
+                // let velocity0 = rigidBody0.getLinearVelocity();
+                // let velocity1 = rigidBody1.getLinearVelocity();
+                // let worldPos0 = contactPoint.get_m_positionWorldOnA();
+                // let worldPos1 = contactPoint.get_m_positionWorldOnB();
+                // let localPos0 = contactPoint.get_m_localPointA();
+                // let localPos1 = contactPoint.get_m_localPointB();
 
                 let playerObject = userData0.playerObject ? userData0.playerObject : userData1.playerObject
                 let tileObject = userData0.tileObject ? userData0.tileObject : userData1.tileObject;
@@ -199,39 +223,20 @@ export default class Physics {
                         'player': playerObject
                     });
                 }
-
-                
-                // console.log({
-                //     manifoldIndex: i, 
-                //     contactIndex: j, 
-                //     distance: distance, 
-                //     object0:{
-                //         tag: tag0,
-                //         velocity: {x: velocity0.x(), y: velocity0.y(), z: velocity0.z()},
-                //         worldPos: {x: worldPos0.x(), y: worldPos0.y(), z: worldPos0.z()},
-                //         localPos: {x: localPos0.x(), y: localPos0.y(), z: localPos0.z()}
-                //     },
-                //     object1:{
-                //         tag: tag1,
-                //         velocity: {x: velocity1.x(), y: velocity1.y(), z: velocity1.z()},
-                //         worldPos: {x: worldPos1.x(), y: worldPos1.y(), z: worldPos1.z()},
-                //         localPos: {x: localPos1.x(), y: localPos1.y(), z: localPos1.z()}
-                //     }
-                // });
-
-                // debugger;
-
             }
         }
 
         if(collissionTiles.length > 0) {
-            let closestItem = this.getClosestObject(collissionTiles);
-            closestItem.player.handleTileContact(closestItem.tile);
+            let closestItem = this.getClosestTileFromCollission(collissionTiles);
+            this._playerBody.threeObject.userData.playerObject.handleTileContact(closestItem.tile);
+            console.log('setting effect', closestItem.tile.contactEffect);
+        } else {
+            this._playerBody.threeObject.userData.playerObject.handleTileContact(null);
         }
 
     }
 
-    getClosestObject(collissionTiles) {
+    getClosestTileFromCollission (collissionTiles) {
         let tileItem = null;
         collissionTiles.map(item => {
             if(tileItem === null || item.distance < tileItem.distance) {
@@ -239,6 +244,5 @@ export default class Physics {
             }
         });
         return tileItem;
-        // return collissionTiles.reduce((min, p) => p.distance < min ? p.distance : min, collissionTiles[0].y);
     }
 }

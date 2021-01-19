@@ -2,7 +2,9 @@ export const EffectTypeEnum = {
     'TURBO' : 'TURBO',
     'SLOW' : 'SLOW',
     'JUMP' : 'JUMP',
-    'INVERTCONTROL': 'INVERTCONTROL'
+    'INVERTCONTROL': 'INVERTCONTROL',
+    'NONE': 'NONE',
+    'HOLE': 'HOLE'
 }
 
 export class TileContactEffect {

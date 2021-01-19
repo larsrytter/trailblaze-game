@@ -8,6 +8,7 @@ export default class Player {
     _cameraDistance = 45;
 
     _contactTile = null;
+    _tileEffect = null;
 
     init() {
         this._playerCommon = new THREE.Object3D();
@@ -35,6 +36,10 @@ export default class Player {
 
     get camera() {
         return this._camera;
+    }
+
+    get tileEffect() {
+        return this._tileEffect;
     }
 
     createPlayerSphere() {
@@ -79,15 +84,17 @@ export default class Player {
 
     handleTileContact(tileObject) {
         // console.log('contact with tile', tileObject);
-        
-        if(this._contactTile != tileObject) {
+        if(tileObject === null) {
+            this._tileEffect = null;
+            this._contactTile = null;
+        } else if(this._contactTile != tileObject) {
             this._contactTile = tileObject;
 
-            const contactEffect = this._contactTile._contactEffect;
-            if(!contactEffect) {
+            this._tileEffect = this._contactTile._contactEffect;
+            if(!this._tileEffect) {
                 // console.log('no effect');
             } else {
-                // console.log('effect', contactEffect.effectType);
+                // console.log('effect', this._tileEffect.effectType);
             }
         }
     }

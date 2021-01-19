@@ -1,0 +1,256 @@
+{
+    "colorDefinitions": [
+        {
+            "colorName": "grey1",
+            "colorCode": "#6B6B6B" 
+        },
+        {
+            "colorName": "grey2",
+            "colorCode": "#080808" 
+        },
+        {
+            "colorName": "blue1",
+            "colorCode": "#0000DD" 
+        }
+    ],
+    "rows": [
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "effect": "hole"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "effect": "hole"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "blue1",
+                    "effect": "JUMP"
+                },
+                {
+                    "colorName": "blue1",
+                    "effect": "JUMP"
+                },
+                {
+                    "colorName": "blue1",
+                    "effect": "JUMP"
+                },
+                {
+                    "colorName": "blue1",
+                    "effect": "JUMP"
+                },
+                {
+                    "colorName": "blue1",
+                    "effect": "JUMP"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                }
+            ]
+        }
+    ]
+}
