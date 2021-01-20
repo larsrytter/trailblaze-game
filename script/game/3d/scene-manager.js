@@ -12,10 +12,12 @@ export default class SceneManager {
     _player;
     _clock;
     _physics;
+    _gameStateManager;
 
-    constructor(canvasObj, physics) {
+    constructor(canvasObj, physics, gameStateManager) {
         this.canvasObj = canvasObj;
         this._physics = physics;
+        this._gameStateManager = gameStateManager;
     }
 
     init(trackData) {
@@ -81,6 +83,8 @@ export default class SceneManager {
         this._player = new Player();
         this._player.init();
         this._scene.add(this._player.playerCommon);
+
+        this._gameStateManager.setPlayer(this._player);
     }
 
     render(time) {

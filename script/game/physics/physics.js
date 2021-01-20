@@ -10,9 +10,11 @@ export default class Physics {
     _playerBody;
 
     _movementHandler;
+    _gameStateManager;
 
-    constructor(movementHandler) {
+    constructor(movementHandler, gameStateManager) {
         this._movementHandler = movementHandler;
+        this._gameStateManager = gameStateManager;
     }
 
     setupPhysicsWorld() {
@@ -73,20 +75,12 @@ export default class Physics {
     // }
 
     setPlayerMovement(deltaTime) {
-        let velocity = 30;
+        let velocity = this._playerBody.threeObject.userData.playerObject.getVelocity();
         // let velocityTime = velocity * deltaTime;
 
         let cv = this._playerBody.getLinearVelocity();
 
         let tileEffect = this._playerBody.threeObject.userData.playerObject.tileEffect;
-        if(tileEffect != null && tileEffect.effectType === EffectTypeEnum.TURBO) {
-            velocity = 50;
-            console.log('***TURBO***');
-        }
-        if(tileEffect != null && tileEffect.effectType === EffectTypeEnum.SLOW) {
-            velocity = 15;
-            console.log('***SLOW***');
-        }
 
         let moveX = this._movementHandler.moveDirection.right - this._movementHandler.moveDirection.left;
         let moveY = 2;
@@ -99,7 +93,7 @@ export default class Physics {
         
         if (tileEffect != null && tileEffect.effectType === EffectTypeEnum.JUMP) {
             console.log('***JUMP***', tileEffect);
-            resultantImpulse.setZ(10);
+            resultantImpulse.setZ(20);
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
         } else{

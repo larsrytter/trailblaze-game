@@ -1,4 +1,10 @@
 import * as THREE from '/script/threejs/build/three.module.js';
+import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
+
+export const PlayerStateEnum = {
+    'DROPPING': 'DROPPING',
+    'MOVING': 'MOVING'
+}
 
 export default class Player {
     _playerCommon;
@@ -6,6 +12,8 @@ export default class Player {
 
     _camera;
     _cameraDistance = 45;
+
+    _playerState;
 
     _contactTile = null;
     _tileEffect = null;
@@ -24,6 +32,15 @@ export default class Player {
         this._playerCommon.add(this._camera);
 
         this._camera.lookAt(this._playerSphere.position);
+
+        this._playerState = PlayerStateEnum.DROPPING;
+    }
+
+    get playerState() {
+        return this._playerState;
+    }
+    set playerState(val) {
+        this._playerState = val;
     }
 
     get playerCommon(){
@@ -40,6 +57,25 @@ export default class Player {
 
     get tileEffect() {
         return this._tileEffect;
+    }
+
+    getVelocity() {
+        if(this._playerState === PlayerStateEnum.DROPPING) {
+            return 0;
+        } else if(this._playerState === PlayerStateEnum.MOVING 
+                    && this._tileEffect != null 
+                    && this._tileEffect.effectType === EffectTypeEnum.SLOW) {
+            // slow
+            return 15;
+        } else if(this._playerState === PlayerStateEnum.MOVING 
+                    && this._tileEffect != null 
+                    && this._tileEffect.effectType === EffectTypeEnum.TURBO) {
+            // Turbo
+            return 60;
+        } else {
+            // Normal speed
+            return 30;
+        }
     }
 
     createPlayerSphere() {
@@ -88,6 +124,10 @@ export default class Player {
             this._tileEffect = null;
             this._contactTile = null;
         } else if(this._contactTile != tileObject) {
+            if(this._playerState == PlayerStateEnum.DROPPING) {
+                this._playerState = PlayerStateEnum.MOVING;
+            }
+
             this._contactTile = tileObject;
 
             this._tileEffect = this._contactTile._contactEffect;
