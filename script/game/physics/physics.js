@@ -18,13 +18,15 @@ export default class Physics {
     }
 
     setupPhysicsWorld() {
+        const gravity = this._gameStateManager.gravity;
+
         let collisionConfiguration  = new Ammo.btDefaultCollisionConfiguration(),
             overlappingPairCache    = new Ammo.btDbvtBroadphase(),
             solver                  = new Ammo.btSequentialImpulseConstraintSolver();
         this._dispatcher              = new Ammo.btCollisionDispatcher(collisionConfiguration),
 
         this._physicsWorld           = new Ammo.btDiscreteDynamicsWorld(this._dispatcher, overlappingPairCache, solver, collisionConfiguration);
-        this._physicsWorld.setGravity(new Ammo.btVector3(0, 0, -20));
+        this._physicsWorld.setGravity(new Ammo.btVector3(0, 0, gravity));
     
     }
 
@@ -68,17 +70,11 @@ export default class Physics {
         // this._physicsWorld.addCollisionObject(body);
     }
 
-    // setPlayerVelocity(velocity) {
-    //     var velocityVector = new Ammo.btVector3();
-    //     velocityVector.setValue(0, velocity, 0)
-    //     this._playerBody.setLinearVelocity(velocityVector);
-    // }
-
     setPlayerMovement(deltaTime) {
         let velocity = this._playerBody.threeObject.userData.playerObject.getVelocity();
         // let velocityTime = velocity * deltaTime;
 
-        let cv = this._playerBody.getLinearVelocity();
+        let playerVector = this._playerBody.getLinearVelocity();
 
         let tileEffect = this._playerBody.threeObject.userData.playerObject.tileEffect;
 
@@ -97,8 +93,7 @@ export default class Physics {
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
         } else{
-            console.log('***NOT-JUMP***');
-            resultantImpulse.setZ(cv.z());
+            resultantImpulse.setZ(playerVector.z());
         }
 
         this._playerBody.setLinearVelocity(resultantImpulse);
@@ -126,14 +121,15 @@ export default class Physics {
         // let colShape = new Ammo.btBoxShape( new Ammo.btVector3(geomParams.width, 
         //                                                        geomParams.height, 
         //                                                        geomParams.depth));
+        // Why do we need to divide scale by 2?
         let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
                                                                 (scale.y/2) * geomParams.height, 
                                                                 (scale.z/2) * geomParams.depth));
         
         // colShape.setMargin( 0.05 );
-        colShape.setMargin( 0 );
+        colShape.setMargin(0);
 
-        let localInertia = new Ammo.btVector3( 0, 0, 0 );
+        let localInertia = new Ammo.btVector3(0, 0, 0);
         colShape.calculateLocalInertia( mass, localInertia );
 
         let rigidBodyInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, colShape, localInertia );
@@ -163,13 +159,20 @@ export default class Physics {
 
                 if(objThree.userData.isPlayer) {
                     this.setPlayerMovement(deltaTime);
+                    this.checkPlayerLocation();
                 }
 
             }
         });
 
         this.detectCollision();
-        
+    }
+
+    checkPlayerLocation() {
+        if (this._playerBody.getWorldTransform().getOrigin().z() < -10) {
+            this._playerBody.getWorldTransform().getOrigin().setZ(15);
+            this._gameStateManager.setPlayerDropping();
+        }
     }
 
     detectCollision() {

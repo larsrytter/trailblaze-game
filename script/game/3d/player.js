@@ -34,6 +34,7 @@ export default class Player {
         this._camera.lookAt(this._playerSphere.position);
 
         this._playerState = PlayerStateEnum.DROPPING;
+        this._velocityDefault = 30;
     }
 
     get playerState() {
@@ -66,16 +67,20 @@ export default class Player {
                     && this._tileEffect != null 
                     && this._tileEffect.effectType === EffectTypeEnum.SLOW) {
             // slow
-            return 15;
+            return this._velocityDefault / 2;
         } else if(this._playerState === PlayerStateEnum.MOVING 
                     && this._tileEffect != null 
                     && this._tileEffect.effectType === EffectTypeEnum.TURBO) {
             // Turbo
-            return 60;
+            return this._velocityDefault * 2;
         } else {
             // Normal speed
-            return 30;
+            return this._velocityDefault;
         }
+    }
+
+    setDropping() {
+        this._playerState = PlayerStateEnum.DROPPING;
     }
 
     createPlayerSphere() {

@@ -28,6 +28,10 @@ export default class Track3d {
         return this._allTileMeshes;
     }
 
+    get tileDefaultLength() {
+        return this._tileLength;
+    }
+
     init(trackData) {
         this._trackData = trackData;
         this._track = new THREE.Object3D();

@@ -4,7 +4,7 @@ import Physics from '/script/game/physics/physics.js';
 import MovementHandler from '/script/game/handlers/movement-handler.js';
 import InputHandler from '/script/game/handlers/input-handler.js';
 import TrackDataLoader from '/script/game/handlers/track-data-loader.js';
-import GameStateManager from '/script/game/3d/game-state-manager.js';
+import GameStateManager from '/script/game/game-state-manager.js';
 
 function initialize(trackData) {
     const canvas = document.querySelector('#c');
