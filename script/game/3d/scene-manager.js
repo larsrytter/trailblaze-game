@@ -3,6 +3,8 @@ import Track3d from '/script/game/3d/track-3d.js';
 import Player from '/script/game/3d/player.js';
 import Physics from '/script/game/physics/physics.js';
 import { GameStateEnum } from '/script/game/game-state-manager.js';
+import Physics from '../physics/physics';
+import GameStateManager from '../game-state-manager';
 // import * as Ammo from '/script/ammojs/ammo.js';
 
 export default class SceneManager {
@@ -15,6 +17,12 @@ export default class SceneManager {
     _physics;
     _gameStateManager;
 
+    /**
+     * 
+     * @param {domElement} canvasObj 
+     * @param {Physics} physics 
+     * @param {GameStateManager} gameStateManager 
+     */
     constructor(canvasObj, physics, gameStateManager) {
         this.canvasObj = canvasObj;
         this._physics = physics;

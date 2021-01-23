@@ -1,5 +1,6 @@
 import * as THREE from '/script/threejs/build/three.module.js';
 import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
+import TrackTile3d from './track-tile-3d';
 
 export const PlayerStateEnum = {
     'DROPPING': 'DROPPING',
@@ -18,6 +19,9 @@ export default class Player {
     _contactTile = null;
     _tileEffect = null;
 
+    /**
+     * Initialize the player 3D object and camera
+     */
     init() {
         this._playerCommon = new THREE.Object3D();
 
@@ -34,32 +38,61 @@ export default class Player {
         this._camera.lookAt(this._playerSphere.position);
 
         this._playerState = PlayerStateEnum.DROPPING;
-        this._velocityDefault = 30;
+        this._velocityDefault = 40;
     }
 
+    /**
+     * Get the playerState
+     * @returns {PlayerStateEnum}
+     */
     get playerState() {
         return this._playerState;
     }
+
+    /**
+     * Set the playerState
+     * @param PlayerStateEnum
+     */
     set playerState(val) {
         this._playerState = val;
     }
 
+    /**
+     * Get the playerCommon object containing player-sphere and camera
+     * @returns {THREE.Object3D}
+     */
     get playerCommon(){
         return this._playerCommon;
     }
 
+    /**
+     * Get the player-sphere 3D object
+     * @returns {THREE.Mesh}
+     */
     get playerSphere() {
         return this._playerSphere;
     }
 
+    /**
+     * Get the camera object
+     * @returns {THREE.PerspectiveCamera}
+     */
     get camera() {
         return this._camera;
     }
 
+    /**
+     * Get the active tileEffect
+     * @returns {TileContactEffect}
+     */
     get tileEffect() {
         return this._tileEffect;
     }
 
+    /**
+     * Get calculated velocity based on tile-effects
+     * @returns {number} velocity
+     */
     getVelocity() {
         if(this._playerState === PlayerStateEnum.DROPPING) {
             return 0;
@@ -79,10 +112,17 @@ export default class Player {
         }
     }
 
+    /**
+     * Set playerState to PlayerStateEnum.DROPPING
+     */
     setDropping() {
         this._playerState = PlayerStateEnum.DROPPING;
     }
 
+    /**
+     * Create and configure 3D sphere object
+     * @returns {THREE.Mesh}
+     */
     createPlayerSphere() {
         const radius = 2;
         const widthSegments = 16;
@@ -117,6 +157,11 @@ export default class Player {
         return playerMesh;
     }
 
+    /**
+     * Create 3D camera object
+     * @param {number} fov 
+     * @returns {Three.PerspectiveCamera}
+     */
     makeCamera(fov = 40) {
         const aspect = 2;  // the canvas default
         const zNear = 0.1;
@@ -124,6 +169,9 @@ export default class Player {
         return new THREE.PerspectiveCamera(fov, aspect, zNear, zFar);
     }
 
+    /**
+     * Update camera position relative to player-sphere
+     */
     updateCameraPosition() {
         this._camera.position.set(
             this._camera.position.x,
@@ -132,6 +180,10 @@ export default class Player {
         );
     }
 
+    /**
+     * Apply TileEffect based on contacting tile
+     * @param {TrackTile3d} tileObject 
+     */
     handleTileContact(tileObject) {
         // console.log('contact with tile', tileObject);
         if(tileObject === null) {

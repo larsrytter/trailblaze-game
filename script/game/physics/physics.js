@@ -84,6 +84,10 @@ export default class Physics {
 
         if(moveX == 0 && moveY == 0 && moveZ == 0) return;
 
+        if (tileEffect != null && tileEffect.effectType === EffectTypeEnum.INVERTCONTROLS) {
+            moveX = -moveX;
+        }
+
         let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
         resultantImpulse.op_mul(velocity);
         

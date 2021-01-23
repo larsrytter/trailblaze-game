@@ -39,8 +39,8 @@ export default class TrackTile3d {
             case 'JUMP':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.JUMP);
                 break;
-            case 'INVERTCONTROL':
-                this._contactEffect = new TileContactEffect(EffectTypeEnum.INVERTCONTROL);
+            case 'INVERTCONTROLS':
+                this._contactEffect = new TileContactEffect(EffectTypeEnum.INVERTCONTROLS);
                 break;
             case 'NONE':
             default:
