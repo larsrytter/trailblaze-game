@@ -1,6 +1,6 @@
 import * as THREE from '/script/threejs/build/three.module.js';
 import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
-import TrackTile3d from './track-tile-3d';
+import TrackTile3d from './track-tile-3d.js';
 
 export const PlayerStateEnum = {
     'DROPPING': 'DROPPING',
