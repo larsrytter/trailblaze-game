@@ -28,9 +28,8 @@ export default class TrackTile3d {
     }
 
     setTileEffect(tileData) {
-        // TODO: Real implementation
-        switch(tileData.effect.toUpperCase()) {
-            // case '#12FE12';
+        const effect = tileData.effect ? tileData.effect : '';
+        switch(effect.toUpperCase()) {
             case 'TURBO':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.TURBO);
                 break;
@@ -40,7 +39,6 @@ export default class TrackTile3d {
             case 'JUMP':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.JUMP);
                 break;
-            // case '#DDEE00':
             case 'INVERTCONTROL':
                 this._contactEffect = new TileContactEffect(EffectTypeEnum.INVERTCONTROL);
                 break;

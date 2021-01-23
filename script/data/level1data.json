@@ -11,6 +11,10 @@
         {
             "colorName": "blue1",
             "colorCode": "#0000DD" 
+        },
+        {
+            "colorName": "purple",
+            "colorCode": "#EE00EE" 
         }
     ],
     "rows": [

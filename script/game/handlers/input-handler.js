@@ -13,9 +13,9 @@ export default class InputHandler {
     }
 
     
-    handleKeyDown(event){
-
+    handleKeyDown(event) {
         let keyCode = event.keyCode;
+        // let keyCode = event.code;
 
         switch(keyCode) {
             case 87: //W: FORWARD
@@ -25,11 +25,13 @@ export default class InputHandler {
             case 83: //S: BACK
                 this._movementHandler.moveDirection.back = 1;
                 break;
-
+            
+            case 37: //ArrowLEFT
             case 65: //A: LEFT
                 this._movementHandler.moveDirection.left = 1;
                 break;
 
+            case 39: //ArrowRIGHT
             case 68: //D: RIGHT
                 this._movementHandler.moveDirection.right = 1;
                 break;
@@ -39,6 +41,7 @@ export default class InputHandler {
 
     handleKeyUp(event) {
         let keyCode = event.keyCode;
+        // let keyCode = event.code;
 
         switch(keyCode) {
             case 87: //FORWARD
@@ -49,10 +52,12 @@ export default class InputHandler {
                 this._movementHandler.moveDirection.back = 0;
                 break;
 
+            case 37: //ArrowLEFT
             case 65: //LEFT
                 this._movementHandler.moveDirection.left = 0;
                 break;
 
+            case 39: //ArrowRIGHT
             case 68: //RIGHT
                 this._movementHandler.moveDirection.right = 0;
                 break;
@@ -60,4 +65,5 @@ export default class InputHandler {
         }
 
     }
+    
 }

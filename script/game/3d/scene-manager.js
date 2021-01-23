@@ -31,10 +31,8 @@ export default class SceneManager {
         
         this.setupPhysics();
 
-        this._gameStateManager.startGame();
         requestAnimationFrame((t) => this.render(t));
-        
-        // this._physics.setPlayerMovement();
+        // this._gameStateManager.startGame();
     }
 
     setupPhysics() {
@@ -100,10 +98,8 @@ export default class SceneManager {
                 this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
                 this._player._camera.updateProjectionMatrix();
             }
-
-            this._renderer.render(this._scene, this._player._camera);
         }
-        
+        this._renderer.render(this._scene, this._player._camera);
         requestAnimationFrame((t) => this.render(t));
     }
 

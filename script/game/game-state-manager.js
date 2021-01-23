@@ -1,6 +1,7 @@
 import Player from '/script/game/3d/player.js';
 
 export const GameStateEnum = {
+    'INITIALIZING': 'INITIALIZING',
     'READY': 'READY',
     'RUNNING': 'RUNNING',
     'PAUSED': 'PAUSED',
@@ -14,8 +15,10 @@ export default class GameStateManager {
 
     _gravity = -30;
 
+    _uiControlHandler
+
     constructor() {
-        this._gameState = GameStateEnum.READY;
+        this._gameState = GameStateEnum.INITIALIZING;
     }
 
     get player() {
@@ -36,18 +39,41 @@ export default class GameStateManager {
 
     setPlayer(player) {
         this._player = player;
+        this.checkInitializedState();
     }
 
     setTrack(val) {
         this._track = val;
+        this.checkInitializedState();
+    }
+
+    setUiControlHandler(uiControlHandler) {
+        this._uiControlHandler = uiControlHandler;
     }
 
     setPlayerDropping() {
         this._player.setDropping();
     }
 
+    checkInitializedState() {
+        if (this._gameState === GameStateEnum.INITIALIZING 
+            && this._player 
+            && this._track) {
+            
+            this.setGameStateReady();
+        }
+    }
+
+    setGameStateReady() {
+        console.log('setting state ready!');
+        this._gameState = GameStateEnum.READY;
+        this._uiControlHandler.handleGameReady();
+    }
+
     startGame() {
         this._gameState = GameStateEnum.RUNNING;
+        console.log('startGame');
+        console.log('*** GAMESTATE: ' + this._gameState);
     }
 
     isPlayerAtEndOfTrack(playerPosY) {

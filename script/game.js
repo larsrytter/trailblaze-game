@@ -5,6 +5,7 @@ import MovementHandler from '/script/game/handlers/movement-handler.js';
 import InputHandler from '/script/game/handlers/input-handler.js';
 import TrackDataLoader from '/script/game/handlers/track-data-loader.js';
 import GameStateManager from '/script/game/game-state-manager.js';
+import UiControlHandler from '/script/game/handlers/ui-control-handler.js';
 
 function initialize(trackData) {
     const canvas = document.querySelector('#c');
@@ -13,6 +14,7 @@ function initialize(trackData) {
     inputHandler.setupEventHandlers();
 
     const gameStateManager = new GameStateManager();
+    const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager);
 
     const physics = new Physics(movementHandler, gameStateManager);
     // physics.setupPhysicsWorld();
