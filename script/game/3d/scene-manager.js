@@ -2,6 +2,7 @@ import * as THREE from '/script/threejs/build/three.module.js';
 import Track3d from '/script/game/3d/track-3d.js';
 import Player from '/script/game/3d/player.js';
 import Physics from '/script/game/physics/physics.js';
+import { GameStateEnum } from '/script/game/game-state-manager.js';
 // import * as Ammo from '/script/ammojs/ammo.js';
 
 export default class SceneManager {
@@ -25,15 +26,14 @@ export default class SceneManager {
         this.setupRenderer();
         this.setupSceneAndLight();
 
-        // TODO: Call from outside?
         this.createTrack(trackData);
         this.setupPlayer();
         
         this.setupPhysics();
 
-        console.log('scene', this._scene);
-
+        this._gameStateManager.startGame();
         requestAnimationFrame((t) => this.render(t));
+        
         // this._physics.setPlayerMovement();
     }
 
@@ -76,7 +76,7 @@ export default class SceneManager {
         this._track3dManager.init(trackData);
         let track = this._track3dManager.track;
         this._scene.add(track);
-        console.log('Track added', track);
+        this._gameStateManager.setTrack(this._track3dManager);
     }
 
     setupPlayer() {
@@ -88,22 +88,22 @@ export default class SceneManager {
     }
 
     render(time) {
-        time *= 0.001;
+        if (this._gameStateManager.gameState === GameStateEnum.RUNNING) {
+            time *= 0.001;
         
-        let deltaTime = this._clock.getDelta();
-        // this._physics.setPlayerMovement(deltaTime);
-        this._physics.updatePhysics(deltaTime);
+            let deltaTime = this._clock.getDelta();
+            // this._physics.setPlayerMovement(deltaTime);
+            this._physics.updatePhysics(deltaTime);
 
-        if(this.resizeRendererToDisplaySize(this._renderer)) {
-            const canvas = this._renderer.domElement;
-            this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            this._player._camera.updateProjectionMatrix();
+            if(this.resizeRendererToDisplaySize(this._renderer)) {
+                const canvas = this._renderer.domElement;
+                this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                this._player._camera.updateProjectionMatrix();
+            }
+
+            this._renderer.render(this._scene, this._player._camera);
         }
-
-        // const velocity = 3.5;
-        // this._player.playerCommon.position.y = this._player.playerCommon.position.y + velocity;
-
-        this._renderer.render(this._scene, this._player._camera);
+        
         requestAnimationFrame((t) => this.render(t));
     }
 

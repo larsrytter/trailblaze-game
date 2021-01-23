@@ -106,11 +106,12 @@ export default class Player {
         playerMesh.userData.playerObject = this;
 
         playerMesh.onAfterRender = () => {
-            this._camera.position.set(
-                this._camera.position.x,
-                playerMesh.position.y - this._cameraDistance,
-                this._camera.position.z
-            );
+            this.updateCameraPosition();
+            // this._camera.position.set(
+            //     this._camera.position.x,
+            //     playerMesh.position.y - this._cameraDistance,
+            //     this._camera.position.z
+            // );
         }
         
         return playerMesh;
@@ -121,6 +122,14 @@ export default class Player {
         const zNear = 0.1;
         const zFar = 1000;
         return new THREE.PerspectiveCamera(fov, aspect, zNear, zFar);
+    }
+
+    updateCameraPosition() {
+        this._camera.position.set(
+            this._camera.position.x,
+            this._playerSphere.position.y - this._cameraDistance,
+            this._camera.position.z
+        );
     }
 
     handleTileContact(tileObject) {

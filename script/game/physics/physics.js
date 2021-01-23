@@ -169,10 +169,26 @@ export default class Physics {
     }
 
     checkPlayerLocation() {
-        if (this._playerBody.getWorldTransform().getOrigin().z() < -10) {
+        const playerPosZ = this._playerBody.getWorldTransform().getOrigin().z();
+        let playerPosY = this._playerBody.getWorldTransform().getOrigin().y();
+        if (playerPosZ < -5) {
             this._playerBody.getWorldTransform().getOrigin().setZ(15);
+            this._playerBody.getWorldTransform().getOrigin().setX(0);
+
+            const tileLength = this._gameStateManager.track.tileLength;
+            const posY = Math.round(playerPosY - (1 * tileLength), 0);
+            posY = posY < 0 ? 0 : posY;
+            this._playerBody.getWorldTransform().getOrigin().setY(posY);
             this._gameStateManager.setPlayerDropping();
+
+            this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
         }
+
+        if(this._gameStateManager.isPlayerAtEndOfTrack(playerPosY)) {
+
+        }
+
+
     }
 
     detectCollision() {
