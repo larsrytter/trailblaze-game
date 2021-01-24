@@ -131,7 +131,7 @@ export default class Physics {
                                                                 (scale.z/2) * geomParams.depth));
         
         // colShape.setMargin( 0.05 );
-        colShape.setMargin(0);
+        colShape.setMargin(1);
 
         let localInertia = new Ammo.btVector3(0, 0, 0);
         colShape.calculateLocalInertia( mass, localInertia );

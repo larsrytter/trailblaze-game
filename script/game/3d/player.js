@@ -22,10 +22,11 @@ export default class Player {
     /**
      * Initialize the player 3D object and camera
      */
-    init() {
+    async init() {
+
         this._playerCommon = new THREE.Object3D();
 
-        this._playerSphere = this.createPlayerSphere();
+        this._playerSphere = await this.createPlayerSphere();
         this._playerCommon.add(this._playerSphere);
         this._playerSphere.position.z = 15;
 
@@ -105,7 +106,7 @@ export default class Player {
                     && this._tileEffect != null 
                     && this._tileEffect.effectType === EffectTypeEnum.TURBO) {
             // Turbo
-            return this._velocityDefault * 2;
+            return this._velocityDefault * 2.5;
         } else {
             // Normal speed
             return this._velocityDefault;
@@ -123,20 +124,27 @@ export default class Player {
      * Create and configure 3D sphere object
      * @returns {THREE.Mesh}
      */
-    createPlayerSphere() {
+    async createPlayerSphere() {
         const radius = 2;
         const widthSegments = 16;
         const heightSegments = 16;
         const sphereGeometry = new THREE.SphereBufferGeometry(
             radius, widthSegments, heightSegments);
         
-        // const playerMaterial = new THREE.MeshPhongMaterial({emissive: '#222222'});
-        const playerMaterial = new THREE.MeshPhongMaterial();
+        const textureLoader = new THREE.TextureLoader();
+        const textureUrl = '/resources/images/cloudy.png';
         
-        const hue = Math.random();
-        const saturation = 1;
-        const luminance = .5;
-        playerMaterial.color.setHSL(hue, saturation, luminance);
+        let playerMaterial;
+
+        playerMaterial = new THREE.MeshPhongMaterial({
+            map: textureLoader.load(textureUrl)
+        });
+        // const playerMaterial = new THREE.MeshPhongMaterial({emissive: '#222222'});
+        
+        // const hue = Math.random();
+        // const saturation = 1;
+        // const luminance = .5;
+        // playerMaterial.color.setHSL(hue, saturation, luminance);
 
         const playerMesh = new THREE.Mesh(sphereGeometry, playerMaterial);
         playerMesh.castShadow = true;
@@ -147,11 +155,6 @@ export default class Player {
 
         playerMesh.onAfterRender = () => {
             this.updateCameraPosition();
-            // this._camera.position.set(
-            //     this._camera.position.x,
-            //     playerMesh.position.y - this._cameraDistance,
-            //     this._camera.position.z
-            // );
         }
         
         return playerMesh;

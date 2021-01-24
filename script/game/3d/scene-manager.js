@@ -32,12 +32,13 @@ export default class SceneManager {
         this.setupSceneAndLight();
 
         this.createTrack(trackData);
-        this.setupPlayer();
-        
-        this.setupPhysics();
+        this.setupPlayer().then(() => {
+            this.setupPhysics();
 
-        requestAnimationFrame((t) => this.render(t));
-        // this._gameStateManager.startGame();
+            requestAnimationFrame((t) => this.render(t));
+            // this._gameStateManager.startGame();
+        });
+
     }
 
     setupPhysics() {
@@ -82,9 +83,9 @@ export default class SceneManager {
         this._gameStateManager.setTrack(this._track3dManager);
     }
 
-    setupPlayer() {
+    async setupPlayer() {
         this._player = new Player();
-        this._player.init();
+        await this._player.init();
         this._scene.add(this._player.playerCommon);
 
         this._gameStateManager.setPlayer(this._player);
