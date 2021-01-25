@@ -28,12 +28,13 @@ export default class InputHandler {
             
             case 37: //ArrowLEFT
             case 65: //A: LEFT
-                this._movementHandler.moveDirection.left = 1;
+                this.moveLeft();
                 break;
 
             case 39: //ArrowRIGHT
             case 68: //D: RIGHT
-                this._movementHandler.moveDirection.right = 1;
+                this.moveRight();
+                // this._movementHandler.moveDirection.right = 1;
                 break;
 
         }
@@ -54,16 +55,33 @@ export default class InputHandler {
 
             case 37: //ArrowLEFT
             case 65: //LEFT
-                this._movementHandler.moveDirection.left = 0;
+                this.endMoveLeft()
                 break;
 
             case 39: //ArrowRIGHT
             case 68: //RIGHT
-                this._movementHandler.moveDirection.right = 0;
+                this.endMoveRight()
+                // this._movementHandler.moveDirection.right = 0;
                 break;
 
         }
 
+    }
+
+    moveLeft() {
+        this._movementHandler.moveDirection.left = 1;
+    }
+
+    endMoveLeft() {
+        this._movementHandler.moveDirection.left = 0;
+    }
+
+    moveRight() {
+        this._movementHandler.moveDirection.right = 1;
+    }
+
+    endMoveRight() {
+        this._movementHandler.moveDirection.right = 0;
     }
     
 }

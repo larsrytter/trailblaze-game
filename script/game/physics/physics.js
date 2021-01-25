@@ -59,7 +59,7 @@ export default class Physics {
         let body = new Ammo.btRigidBody(rbInfo);
 
         // body.setFriction(1);
-        body.setRollingFriction(0.3);
+        body.setRollingFriction(0.1);
         body.setRestitution(0.0);
 
         this._physicsWorld.addRigidBody(body);
@@ -142,7 +142,7 @@ export default class Physics {
         body.threeObject = tileMesh;
 
         // body.setFriction(1);
-        body.setRollingFriction(0.3);
+        body.setRollingFriction(0.1);
         body.setRestitution(0.0);
 
         this._physicsWorld.addRigidBody( body );

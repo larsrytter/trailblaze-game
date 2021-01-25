@@ -3,15 +3,15 @@ html, body {
     height: 100%;
 }
 
-.game-controls {
-    padding: 10px;
-    text-align: center;
-}
-
 #c {
     width: 100%;
     max-height: 75vh;
     display: block;
+}
+
+.game-controls {
+    padding: 10px;
+    text-align: center;
 }
 
 .start-button {
@@ -20,4 +20,16 @@ html, body {
     height: 90px;
     width: 90px;
     font-size: 1.3em;
+}
+
+.control-button {
+    border: 5px solid green;
+    border-radius: 48px;
+    height: 60px;
+    width: 60px;
+    font-size: 1.3em;
+}
+
+.hidden {
+    display: none;
 }
