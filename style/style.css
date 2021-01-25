@@ -9,6 +9,14 @@ html, body {
 
 #c {
     width: 100%;
-    max-height: 80vh;
+    max-height: 75vh;
     display: block;
+}
+
+.start-button {
+    border: 5px solid green;
+    border-radius: 48px;
+    height: 90px;
+    width: 90px;
+    font-size: 1.3em;
 }

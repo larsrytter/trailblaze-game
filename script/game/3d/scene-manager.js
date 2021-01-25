@@ -66,7 +66,7 @@ export default class SceneManager {
         this._scene.add(this._light);
 
         const light2Color = 0xFFFFFF;
-        const light2Intensity = 3;
+        const light2Intensity = 1.2;
         const light2 = new THREE.DirectionalLight(light2Color, light2Intensity);
         light2.position.set(-5, -10, 15);
         light2.castShadow = true;
