@@ -60,6 +60,7 @@ export default class Physics {
 
         // body.setFriction(1);
         body.setRollingFriction(0.3);
+        body.setRestitution(0.0);
 
         this._physicsWorld.addRigidBody(body);
         sphereMesh.userData.physicsBody = body;
@@ -142,6 +143,7 @@ export default class Physics {
 
         // body.setFriction(1);
         body.setRollingFriction(0.3);
+        body.setRestitution(0.0);
 
         this._physicsWorld.addRigidBody( body );
     }

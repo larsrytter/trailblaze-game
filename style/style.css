@@ -5,6 +5,7 @@ html, body {
 
 .game-controls {
     padding: 10px;
+    text-align: center;
 }
 
 #c {
