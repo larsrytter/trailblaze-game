@@ -27,7 +27,7 @@ export default class Physics {
 
         this._physicsWorld           = new Ammo.btDiscreteDynamicsWorld(this._dispatcher, overlappingPairCache, solver, collisionConfiguration);
         this._physicsWorld.setGravity(new Ammo.btVector3(0, 0, gravity));
-    
+   
     }
 
     init() {
@@ -50,7 +50,7 @@ export default class Physics {
         let motionState = new Ammo.btDefaultMotionState(transform);
 
         let colShape = new Ammo.btSphereShape(radius);
-        colShape.setMargin(0.05);
+        colShape.setMargin(0.50);
 
         let localInertia = new Ammo.btVector3(0, 0, 0);
         colShape.calculateLocalInertia(mass, localInertia);
@@ -104,7 +104,6 @@ export default class Physics {
         this._playerBody.setLinearVelocity(resultantImpulse);
         // this._playerBody.applyImpulse(resultantImpulse);
         // this._playerBody.applyForce(resultantImpulse);
-
     }
 
     createTilePhysicsBody(tileMesh) {
@@ -144,8 +143,10 @@ export default class Physics {
         // body.setFriction(1);
         body.setRollingFriction(0.1);
         body.setRestitution(0.0);
+        body.linearDamping = 1;
 
-        this._physicsWorld.addRigidBody( body );
+        this._physicsWorld.addRigidBody(body);
+
     }
 
     updatePhysics(deltaTime){
@@ -167,7 +168,6 @@ export default class Physics {
                     this.setPlayerMovement(deltaTime);
                     this.checkPlayerLocation();
                 }
-
             }
         });
 

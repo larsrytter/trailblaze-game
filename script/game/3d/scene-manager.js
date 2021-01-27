@@ -96,6 +96,7 @@ export default class SceneManager {
             time *= 0.001;
         
             let deltaTime = this._clock.getDelta();
+            this._gameStateManager.updateTimeElapsed(deltaTime);
             // this._physics.setPlayerMovement(deltaTime);
             this._physics.updatePhysics(deltaTime);
 

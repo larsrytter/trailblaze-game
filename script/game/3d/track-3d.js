@@ -71,7 +71,7 @@ export default class Track3d {
         let count = 0;
         rowData.tiles.map(tileData => {
             console.log('tileData', tileData);
-            if(tileData.effect.toUpperCase() === EffectTypeEnum.HOLE){
+            if(tileData.effect.toUpperCase() === EffectTypeEnum.HOLE) {
                 // No tile
             } else {
                 const tile = new TrackTile3d(this._tileWidth, this._tileLength, this._tileHeight, tileData, this._trackData.colorDefinitions);

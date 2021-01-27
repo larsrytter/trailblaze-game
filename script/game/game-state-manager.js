@@ -13,6 +13,8 @@ export default class GameStateManager {
     _player;
     _track;
 
+    _timeElapsed;
+
     _gravity = -30;
 
     _uiControlHandler
@@ -25,7 +27,7 @@ export default class GameStateManager {
         return this._player;
     }
 
-    get track(){
+    get track() {
         return this._track;
     }
 
@@ -72,6 +74,7 @@ export default class GameStateManager {
 
     startGame() {
         this._gameState = GameStateEnum.RUNNING;
+        this._timeElapsed = 0;
         console.log('startGame');
         console.log('*** GAMESTATE: ' + this._gameState);
     }
@@ -81,5 +84,10 @@ export default class GameStateManager {
         if(playerPosY > trackEndY) {
             this._gameState = GameStateEnum.FINISHED;           
         }
+    }
+
+    updateTimeElapsed(deltaTime) {
+        this._timeElapsed += deltaTime;
+        this._uiControlHandler.updateTimerDisplay(this._timeElapsed);
     }
 }

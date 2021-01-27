@@ -9,6 +9,18 @@ html, body {
     display: block;
 }
 
+#timerDisplay {
+    display: block;
+    position: right;
+    right: 50px;
+    font-size: 1.4em;
+    color: #eaea5c;
+    font-weight: bold;
+    font-family: verdana;
+    top: 80px;
+    position: absolute;
+}
+  
 .game-controls {
     padding: 10px;
     text-align: center;
