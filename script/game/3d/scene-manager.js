@@ -59,6 +59,7 @@ export default class SceneManager {
 
     setupSceneAndLight() {
         this._scene = new THREE.Scene();    
+        this._scene.background = new THREE.Color( 0x000000 );
         const color = 0xFFFFFF;
         const intensity = 0.8;
         // this._light = new THREE.PointLight(color, intensity);
