@@ -87,7 +87,9 @@ export default class GameStateManager {
     }
 
     updateTimeElapsed(deltaTime) {
-        this._timeElapsed += deltaTime;
-        this._uiControlHandler.updateTimerDisplay(this._timeElapsed);
+        if (this._gameState === GameStateEnum.RUNNING) {
+            this._timeElapsed += deltaTime;
+            this._uiControlHandler.updateTimerDisplay(this._timeElapsed);
+        }
     }
 }

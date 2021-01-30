@@ -73,13 +73,13 @@ export default class Physics {
 
     setPlayerMovement(deltaTime) {
         let velocity = this._playerBody.threeObject.userData.playerObject.getVelocity();
-        // let velocityTime = velocity * deltaTime;
 
         let playerVector = this._playerBody.getLinearVelocity();
 
         let tileEffect = this._playerBody.threeObject.userData.playerObject.tileEffect;
 
         let moveX = this._movementHandler.moveDirection.right - this._movementHandler.moveDirection.left;
+        moveX = moveX * 0.7;
         let moveY = 2;
         let moveZ = 0;
 
