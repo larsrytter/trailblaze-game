@@ -191,8 +191,10 @@ export default class Player {
     handleTileContact(tileObject) {
         // console.log('contact with tile', tileObject);
         if(tileObject === null) {
-            this._tileEffect = null;
             this._contactTile = null;
+            if(this._tileEffect && this._tileEffect.effectType === EffectTypeEnum.JUMP) {
+                this._tileEffect = null;
+            }
         } else if(this._contactTile != tileObject) {
             if(this._playerState == PlayerStateEnum.DROPPING) {
                 this._playerState = PlayerStateEnum.MOVING;

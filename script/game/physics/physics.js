@@ -50,7 +50,7 @@ export default class Physics {
         let motionState = new Ammo.btDefaultMotionState(transform);
 
         let colShape = new Ammo.btSphereShape(radius);
-        colShape.setMargin(0.50);
+        colShape.setMargin(0.05);
 
         let localInertia = new Ammo.btVector3(0, 0, 0);
         colShape.calculateLocalInertia(mass, localInertia);
@@ -61,21 +61,19 @@ export default class Physics {
         // body.setFriction(1);
         body.setRollingFriction(0.1);
         body.setRestitution(0.0);
+        // body.linearDamping = 1;
 
         this._physicsWorld.addRigidBody(body);
+        // this._physicsWorld.addCollisionObject(body);
         sphereMesh.userData.physicsBody = body;
         body.threeObject = sphereMesh;
         this._rigidBodies.push(sphereMesh);
         this._playerBody = body;
-
-        // this._physicsWorld.addCollisionObject(body);
     }
 
     setPlayerMovement(deltaTime) {
         let velocity = this._playerBody.threeObject.userData.playerObject.getVelocity();
-
         let playerVector = this._playerBody.getLinearVelocity();
-
         let tileEffect = this._playerBody.threeObject.userData.playerObject.tileEffect;
 
         let moveX = this._movementHandler.moveDirection.right - this._movementHandler.moveDirection.left;
@@ -97,7 +95,7 @@ export default class Physics {
             resultantImpulse.setZ(20);
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
-        } else{
+        } else {
             resultantImpulse.setZ(playerVector.z());
         }
 
@@ -126,12 +124,16 @@ export default class Physics {
         //                                                        geomParams.height, 
         //                                                        geomParams.depth));
         // Why do we need to divide scale by 2?
-        let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
-                                                                (scale.y/2) * geomParams.height, 
-                                                                (scale.z/2) * geomParams.depth));
+        // let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
+        //                                                         (scale.y/2) * geomParams.height, 
+        //                                                         (scale.z/2) * geomParams.depth));
         
-        // colShape.setMargin( 0.05 );
-        colShape.setMargin(1);
+        let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
+                                                                (scale.z/2) * geomParams.height, 
+                                                                (scale.y/2) * geomParams.depth));
+
+        colShape.setMargin( 0.05 );
+        // colShape.setMargin(1);
 
         let localInertia = new Ammo.btVector3(0, 0, 0);
         colShape.calculateLocalInertia( mass, localInertia );
@@ -140,10 +142,11 @@ export default class Physics {
         let body = new Ammo.btRigidBody( rigidBodyInfo );
         body.threeObject = tileMesh;
 
-        // body.setFriction(1);
-        body.setRollingFriction(0.1);
+        body.setFriction(1);
+        // body.setRollingFriction(0.1);
         body.setRestitution(0.0);
         body.linearDamping = 1;
+        console.log('body', body);
 
         this._physicsWorld.addRigidBody(body);
 
@@ -248,7 +251,7 @@ export default class Physics {
         if(collissionTiles.length > 0) {
             let closestItem = this.getClosestTileFromCollission(collissionTiles);
             this._playerBody.threeObject.userData.playerObject.handleTileContact(closestItem.tile);
-            console.log('setting effect', closestItem.tile.contactEffect);
+            // console.log('setting effect', closestItem.tile.contactEffect);
         } else {
             this._playerBody.threeObject.userData.playerObject.handleTileContact(null);
         }

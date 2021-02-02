@@ -505,6 +505,30 @@
                     "effect": "none"
                 },
                 {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
                     "colorName": "grey2",
                     "effect": "none"
                 },
