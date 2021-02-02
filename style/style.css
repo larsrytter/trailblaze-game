@@ -3,6 +3,25 @@ html, body {
     height: 100%;
 }
 
+.header {
+    border-bottom: 3px solid #4f0fdb;
+
+    background: #342a4d;
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    margin: 0;
+}
+
+.header h1 {
+    font-family: arial;
+    /* background: linear-gradient(rgb(255, 230, 1), rgb(90, 4, 69)); */
+    background: linear-gradient(rgb(255, 131, 166),rgb(166, 0, 125),#94c8f4,#a5cbec);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 26pt;
+    margin: 4px;
+}
+
 #c {
     width: 100%;
     max-height: 75vh;
