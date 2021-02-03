@@ -19,6 +19,14 @@
         {
             "colorName": "yellow",
             "colorCode": "#FFFF00" 
+        },
+        {
+            "colorName": "blue2",
+            "colorCode": "#0000EE"
+        },
+        {
+            "colorName": "blue3",
+            "colorCode": "#0000CC"
         }
     ],
     "rows": [
@@ -293,8 +301,7 @@
                     "effect": "INVERTCONTROLS"
                 },
                 {
-                    "colorName": "purple",
-                    "effect": "INVERTCONTROLS"
+                    "effect": "hole"
                 },
                 {
                     "colorName": "purple",
@@ -361,6 +368,28 @@
                     "effect": "INVERTCONTROLS"
                 },
                 {
+                    "effect": "hole"
+                },
+                {
+                    "colorName": "purple",
+                    "effect": "INVERTCONTROLS"
+                },
+                {
+                    "effect": "hole"
+                },
+                {
+                    "colorName": "purple",
+                    "effect": "INVERTCONTROLS"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "purple",
+                    "effect": "INVERTCONTROLS"
+                },
+                {
                     "colorName": "purple",
                     "effect": "INVERTCONTROLS"
                 },
@@ -381,72 +410,21 @@
         {
             "tiles": [
                 {
-                    "colorName": "grey1",
-                    "effect": "none"
+                    "effect": "hole"
                 },
                 {
-                    "colorName": "yellow",
-                    "effect": "TURBO"
+                    "colorName": "purple",
+                    "effect": "INVERTCONTROLS"
                 },
                 {
-                    "colorName": "grey1",
-                    "effect": "none"
+                    "effect": "hole"
                 },
                 {
-                    "colorName": "yellow",
-                    "effect": "TURBO"
+                    "colorName": "purple",
+                    "effect": "INVERTCONTROLS"
                 },
                 {
-                    "colorName": "grey1",
-                    "effect": "none"
-                }
-            ]
-        },
-        {
-            "tiles": [
-                {
-                    "colorName": "grey1",
-                    "effect": "none"
-                },
-                {
-                    "colorName": "yellow",
-                    "effect": "TURBO"
-                },
-                {
-                    "colorName": "grey1",
-                    "effect": "none"
-                },
-                {
-                    "colorName": "yellow",
-                    "effect": "TURBO"
-                },
-                {
-                    "colorName": "grey1",
-                    "effect": "none"
-                }
-            ]
-        },
-        {
-            "tiles": [
-                {
-                    "colorName": "grey1",
-                    "effect": "none"
-                },
-                {
-                    "colorName": "yellow",
-                    "effect": "TURBO"
-                },
-                {
-                    "colorName": "grey1",
-                    "effect": "none"
-                },
-                {
-                    "colorName": "yellow",
-                    "effect": "TURBO"
-                },
-                {
-                    "colorName": "grey1",
-                    "effect": "none"
+                    "effect": "hole"
                 }
             ]
         },
@@ -519,6 +497,172 @@
                 {
                     "colorName": "grey1",
                     "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "yellow",
+                    "effect": "TURBO"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "blue2",
+                    "effect": "slow"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "colorName": "blue2",
+                    "effect": "slow"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                }
+            ]
+        },
+        {
+            "tiles": [
+                {
+                    "effect": "hole"
+                },
+                {
+                    "colorName": "grey1",
+                    "effect": "none"
+                },
+                {
+                    "effect": "hole"
+                },
+                {
+                    "colorName": "grey2",
+                    "effect": "none"
+                },
+                {
+                    
+                    "effect": "hole"
                 }
             ]
         },

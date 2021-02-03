@@ -91,8 +91,7 @@ export default class Physics {
         resultantImpulse.op_mul(velocity);
         
         if (tileEffect != null && tileEffect.effectType === EffectTypeEnum.JUMP) {
-            console.log('***JUMP***', tileEffect);
-            resultantImpulse.setZ(20);
+            resultantImpulse.setZ(30);
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
         } else {
@@ -124,13 +123,13 @@ export default class Physics {
         //                                                        geomParams.height, 
         //                                                        geomParams.depth));
         // Why do we need to divide scale by 2?
-        // let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
-        //                                                         (scale.y/2) * geomParams.height, 
-        //                                                         (scale.z/2) * geomParams.depth));
-        
         let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
-                                                                (scale.z/2) * geomParams.height, 
-                                                                (scale.y/2) * geomParams.depth));
+                                                                (scale.y/2) * geomParams.height, 
+                                                                (scale.z/2) * geomParams.depth));
+        
+        // let colShape = new Ammo.btBoxShape( new Ammo.btVector3((scale.x/2) * geomParams.width, 
+        //                                                         (scale.z/2) * geomParams.height , 
+        //                                                         (scale.y/2) * geomParams.depth));
 
         colShape.setMargin( 0.05 );
         // colShape.setMargin(1);

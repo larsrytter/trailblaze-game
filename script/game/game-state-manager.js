@@ -15,7 +15,7 @@ export default class GameStateManager {
 
     _timeElapsed;
 
-    _gravity = -30;
+    _gravity = -60;
 
     _uiControlHandler
 

@@ -31,7 +31,9 @@ body {
 }
 
 .start-button {
-    border: 5px solid green;
+    border: 5px solid #9f0687;
+    background: #b2e5f9;
+    color: #1100db;
     border-radius: 48px;
     height: 90px;
     width: 90px;

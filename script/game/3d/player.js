@@ -39,7 +39,7 @@ export default class Player {
         this._camera.lookAt(this._playerSphere.position);
 
         this._playerState = PlayerStateEnum.DROPPING;
-        this._velocityDefault = 40;
+        this._velocityDefault = 50;
     }
 
     /**
