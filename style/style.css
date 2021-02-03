@@ -16,12 +16,13 @@ body {
 }
 
 .header h1 {
-    font-family: arial;
+    font-family: 'Conv_Cyberspace Raceway Front', 'arial';
     background: linear-gradient(rgb(255, 131, 166),rgb(166, 0, 125),#94c8f4,#a5cbec);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 26pt;
     margin: 4px;
+    font-style: italic;
 }
  
 .game-controls {
@@ -67,4 +68,29 @@ body {
     font-family: verdana;
     top: 80px;
     position: absolute;
+}
+
+
+@font-face {
+	font-family: 'Conv_Indelible';
+	src: url('/fonts/Indelible.eot');
+	src: local('☺'), url('/fonts/Indelible.woff') format('woff'), url('/fonts/Indelible.ttf') format('truetype'), url('/fonts/Indelible.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Conv_Cyberspace Raceway Front';
+	src: url('/fonts/Cyberspace_Raceway_Front.eot');
+	src: local('☺'), url('/fonts/Cyberspace_Raceway_Front.woff') format('woff'), url('/fonts/Cyberspace_Raceway_Front.ttf') format('truetype'), url('/fonts/Cyberspace_Raceway_Front.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Conv_Cyberspace Raceway Back';
+	src: url('/fonts/Cyberspace_Raceway_Back.eot');
+	src: local('☺'), url('/fonts/Cyberspace_Raceway_Back.woff') format('woff'), url('/fonts/Cyberspace_Raceway_Back.ttf') format('truetype'), url('/fonts/Cyberspace_Raceway_Back.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }

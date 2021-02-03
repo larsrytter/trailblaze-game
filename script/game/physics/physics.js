@@ -142,7 +142,7 @@ export default class Physics {
         let body = new Ammo.btRigidBody( rigidBodyInfo );
         body.threeObject = tileMesh;
 
-        body.setFriction(1);
+        body.setFriction(0.8);
         // body.setRollingFriction(0.1);
         body.setRestitution(0.0);
         body.linearDamping = 1;
