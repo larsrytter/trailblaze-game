@@ -3,10 +3,13 @@ html, body {
     height: 100%;
 }
 
+body {
+    background: linear-gradient(75deg, rgb(77, 7, 59), rgb(57, 2, 43), #342a4d );
+}
+
 .header {
     border-bottom: 3px solid #4f0fdb;
 
-    background: #342a4d;
     text-align: center;
     padding: 5px 5px 5px 5px;
     margin: 0;
@@ -14,12 +17,38 @@ html, body {
 
 .header h1 {
     font-family: arial;
-    /* background: linear-gradient(rgb(255, 230, 1), rgb(90, 4, 69)); */
     background: linear-gradient(rgb(255, 131, 166),rgb(166, 0, 125),#94c8f4,#a5cbec);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 26pt;
     margin: 4px;
+}
+ 
+.game-controls {
+    padding: 10px;
+    text-align: center;
+}
+
+.start-button {
+    border: 5px solid green;
+    border-radius: 48px;
+    height: 90px;
+    width: 90px;
+    font-size: 1.3em;
+}
+
+.control-button {
+    border: 5px solid #9f0687;
+    background: #b2e5f9;
+    color: #1100db;
+    border-radius: 48px;
+    height: 60px;
+    width: 60px;
+    font-size: 1.3em;
+}
+
+.hidden {
+    display: none;
 }
 
 #c {
@@ -38,29 +67,4 @@ html, body {
     font-family: verdana;
     top: 80px;
     position: absolute;
-}
-  
-.game-controls {
-    padding: 10px;
-    text-align: center;
-}
-
-.start-button {
-    border: 5px solid green;
-    border-radius: 48px;
-    height: 90px;
-    width: 90px;
-    font-size: 1.3em;
-}
-
-.control-button {
-    border: 5px solid green;
-    border-radius: 48px;
-    height: 60px;
-    width: 60px;
-    font-size: 1.3em;
-}
-
-.hidden {
-    display: none;
 }
