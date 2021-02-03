@@ -13,6 +13,7 @@ export default class SceneManager {
     _clock;
     _physics;
     _gameStateManager;
+    _audioHandler;
 
     /**
      * 
@@ -20,10 +21,11 @@ export default class SceneManager {
      * @param {Physics} physics 
      * @param {GameStateManager} gameStateManager 
      */
-    constructor(canvasObj, physics, gameStateManager) {
+    constructor(canvasObj, physics, gameStateManager, audioHandler) {
         this.canvasObj = canvasObj;
         this._physics = physics;
         this._gameStateManager = gameStateManager;
+        this._audioHandler = audioHandler;
     }
 
     init(trackData) {
@@ -85,7 +87,7 @@ export default class SceneManager {
     }
 
     async setupPlayer() {
-        this._player = new Player();
+        this._player = new Player(this._audioHandler);
         await this._player.init();
         this._scene.add(this._player.playerCommon);
 

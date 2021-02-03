@@ -8,6 +8,7 @@ export const PlayerStateEnum = {
 }
 
 export default class Player {
+    _audioHandler;
     _playerCommon;
     _playerSphere;
 
@@ -18,6 +19,10 @@ export default class Player {
 
     _contactTile = null;
     _tileEffect = null;
+
+    constructor(audioHandler) {
+        this._audioHandler = audioHandler;
+    }
 
     /**
      * Initialize the player 3D object and camera
@@ -200,6 +205,8 @@ export default class Player {
                 this._playerState = PlayerStateEnum.MOVING;
             }
 
+            this.playEffectAudio(tileObject._contactEffect.effectType);
+
             this._contactTile = tileObject;
 
             this._tileEffect = this._contactTile._contactEffect;
@@ -207,6 +214,14 @@ export default class Player {
                 // console.log('no effect');
             } else {
                 // console.log('effect', this._tileEffect.effectType);
+            }
+        }
+    }
+
+    playEffectAudio(effectType) {
+        switch(effectType) {
+            case(EffectTypeEnum.JUMP): {
+                this._audioHandler.playJumpEffect();
             }
         }
     }
