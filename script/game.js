@@ -18,7 +18,7 @@ function initialize(trackData) {
     audioHandler.init();
 
     const gameStateManager = new GameStateManager();
-    const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager);
+    const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager, audioHandler);
 
     const physics = new Physics(movementHandler, gameStateManager);
     // physics.setupPhysicsWorld();

@@ -83,5 +83,4 @@ export default class InputHandler {
     endMoveRight() {
         this._movementHandler.moveDirection.right = 0;
     }
-    
 }

@@ -50,6 +50,19 @@ body {
     font-size: 1.3em;
 }
 
+.volume-controls {
+    text-align: right;
+}
+.mute-button {
+    border: 3px solid #9f0687;
+    background: #b2e5f9;
+    color: #1100db;
+    border-radius: 48px;
+    height: 38px;
+    width: 38px;
+    font-size: 1.3em;
+}
+
 .hidden {
     display: none;
 }
