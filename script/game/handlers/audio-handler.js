@@ -22,17 +22,27 @@ export default class AudioHandler {
 
     }
 
+    /**
+     * @returns {boolean} IsMuted
+     */
     toggleMuted() {
         let newMutedValue = this._isMuted ? false : true;
         this.setMuted(newMutedValue);
         return newMutedValue;
     }
 
+    /**
+     * 
+     * @param {boolean} isMuted 
+     */
     setMuted(isMuted) {
         this._isMuted = isMuted;
         this._masterGainNode.gain.value = this._isMuted ? 0.0 : 1.0;
     }
 
+    /**
+     * 
+     */
     playJumpEffect() {
         if (this._audioCtx.state === 'suspended') {
             this._audioCtx.resume();
