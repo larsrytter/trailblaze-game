@@ -28,6 +28,10 @@ export default class SceneManager {
         this._audioHandler = audioHandler;
     }
 
+    /**
+     * 
+     * @param {JSON} trackData 
+     */
     init(trackData) {
         this._clock = new THREE.Clock();
         this.setupRenderer();
@@ -43,6 +47,9 @@ export default class SceneManager {
 
     }
 
+    /**
+     * 
+     */
     setupPhysics() {
         this._physics.setupPlayerSpherePhysicsBody(this._player.playerSphere);
         
@@ -53,12 +60,18 @@ export default class SceneManager {
         // this._physics.setPlayerVelocity(25);
     }
 
+    /**
+     * 
+     */
     setupRenderer() {
         this._renderer = new THREE.WebGLRenderer({canvas:this.canvasObj});
         this._renderer.setClearColor(0xAAAAAA);
         this._renderer.shadowMap.enabled = true;
     }
 
+    /**
+     * 
+     */
     setupSceneAndLight() {
         this._scene = new THREE.Scene();    
         this._scene.background = new THREE.Color( 0x000000 );
@@ -78,6 +91,10 @@ export default class SceneManager {
             
     }
 
+    /**
+     * 
+     * @param {JSON} trackData 
+     */
     createTrack(trackData) {
         this._track3dManager = new Track3d();
         this._track3dManager.init(trackData);
@@ -86,6 +103,9 @@ export default class SceneManager {
         this._gameStateManager.setTrack(this._track3dManager);
     }
 
+    /**
+     * 
+     */
     async setupPlayer() {
         this._player = new Player(this._audioHandler);
         await this._player.init();
@@ -94,6 +114,10 @@ export default class SceneManager {
         this._gameStateManager.setPlayer(this._player);
     }
 
+    /**
+     * 
+     * @param {number} time 
+     */
     render(time) {
         if (this._gameStateManager.gameState === GameStateEnum.RUNNING) {
             time *= 0.001;
@@ -113,6 +137,11 @@ export default class SceneManager {
         requestAnimationFrame((t) => this.render(t));
     }
 
+    /**
+     * 
+     * @param {THREE.WebGLRenderer} renderer 
+     * @returns {boolean}
+     */
     resizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;
         const width = canvas.clientWidth;

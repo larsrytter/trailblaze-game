@@ -17,22 +17,37 @@ export default class Track3d {
         // this.init(); //TODO: Call from somewhere else?
     }
 
+    /**
+     * @returns {new THREE.Object3D}
+     */
     get track() {
         return this._track;
     }
 
+    /**
+     * @returns {number}
+     */
     get tileLength() {
         return this._tileLength;
     }
 
+    /**
+     * @returns {THREE.Mesh[]}
+     */
     get allTileMeshes() {
         return this._allTileMeshes;
     }
 
+    /**
+     * @returns {number}
+     */
     get tileDefaultLength() {
         return this._tileLength;
     }
 
+    /**
+     * @returns {number}
+     */
     getTrackEndCoordY() {
         let endY = 0;
         if(this._tileRows) {
@@ -42,12 +57,19 @@ export default class Track3d {
         return endY;
     }
 
+    /**
+     * 
+     * @param {JSON} trackData 
+     */
     init(trackData) {
         this._trackData = trackData;
         this._track = new THREE.Object3D();
         this.buildTileRows();
     }
 
+    /**
+     * 
+     */
     buildTileRows() {
         // TODO: Build from track-setup json
         this._tileRows = [];
@@ -57,6 +79,10 @@ export default class Track3d {
         });
     }
 
+    /**
+     * 
+     * @param {JSON} rowData 
+     */
     addTileRow(rowData) {
         // console.log('rowData', rowData);
         let row = new THREE.Object3D();

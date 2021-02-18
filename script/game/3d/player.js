@@ -218,6 +218,10 @@ export default class Player {
         }
     }
 
+    /**
+     * Play audio for tile-effect
+     * @param {EffectTypeEnum} effectType 
+     */
     playEffectAudio(effectType) {
         switch(effectType) {
             case(EffectTypeEnum.JUMP): {
