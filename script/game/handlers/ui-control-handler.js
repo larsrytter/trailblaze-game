@@ -16,11 +16,15 @@ export default class UiControlHandler {
         buttonElem.addEventListener('click', () => { this.onStartGameClick(); });
 
         const muteButtonElem = document.getElementById('btnMuteVolume');
-        muteButtonElem.addEventListener('click', () => { this.onMuteButtonClick(); });
+        muteButtonElem.addEventListener('click', () => { this.onMuteButtonClick('iconAudioOn', 'iconAudioMuted'); });
+
+        const muteMusicButtonElem = document.getElementById('btnMuteMusic');
+        muteMusicButtonElem.addEventListener('click', () => { this.onMuteButtonClick('iconMusicOn', 'iconMusicOff'); });
     }
 
     onStartGameClick() {
         this._gameStateManager.startGame();
+        this._audioHandler.playMusicLoop();
         const startControlsElem = document.getElementById('startControls');
         startControlsElem.classList.add('hidden');
         
@@ -51,11 +55,11 @@ export default class UiControlHandler {
         }
     }
 
-    onMuteButtonClick() {
+    onMuteButtonClick(onIconElemId, mutedIconElemId) {
         let isMuted = this._audioHandler.toggleMuted();
         
-        const iconMuted = document.getElementById('iconAudioMuted');
-        const iconOn = document.getElementById('iconAudioOn');
+        const iconMuted = document.getElementById(mutedIconElemId);
+        const iconOn = document.getElementById(onIconElemId);
         if(isMuted) {
             iconMuted.classList.remove('hidden');
             iconOn.classList.add('hidden');

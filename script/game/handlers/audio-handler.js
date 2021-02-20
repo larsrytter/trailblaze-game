@@ -4,8 +4,15 @@ export default class AudioHandler {
     _jumpAudioElement;
     _jumpTrack;
 
+    _musicLoopElement;
+
     _masterGainNode;
-    _isMuted = false;
+    _effectGainNode;
+    _musicGainNode;
+
+    _isMasterMuted = false;
+    _isEffectMuted = false;
+    _isMusicMuted = false;
 
     constructor() {
         this._audioCtx = new AudioContext();
@@ -14,11 +21,23 @@ export default class AudioHandler {
     init() {
         this._masterGainNode = this._audioCtx.createGain();
         this._masterGainNode.connect(this._audioCtx.destination);
-        this._masterGainNode.gain.value = this._isMuted ? 0.0 : 1.0;
+        this._masterGainNode.gain.value = this._isMasterMuted ? 0.0 : 1.0;
+
+        this._effectGainNode = this._audioCtx.createGain();
+        this._effectGainNode.connect(this._masterGainNode);
+        this._effectGainNode.gain.value = this._isEffectMuted ? 0.0 : 1.0;
+
+        this._musicGainNode = this._audioCtx.createGain();
+        this._musicGainNode.connect(this._masterGainNode);
+        this._musicGainNode.gain.value = this._isMusicMuted ? 0.0 : 1.0;
 
         this._jumpAudioElement = document.getElementById('audioJump');
         this._jumpTrack = this._audioCtx.createMediaElementSource(this._jumpAudioElement);
-        this._jumpTrack.connect(this._masterGainNode);
+        this._jumpTrack.connect(this._effectGainNode);
+
+        this._musicLoopElement = document.getElementById('musicLoop_action001');
+        this._musicLoopTrack = this._audioCtx.createMediaElementSource(this._musicLoopElement);
+        this._musicLoopTrack.connect(this._musicGainNode);
 
     }
 
@@ -26,7 +45,7 @@ export default class AudioHandler {
      * @returns {boolean} IsMuted
      */
     toggleMuted() {
-        let newMutedValue = this._isMuted ? false : true;
+        let newMutedValue = this._isMasterMuted ? false : true;
         this.setMuted(newMutedValue);
         return newMutedValue;
     }
@@ -36,8 +55,8 @@ export default class AudioHandler {
      * @param {boolean} isMuted 
      */
     setMuted(isMuted) {
-        this._isMuted = isMuted;
-        this._masterGainNode.gain.value = this._isMuted ? 0.0 : 1.0;
+        this._isMasterMuted = isMuted;
+        this._masterGainNode.gain.value = this._isMasterMuted ? 0.0 : 1.0;
     }
 
     /**
@@ -48,5 +67,12 @@ export default class AudioHandler {
             this._audioCtx.resume();
         }
         this._jumpAudioElement.play();
+    }
+
+    playMusicLoop() {
+        if (this._audioCtx.state === 'suspended') {
+            this._audioCtx.resume();
+        }
+        this._musicLoopElement.play();
     }
 }

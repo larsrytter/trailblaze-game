@@ -51,9 +51,13 @@ body {
 }
 
 .volume-controls {
-    text-align: right;
+    display: inline-block;
+    position: absolute;
+    right: 17px;
 }
 .mute-button {
+    display: block;
+    margin: 5px;
     border: 3px solid #9f0687;
     background: #b2e5f9;
     color: #1100db;
