@@ -19,6 +19,7 @@ body {
     font-family: 'Conv_Cyberspace Raceway Front', 'arial';
     background: linear-gradient(rgb(255, 131, 166),rgb(166, 0, 125),#94c8f4,#a5cbec);
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 26pt;
     margin: 4px;
@@ -48,6 +49,16 @@ body {
     height: 60px;
     width: 60px;
     font-size: 1.3em;
+}
+
+.direction-button-right {
+    width: 90px;
+    border-radius: 0px 48px 48px 0px;
+}
+
+.direction-button-left {
+    width: 90px;
+    border-radius: 48px 0px 0px 48px;
 }
 
 .volume-controls {
