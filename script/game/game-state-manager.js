@@ -75,14 +75,18 @@ export default class GameStateManager {
     startGame() {
         this._gameState = GameStateEnum.RUNNING;
         this._timeElapsed = 0;
-        console.log('startGame');
-        console.log('*** GAMESTATE: ' + this._gameState);
+        // console.log('startGame');
+        // console.log('*** GAMESTATE: ' + this._gameState);
     }
 
     isPlayerAtEndOfTrack(playerPosY) {
         const trackEndY = this._track.getTrackEndCoordY();
         if(playerPosY > trackEndY) {
-            this._gameState = GameStateEnum.FINISHED;           
+            this._gameState = GameStateEnum.FINISHED;
+            const msgCompleted = document.getElementById('msgLevelCompleted');
+            msgCompleted.classList.remove('completed-message-hidden');
+            msgCompleted.classList.add('completed-message');
+
         }
     }
 

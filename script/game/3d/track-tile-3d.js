@@ -12,16 +12,16 @@ export default class TrackTile3d {
 
     constructor(width, length, height, tileData, colorDefinitions) {
         const colorData = colorDefinitions.find(def => def.colorName === tileData.colorName);
-        const tileColor = colorData.colorCode;      
+        // const tileColor = colorData.colorCode;
+        const color = new THREE.Color(colorData.colorCode);
         this._geometry = new THREE.BoxGeometry(width, length, height);
-        this._material = new THREE.MeshPhongMaterial({color: tileColor});
+        this._material = new THREE.MeshPhongMaterial({color: color});
         this._mesh = new THREE.Mesh(this._geometry, this._material);
         this._mesh.castShadow = false;
         this._mesh.receiveShadow = true;
 
         this._mesh.userData.isTile = true;
         this._mesh.userData.tileObject = this;
-
         this._tileData = tileData;
 
         this.setTileEffect(tileData);

@@ -93,13 +93,38 @@ body {
     position: right;
     right: 50px;
     font-size: 1.4em;
-    color: #eaea5c;
+    color: #f0f020;
     font-weight: bold;
     font-family: verdana;
     top: 80px;
     position: absolute;
 }
 
+.completed-message {
+    font-family: Conv_Indelible;
+    display: inline-block;
+    color: #fff;
+    position: absolute;
+    left: calc(35vh);
+    top: calc(24vh);
+    font-size: 3em;
+
+    background: linear-gradient(15deg,rgb(234, 225, 179),rgb(230, 138, 94),#ea7155,#ec151f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* animation: glow 1s ease-in-out infinite alternate; */
+    opacity: 1;
+    visibility: 1;
+    transition: opacity 1.2s linear;
+    /* transition: font-size 1.2s linear; */
+}
+
+.completed-message-hidden {
+    opacity: 0;
+    visibility: 0;
+    font-size: 0em;
+}
 
 @font-face {
 	font-family: 'Conv_Indelible';
