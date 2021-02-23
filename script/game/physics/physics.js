@@ -87,6 +87,12 @@ export default class Physics {
             moveX = -moveX;
         }
 
+        if(moveX === 0) {
+            // console.log('playerVector.x()', playerVector.x());
+            // console.log('playervector', playerVector.x(), playerVector.y(), playerVector.z());  
+            // moveX = playerVector.x();
+        }
+
         let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
         resultantImpulse.op_mul(velocity);
         
@@ -95,7 +101,14 @@ export default class Physics {
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
         } else {
-            resultantImpulse.setZ(playerVector.z());
+            // Sometimes ball will jump when crossing to new tile - small gap between tiles in physics model??
+            // Handle by resetting z-vector if moving up while no tileeffect on player
+            let playerTileEffect = this._gameStateManager.player.tileEffect;
+            let z = playerVector.z();
+            if(z > 0 && (playerTileEffect !== null)) {
+                z = 0;
+            }
+            resultantImpulse.setZ(z);
         }
 
         this._playerBody.setLinearVelocity(resultantImpulse);

@@ -23,6 +23,9 @@ export default class GameStateManager {
         this._gameState = GameStateEnum.INITIALIZING;
     }
 
+    /**
+     * @returns Player
+     */
     get player() {
         return this._player;
     }
@@ -39,6 +42,10 @@ export default class GameStateManager {
         return this._gameState;
     }
 
+    /**
+     * 
+     * @param {Player} player 
+     */
     setPlayer(player) {
         this._player = player;
         this.checkInitializedState();
