@@ -101,7 +101,7 @@ body {
 }
 
 .completed-message {
-    font-family: Conv_Indelible;
+    
     display: inline-block;
     color: #fff;
     position: absolute;
@@ -118,6 +118,16 @@ body {
     visibility: 1;
     transition: opacity 1.2s linear;
     /* transition: font-size 1.2s linear; */
+}
+
+.completed-message-subject {
+    font-family: 'Conv_Indelible';
+}
+
+.completed-message-time {
+    font-family: 'Conv_Cyberspace Raceway Back';
+    font-size: 0.4em;
+    max-width: 30vw;
 }
 
 .completed-message-hidden {

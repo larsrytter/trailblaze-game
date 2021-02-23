@@ -52,6 +52,11 @@ export default class UiControlHandler {
 
             const timerElem = document.getElementById('timerDisplay');
             timerElem.innerText = this._currentTime;
+
+            const completedTimeElem = document.getElementById('completedTime');
+            if(completedTimeElem) {
+                completedTimeElem.innerText = this._currentTime;
+            }
         }
     }
 
