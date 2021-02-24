@@ -127,12 +127,14 @@ export default class SceneManager {
             // this._physics.setPlayerMovement(deltaTime);
             this._physics.updatePhysics(deltaTime);
 
-            if(this.resizeRendererToDisplaySize(this._renderer)) {
-                const canvas = this._renderer.domElement;
-                this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                this._player._camera.updateProjectionMatrix();
-            }
         }
+        
+        if(this.resizeRendererToDisplaySize(this._renderer)) {
+            const canvas = this._renderer.domElement;
+            this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            this._player._camera.updateProjectionMatrix();
+        }
+
         this._renderer.render(this._scene, this._player._camera);
         requestAnimationFrame((t) => this.render(t));
     }
