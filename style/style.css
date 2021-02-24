@@ -153,22 +153,6 @@ body {
     100%{background-position:0% 50%}
   }
 
-/* @-webkit-keyframes BackgroundWave {
-    0%{background-position:15% 0%}
-    50%{background-position:86% 100%}
-    100%{background-position:15% 0%}
-}
-@-moz-keyframes BackgroundWave {
-    0%{background-position:15% 0%}
-    50%{background-position:86% 100%}
-    100%{background-position:15% 0%}
-}
-@keyframes BackgroundWave {
-    0%{background-position:15% 0%}
-    50%{background-position:86% 100%}
-    100%{background-position:15% 0%}
-} */
-
 @font-face {
 	font-family: 'Conv_Indelible';
 	src: url('/fonts/Indelible.eot');
