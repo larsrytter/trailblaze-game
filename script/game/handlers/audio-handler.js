@@ -60,6 +60,15 @@ export default class AudioHandler {
     }
 
     /**
+     * @returns {boolean} IsMusicMuted
+     */
+    toggleMusicMuted() {
+        this._isMusicMuted = this._isMusicMuted ? false : true;
+        this._musicGainNode.gain.value = this._isMusicMuted ? 0.0 : 1.0;
+        return this._isMusicMuted;
+    }
+
+    /**
      * 
      */
     playJumpEffect() {

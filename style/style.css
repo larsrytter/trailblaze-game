@@ -127,7 +127,19 @@ body {
 .completed-message-time {
     font-family: 'Conv_Cyberspace Raceway Back';
     font-size: 0.4em;
+    font-style: italic;
     max-width: 30vw;
+    background: linear-gradient(15deg,rgb(224, 239, 255),rgb(191, 205, 255),#7f85ee, #3c47ff, #a0aeff, rgb(224, 239, 255));
+    background-clip: border-box;
+    background-clip: border-box;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-size: 1400% 100%;
+    -webkit-animation: backgroundwave 3.5s ease infinite;
+    -moz-animation: backgroundwave 3.5s ease infinite;
+    animation: backgroundwave 3.5s linear infinite;
 }
 
 .completed-message-hidden {
@@ -135,6 +147,27 @@ body {
     visibility: 0;
     font-size: 0em;
 }
+
+@keyframes backgroundwave {
+    0%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+
+/* @-webkit-keyframes BackgroundWave {
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
+}
+@-moz-keyframes BackgroundWave {
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
+}
+@keyframes BackgroundWave {
+    0%{background-position:15% 0%}
+    50%{background-position:86% 100%}
+    100%{background-position:15% 0%}
+} */
 
 @font-face {
 	font-family: 'Conv_Indelible';
