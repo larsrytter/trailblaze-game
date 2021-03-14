@@ -73,8 +73,14 @@ export default class SceneManager {
      * 
      */
     setupSceneAndLight() {
-        this._scene = new THREE.Scene();    
-        this._scene.background = new THREE.Color( 0x000000 );
+        this._scene = new THREE.Scene();
+        const bgColor = 0x000000;
+        this._scene.background = new THREE.Color(bgColor);
+
+        const fogNear = 100;
+        const fogFar = 650;
+        this._scene.fog = new THREE.Fog(bgColor, fogNear, fogFar);
+
         const color = 0xFFFFFF;
         const intensity = 0.8;
         // this._light = new THREE.PointLight(color, intensity);
