@@ -105,8 +105,9 @@ body {
     display: inline-block;
     color: #fff;
     position: absolute;
-    left: calc(35vh);
     top: calc(24vh);
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 3em;
 
     background: linear-gradient(15deg,rgb(234, 225, 179),rgb(230, 138, 94),#ea7155,#ec151f);

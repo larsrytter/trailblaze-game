@@ -77,7 +77,7 @@ export default class SceneManager {
         const bgColor = 0x000000;
         this._scene.background = new THREE.Color(bgColor);
 
-        const fogNear = 100;
+        const fogNear = 80;
         const fogFar = 650;
         this._scene.fog = new THREE.Fog(bgColor, fogNear, fogFar);
 
