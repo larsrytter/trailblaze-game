@@ -1,6 +1,12 @@
 export default class TrackDataLoader {
     _basePath = '/script/data';
 
+    _trackService;
+
+    constructor(trackService){
+        this._trackService = trackService;
+    }
+
     async loadTrackData(fileName) {
         const url = `${this._basePath}/${fileName}`;
         let data = {};

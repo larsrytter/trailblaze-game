@@ -3,6 +3,7 @@ import SceneManager from '/script/game/3d/scene-manager.js';
 import Physics from '/script/game/physics/physics.js';
 import MovementHandler from '/script/game/handlers/movement-handler.js';
 import InputHandler from '/script/game/handlers/input-handler.js';
+import TrackService from '/script/game/service/track-service.js';
 import TrackDataLoader from '/script/game/handlers/track-data-loader.js';
 import GameStateManager from '/script/game/game-state-manager.js';
 import UiControlHandler from '/script/game/handlers/ui-control-handler.js';
@@ -28,8 +29,8 @@ function initialize(trackData) {
     sceneManager.init(trackData);
     
 }
-
-const trackDataLoader = new TrackDataLoader();
+const trackService = new TrackService();
+const trackDataLoader = new TrackDataLoader(trackService);
 
 const trackDataFileName = 'level1data.json';
 let trackData = null;
