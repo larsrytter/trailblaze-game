@@ -1,7 +1,10 @@
 export default class TrackService {
+
+    _baseUrl = 'http://speedroller.larsrytter.dk';
+
     async getAll() {
         let tracks = [];
-        const url = `/api/?action=list`;
+        const url = `${this._baseUrl}/api/?action=list`;
         const requestOptions = {
             method: "GET",
         };

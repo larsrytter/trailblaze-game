@@ -149,6 +149,25 @@ body {
     font-size: 0em;
 }
 
+.track-list-section {
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background: rgba(79, 15, 219, 0.73);
+    width: 35vw;
+    padding: 0px 10px 20px 10px;
+    color: #c8d0f9;
+}
+
+.track-list-section h2 {
+    font-family: 'Conv_Cyberspace Raceway Back';
+    letter-spacing: 2;
+    font-size: 1.2em;
+    text-align: center;
+}
+
 @keyframes backgroundwave {
     0%{background-position:100% 50%}
     100%{background-position:0% 50%}

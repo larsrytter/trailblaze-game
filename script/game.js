@@ -9,7 +9,8 @@ import GameStateManager from '/script/game/game-state-manager.js';
 import UiControlHandler from '/script/game/handlers/ui-control-handler.js';
 import AudioHandler from '/script/game/handlers/audio-handler.js';
 
-function initialize(trackData) {
+// function initialize(trackData) {
+function initialize(trackListData) {
     const canvas = document.querySelector('#c');
     const movementHandler = new MovementHandler();
     const inputHandler = new InputHandler(movementHandler);
@@ -22,22 +23,34 @@ function initialize(trackData) {
     const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager, audioHandler);
 
     const physics = new Physics(movementHandler, gameStateManager);
-    // physics.setupPhysicsWorld();
-    physics.init(trackData);
+
+    gameStateManager.setStateTrackPicker();
     
-    const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
-    sceneManager.init(trackData);
+    uiControlHandler.setStartGameCallback(trackInfo => {
+        trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
+            gameStateManager.setStateInitializingGame();
+            physics.init(trackData);
     
+            const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
+            sceneManager.init(trackData);
+        });
+    });
+
+    uiControlHandler.listTracks(trackListData);
+
 }
 const trackService = new TrackService();
 const trackDataLoader = new TrackDataLoader(trackService);
 
-const trackDataFileName = 'level1data.json';
-let trackData = null;
-trackDataLoader.loadTrackData(trackDataFileName)
-    .then((data) => {
-        Ammo().then( () => { initialize(data); });
+trackDataLoader.listTracks()
+    .then(trackListData => {
+        Ammo().then( () => { initialize(trackListData); });
     });
 
+// const trackDataFileName = 'level1data.json';
+// let trackData = null;
+// trackDataLoader.loadTrackData(trackDataFileName)
+//     .then((data) => {
+//         Ammo().then( () => { initialize(data); });
+//     });
 // Ammo().then( initialize );
-

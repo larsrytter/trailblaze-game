@@ -11,6 +11,47 @@ export default class UiControlHandler {
         this._audioHandler = audioHandler;
     }
 
+    listTracks(trackListData) {
+        const trackListSectionElem = document.getElementById('trackListSection');
+        const trackListElem = document.getElementById('trackList');
+
+        trackListData.map(trackInfo => {
+            const trackListItemElem = document.createElement('li');
+
+            const trackNameElem = document.createElement('span');
+            trackNameElem.innerText = trackInfo.name;
+            trackListItemElem.appendChild(trackNameElem);
+
+            const trackStartBtn = document.createElement('button');
+            trackStartBtn.addEventListener('click', () => this.startGameForTrack(trackInfo));
+            trackStartBtn.innerText = 'start';
+
+            trackListItemElem.appendChild(trackStartBtn);
+
+            trackListElem.appendChild(trackListItemElem);
+        });
+
+        trackListSectionElem.classList.remove('hidden');
+        console.log(trackListElem);
+    }
+
+    displayHiscoresForTrack(trackInfo) {
+
+    }
+
+    startGameForTrack(trackInfo) {
+        const trackListSectionElem = document.getElementById('trackListSection');
+        trackListSectionElem.classList.add('hidden');
+
+        this._startGameCallback(trackInfo);
+    }
+
+    _startGameCallback;
+    setStartGameCallback(callback) {
+        this._startGameCallback = callback;
+    }
+
+
     handleGameReady() {
         const buttonElem = document.getElementById('btnStartGame');
         buttonElem.addEventListener('click', () => { this.onStartGameClick(); });

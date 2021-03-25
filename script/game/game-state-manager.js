@@ -1,6 +1,7 @@
 import Player from '/script/game/3d/player.js';
 
 export const GameStateEnum = {
+    'TRACK_PICKER': 'TRACK_PICKER',
     'INITIALIZING': 'INITIALIZING',
     'READY': 'READY',
     'RUNNING': 'RUNNING',
@@ -20,7 +21,8 @@ export default class GameStateManager {
     _uiControlHandler
 
     constructor() {
-        this._gameState = GameStateEnum.INITIALIZING;
+        this.setStateTrackPicker();
+        // this._gameState = GameStateEnum.INITIALIZING;
     }
 
     /**
@@ -64,6 +66,15 @@ export default class GameStateManager {
         this._player.setDropping();
     }
 
+    
+    setStateTrackPicker() {
+        this._gameState = GameStateEnum.TRACK_PICKER;
+    }
+
+    setStateInitializingGame() {
+        this._gameState = GameStateEnum.INITIALIZING;
+    }
+
     checkInitializedState() {
         if (this._gameState === GameStateEnum.INITIALIZING 
             && this._player 
@@ -82,8 +93,6 @@ export default class GameStateManager {
     startGame() {
         this._gameState = GameStateEnum.RUNNING;
         this._timeElapsed = 0;
-        // console.log('startGame');
-        // console.log('*** GAMESTATE: ' + this._gameState);
     }
 
     isPlayerAtEndOfTrack(playerPosY) {

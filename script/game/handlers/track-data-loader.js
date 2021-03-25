@@ -1,14 +1,20 @@
 export default class TrackDataLoader {
-    _basePath = '/script/data';
+    _basePath = '';
 
     _trackService;
 
-    constructor(trackService){
+    constructor(trackService) {
         this._trackService = trackService;
     }
 
+    async listTracks() {
+        const trackData = await this._trackService.getAll();
+        return trackData;
+    }
+
     async loadTrackData(fileName) {
-        const url = `${this._basePath}/${fileName}`;
+        console.log('download file', fileName);
+        const url = `${this._basePath}${fileName}`;
         let data = {};
         try {
             let response = await fetch(url);
