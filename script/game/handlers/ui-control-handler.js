@@ -25,6 +25,7 @@ export default class UiControlHandler {
             const trackStartBtn = document.createElement('button');
             trackStartBtn.addEventListener('click', () => this.startGameForTrack(trackInfo));
             trackStartBtn.innerText = 'start';
+            trackStartBtn.classList.add('select-track-button');
 
             trackListItemElem.appendChild(trackStartBtn);
 

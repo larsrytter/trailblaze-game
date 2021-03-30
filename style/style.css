@@ -155,17 +155,32 @@ body {
     margin-top: -50px;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-    background: rgba(79, 15, 219, 0.73);
+    /* background: rgba(79, 15, 219, 0.73); */
     width: 35vw;
     padding: 0px 10px 20px 10px;
-    color: #c8d0f9;
+    /* color: #c8d0f9; */
+    background: rgba(156, 201, 239, 0.56);
+    color: #2C0576;
 }
 
 .track-list-section h2 {
-    font-family: 'Conv_Cyberspace Raceway Back';
+    font-family: 'Rocketrinder';
+    font-style: italic;
     letter-spacing: 2;
-    font-size: 1.2em;
+    font-size: 1.7em;
     text-align: center;
+}
+
+.track-list-section button.select-track-button {
+    transform: skew(-15deg);
+    background: #D03E90;
+    border: 1px solid #8db3dd;
+    color: #b2e5f9;
+}
+
+.track-list {
+    list-style: none;
+    font-family: 'Rocketrinder';
 }
 
 @keyframes backgroundwave {
@@ -193,6 +208,13 @@ body {
     font-family: 'Conv_Cyberspace Raceway Back';
 	src: url('/fonts/Cyberspace_Raceway_Back.eot');
 	src: local('☺'), url('/fonts/Cyberspace_Raceway_Back.woff') format('woff'), url('/fonts/Cyberspace_Raceway_Back.ttf') format('truetype'), url('/fonts/Cyberspace_Raceway_Back.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rocketrinder';
+	src: local('☺'), url('/font/rocketrinder-yv5d-webfont.woff') format('woff'), url('/fonts/rocketrinder-yv5d-webfont.woff2') format('woff2'), url('/fonts/rocketrinder-yv5d-webfont.ttf') format('ttf');
 	font-weight: normal;
 	font-style: normal;
 }
