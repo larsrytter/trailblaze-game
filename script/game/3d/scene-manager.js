@@ -31,6 +31,7 @@ export default class SceneManager {
     /**
      * 
      * @param {JSON} trackData 
+     * @param {JSON} trackMetadata
      */
     init(trackData) {
         this._clock = new THREE.Clock();

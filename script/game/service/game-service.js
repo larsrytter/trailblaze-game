@@ -1,9 +1,14 @@
 export default class GameService {
     _baseUrl = 'http://speedroller.larsrytter.dk';
 
-    async startGame(trackId) {
+    /**
+     * 
+     * @param {string} trackGuid
+     * @returns {string} gameGuid 
+     */
+    async startGame(trackGuid) {
         let gameGuid = null;
-        const url = `${this._baseUrl}/api/?action=startgame`;
+        const url = `${this._baseUrl}/api/?action=startgame&track=${trackGuid}`;
         const requestOptions = {
             method: "GET",
         };
@@ -15,6 +20,12 @@ export default class GameService {
         return gameGuid;
     }
 
+    /**
+     * 
+     * @param {string} gameGuid 
+     * @param {number} completedTime
+     * @returns {number} ranking 
+     */
     async finishGame(gameGuid, completedTime) {
         let ranking = null;
         const url = `${this._baseUrl}/api/?action=finishgame&game=${gameGuid}&time=${completedTime}`;
@@ -27,5 +38,24 @@ export default class GameService {
             ranking = gameInfo.ranking;
         }
         return ranking;
+    }
+
+    /**
+     * 
+     * @param {string} gameGuid
+     * @param {string} playerName
+     * @returns {JSON} hiscores 
+     */
+    async setplayername(gameGuid, playerName) {
+        let hiscores;
+        const url = `${this._baseUrl}/api/?action=setplayername&game=${gameGuid}&playername=${playerName}`;
+        const requestOptions = {
+            method: "GET",
+        };
+        const response = await fetch(url, requestOptions);
+        if (response.ok) {
+            hiscores = await response.json();
+        }
+        return hiscores;
     }
 }

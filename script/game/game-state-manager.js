@@ -18,10 +18,14 @@ export default class GameStateManager {
 
     _gravity = -60;
 
-    _uiControlHandler
+    _uiControlHandler;
+    _gameService;
+    _gameId;
+    _trackGuid;
 
-    constructor() {
+    constructor(gameService) {
         this.setStateTrackPicker();
+        this._gameService = gameService;
         // this._gameState = GameStateEnum.INITIALIZING;
     }
 
@@ -71,7 +75,8 @@ export default class GameStateManager {
         this._gameState = GameStateEnum.TRACK_PICKER;
     }
 
-    setStateInitializingGame() {
+    setStateInitializingGame(trackGuid) {
+        this._trackGuid = trackGuid;
         this._gameState = GameStateEnum.INITIALIZING;
     }
 
@@ -93,6 +98,10 @@ export default class GameStateManager {
     startGame() {
         this._gameState = GameStateEnum.RUNNING;
         this._timeElapsed = 0;
+        this._gameService.startGame(this._trackGuid)
+            .then(gameGuid => {
+                this._gameId = gameGuid
+            });
     }
 
     isPlayerAtEndOfTrack(playerPosY) {
@@ -103,6 +112,10 @@ export default class GameStateManager {
             msgCompleted.classList.remove('completed-message-hidden');
             msgCompleted.classList.add('completed-message');
 
+            this._gameService.finishGame(this._gameId, this._timeElapsed)
+                .then(ranking => {
+                    console.log('ranking: ', ranking);
+                });
         }
     }
 

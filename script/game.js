@@ -4,6 +4,7 @@ import Physics from '/script/game/physics/physics.js';
 import MovementHandler from '/script/game/handlers/movement-handler.js';
 import InputHandler from '/script/game/handlers/input-handler.js';
 import TrackService from '/script/game/service/track-service.js';
+import GameService from '/script/game/service/game-service.js';
 import TrackDataLoader from '/script/game/handlers/track-data-loader.js';
 import GameStateManager from '/script/game/game-state-manager.js';
 import UiControlHandler from '/script/game/handlers/ui-control-handler.js';
@@ -19,7 +20,8 @@ function initialize(trackListData) {
     const audioHandler = new AudioHandler();
     audioHandler.init();
 
-    const gameStateManager = new GameStateManager();
+    const gameService = new GameService();
+    const gameStateManager = new GameStateManager(gameService);
     const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager, audioHandler);
 
     const physics = new Physics(movementHandler, gameStateManager);
@@ -28,7 +30,7 @@ function initialize(trackListData) {
     
     uiControlHandler.setStartGameCallback(trackInfo => {
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
-            gameStateManager.setStateInitializingGame();
+            gameStateManager.setStateInitializingGame(trackInfo.guid);
             physics.init(trackData);
     
             const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
