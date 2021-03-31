@@ -15,6 +15,8 @@ export default class UiControlHandler {
         const trackListSectionElem = document.getElementById('trackListSection');
         const trackListElem = document.getElementById('trackList');
 
+        let animationDelay = 0;
+        
         trackListData.map(trackInfo => {
             const trackListItemElem = document.createElement('li');
 
@@ -30,6 +32,9 @@ export default class UiControlHandler {
             trackListItemElem.appendChild(trackStartBtn);
 
             trackListElem.appendChild(trackListItemElem);
+
+            trackListItemElem.style = `animation-delay: ${animationDelay}s;`;
+            animationDelay++;
         });
 
         trackListSectionElem.classList.remove('hidden');

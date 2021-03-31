@@ -156,11 +156,16 @@ body {
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     /* background: rgba(79, 15, 219, 0.73); */
-    width: 35vw;
+    /* width: 35vw; */
     padding: 0px 10px 20px 10px;
     /* color: #c8d0f9; */
-    background: rgba(156, 201, 239, 0.56);
-    color: #2C0576;
+    /* background: rgba(156, 201, 239, 0.56);
+    color: #2C0576; */
+
+    width: 73vw;
+    background: rgba(3, 142, 165, 0.93);
+    color: #F4EAF3;
+    min-height: 35vh; 
 }
 
 .track-list-section h2 {
@@ -173,20 +178,44 @@ body {
 
 .track-list-section button.select-track-button {
     transform: skew(-15deg);
-    background: #D03E90;
     border: 1px solid #8db3dd;
-    color: #b2e5f9;
+
+    background: #D03EB9;
+    margin: 1px 7px 1px 7px;
+    color: #F4EAF3; 
 }
 
 .track-list {
     list-style: none;
     font-family: 'Rocketrinder';
+    line-height: 2;
+}
+
+.track-list li {
+    width: 0%;
+    max-height: 2em;
+    overflow: hidden;
+    animation: growFromLeft 4s forwards; /* timing-function delay iteration-count direction; */
 }
 
 @keyframes backgroundwave {
-    0%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
   }
+
+@keyframes growFromLeft {
+    0% {
+      display: none;
+      width: 0%;
+    }
+    1% {
+      display: block;
+      width: 1%;
+    }
+    100% {
+      width: 100%;
+    }
+}
 
 @font-face {
 	font-family: 'Conv_Indelible';
