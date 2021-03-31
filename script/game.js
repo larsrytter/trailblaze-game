@@ -38,6 +38,20 @@ function initialize(trackListData) {
         });
     });
 
+    uiControlHandler.setPreviewTrackCallback(trackInfo => {
+        trackService.getHiscores(trackInfo.guid).then(hiscores => {
+            console.log('hisores', hiscores);
+        });
+
+        trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
+            gameStateManager.setStateInitializingGame(trackInfo.guid);
+            physics.init(trackData);
+    
+            const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
+            sceneManager.init(trackData);
+        });
+    })
+
     uiControlHandler.listTracks(trackListData);
 
 }

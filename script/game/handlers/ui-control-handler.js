@@ -4,6 +4,16 @@ export default class UiControlHandler {
     _gameStateManager;
     _audioHandler;
 
+    _startGameCallback;
+    setStartGameCallback(callback) {
+        this._startGameCallback = callback;
+    }
+
+    _previewTrackCallback;
+    setPreviewTrackCallback(callback) {
+        this._previewTrackCallback = callback;
+    }
+
     constructor(inputHandler, gameStateManager, audioHandler) {
         this._inputHandler = inputHandler;
         this._gameStateManager = gameStateManager;
@@ -24,11 +34,16 @@ export default class UiControlHandler {
             trackNameElem.innerText = trackInfo.name;
             trackListItemElem.appendChild(trackNameElem);
 
+            const trackPreviewBtn = document.createElement('button');
+            trackPreviewBtn.addEventListener('click', () => this.previewTrackWithHiscoresClicked(trackInfo));
+            trackPreviewBtn.innerText = 'view';
+            trackPreviewBtn.classList.add('preview-track-button');
+            trackListItemElem.appendChild(trackPreviewBtn);
+
             const trackStartBtn = document.createElement('button');
             trackStartBtn.addEventListener('click', () => this.startGameForTrack(trackInfo));
             trackStartBtn.innerText = 'start';
             trackStartBtn.classList.add('select-track-button');
-
             trackListItemElem.appendChild(trackStartBtn);
 
             trackListElem.appendChild(trackListItemElem);
@@ -38,7 +53,11 @@ export default class UiControlHandler {
         });
 
         trackListSectionElem.classList.remove('hidden');
-        console.log(trackListElem);
+    }
+
+    previewTrackWithHiscoresClicked(trackInfo) {
+        console.log('previewTrackWithHiscores', trackInfo);
+        this._previewTrackCallback(trackInfo);
     }
 
     displayHiscoresForTrack(trackInfo) {
@@ -51,12 +70,6 @@ export default class UiControlHandler {
 
         this._startGameCallback(trackInfo);
     }
-
-    _startGameCallback;
-    setStartGameCallback(callback) {
-        this._startGameCallback = callback;
-    }
-
 
     handleGameReady() {
         const buttonElem = document.getElementById('btnStartGame');
