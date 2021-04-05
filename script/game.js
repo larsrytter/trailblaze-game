@@ -38,9 +38,10 @@ function initialize(trackListData) {
         });
     });
 
-    uiControlHandler.setPreviewTrackCallback(trackInfo => {
+    uiControlHandler.setPreviewTrackCallback((trackInfo, trackListItemElement) => {
         trackService.getHiscores(trackInfo.guid).then(hiscores => {
-            console.log('hisores', hiscores);
+            console.log('hiscores', hiscores);
+            uiControlHandler.displayHiscores(hiscores, trackListItemElement);
         });
 
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {

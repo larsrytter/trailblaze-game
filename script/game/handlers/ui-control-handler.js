@@ -30,21 +30,40 @@ export default class UiControlHandler {
         trackListData.map(trackInfo => {
             const trackListItemElem = document.createElement('li');
 
-            const trackNameElem = document.createElement('span');
-            trackNameElem.innerText = trackInfo.name;
-            trackListItemElem.appendChild(trackNameElem);
-
-            const trackPreviewBtn = document.createElement('button');
-            trackPreviewBtn.addEventListener('click', () => this.previewTrackWithHiscoresClicked(trackInfo));
-            trackPreviewBtn.innerText = 'view';
-            trackPreviewBtn.classList.add('preview-track-button');
-            trackListItemElem.appendChild(trackPreviewBtn);
+            const trackListItemTrackContainer = document.createElement('div');
+            trackListItemTrackContainer.classList.add('track-list-track-line');
+            trackListItemElem.appendChild(trackListItemTrackContainer);
 
             const trackStartBtn = document.createElement('button');
-            trackStartBtn.addEventListener('click', () => this.startGameForTrack(trackInfo));
-            trackStartBtn.innerText = 'start';
+
+            const trackNameElem = document.createElement('span');
+            trackNameElem.addEventListener('click', () => this.previewTrackWithHiscoresClicked(trackInfo, trackListItemElem, trackStartBtn));
+            trackNameElem.addEventListener('mouseover', () => this.previewTrackWithHiscoresClicked(trackInfo, trackListItemElem, trackStartBtn));
+            trackNameElem.innerText = trackInfo.name;
+            trackNameElem.classList.add('track-name');
+            trackListItemTrackContainer.appendChild(trackNameElem);
+            
+            // const trackPreviewBtn = document.createElement('button');
+            // trackPreviewBtn.addEventListener('click', () => this.previewTrackWithHiscoresClicked(trackInfo, trackListItemElem, trackStartBtn));
+            // trackPreviewBtn.innerText = 'select';
+            // trackPreviewBtn.classList.add('preview-track-button');
+            // trackPreviewBtn.classList.add('select-track-button');
+            // trackListItemTrackContainer.appendChild(trackPreviewBtn);
+
+            
+            trackStartBtn.addEventListener('click', () => this.onStartGameClick());
+            trackStartBtn.innerText = 'Start game';
+            trackStartBtn.classList.add('preview-track-button');
             trackStartBtn.classList.add('select-track-button');
-            trackListItemElem.appendChild(trackStartBtn);
+            trackStartBtn.classList.add('start-game-button');
+            trackStartBtn.classList.add('hidden');
+            trackListItemTrackContainer.appendChild(trackStartBtn);
+
+            // const trackStartBtn = document.createElement('button');
+            // trackStartBtn.addEventListener('click', () => this.startGameForTrack(trackInfo));
+            // trackStartBtn.innerText = 'start';
+            // trackStartBtn.classList.add('select-track-button');
+            // trackListItemTrackContainer.appendChild(trackStartBtn);
 
             trackListElem.appendChild(trackListItemElem);
 
@@ -55,25 +74,84 @@ export default class UiControlHandler {
         trackListSectionElem.classList.remove('hidden');
     }
 
-    previewTrackWithHiscoresClicked(trackInfo) {
-        console.log('previewTrackWithHiscores', trackInfo);
-        this._previewTrackCallback(trackInfo);
+    previewTrackWithHiscoresClicked(trackInfo, trackListItemElement, trackStartBtnElem) {
+        this._previewTrackCallback(trackInfo, trackListItemElement);
+        [...trackListItemElement.parentElement.children].forEach(elem => {
+            elem.classList.remove('selected');
+        });
+
+        trackListItemElement.classList.add('selected');
+
+        let startButtons = document.getElementsByClassName('start-game-button');
+        [...startButtons].forEach(btnElem => btnElem.classList.add('hidden'));
+        trackStartBtnElem.classList.remove('hidden');
     }
 
-    displayHiscoresForTrack(trackInfo) {
+    displayHiscores(hiscores, parentElement) {
+        const hiscoreListContainer = document.getElementById('hiscoreListContainer');
+        const hiscoreList = document.getElementById('hiscoreList');
+        while (hiscoreList.firstChild) {
+            hiscoreList.removeChild(hiscoreList.lastChild);
+        }
+        if(hiscores && hiscores.length > 0) {
+            
+            
+            const headerElem = document.createElement('li');
+            const timeHeaderElem = document.createElement('span');
+            timeHeaderElem.innerText = 'Time';
+            timeHeaderElem.classList.add('hiscore-header');
+            timeHeaderElem.classList.add('hiscore-time');
+            headerElem.appendChild(timeHeaderElem);
+
+            const nameHeaderElem = document.createElement('span');
+            nameHeaderElem.innerText = 'Player';
+            nameHeaderElem.classList.add('hiscore-header');
+            nameHeaderElem.classList.add('hiscore-name');
+            headerElem.appendChild(nameHeaderElem);
+
+            hiscoreList.appendChild(headerElem);
+
+            hiscores.map(hiscoreItem => {
+                const listItem = document.createElement('li');
+
+                const completedTimeElem = document.createElement('span');
+                completedTimeElem.innerText = hiscoreItem.time;
+                completedTimeElem.classList.add('hiscoreCompletedTime');
+                completedTimeElem.classList.add('hiscore-time');
+                listItem.appendChild(completedTimeElem);
+
+                const nameElem = document.createElement('span');
+                nameElem.innerText = hiscoreItem.name;
+                nameElem.classList.add('hiscoreName');
+                nameElem.classList.add('hiscore-name');
+                listItem.appendChild(nameElem);
+
+                hiscoreList.appendChild(listItem);
+            });
+            hiscoreListContainer.classList.remove('hidden');
+        } else {
+            hiscoreListContainer.classList.add('hidden');
+        }
+
+        if (parentElement) {
+            hiscoreListContainer.parentElement.removeChild(hiscoreListContainer);
+
+            parentElement.appendChild(hiscoreListContainer);
+        }
 
     }
 
+    // Clicked start game button from tracks-list - not used - remove?
     startGameForTrack(trackInfo) {
-        const trackListSectionElem = document.getElementById('trackListSection');
-        trackListSectionElem.classList.add('hidden');
+        // const trackListSectionElem = document.getElementById('trackListSection');
+        // trackListSectionElem.classList.add('hidden');
 
         this._startGameCallback(trackInfo);
     }
 
     handleGameReady() {
-        const buttonElem = document.getElementById('btnStartGame');
-        buttonElem.addEventListener('click', () => { this.onStartGameClick(); });
+        // const buttonElem = document.getElementById('btnStartGame');
+        // buttonElem.addEventListener('click', () => { this.onStartGameClick(); });
 
         const muteButtonElem = document.getElementById('btnMuteVolume');
         muteButtonElem.addEventListener('click', () => { this.onMuteMasterButtonClick(); });
@@ -83,6 +161,9 @@ export default class UiControlHandler {
     }
 
     onStartGameClick() {
+        const trackListSectionElem = document.getElementById('trackListSection');
+        trackListSectionElem.classList.add('hidden');
+
         this._gameStateManager.startGame();
         this._audioHandler.playMusicLoop();
         const startControlsElem = document.getElementById('startControls');

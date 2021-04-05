@@ -157,7 +157,7 @@ body {
     transform: translateY(-50%) translateX(-50%);
     /* background: rgba(79, 15, 219, 0.73); */
     /* width: 35vw; */
-    padding: 0px 10px 20px 10px;
+    padding: 0px 42px 20px 10px;
     /* color: #c8d0f9; */
     /* background: rgba(156, 201, 239, 0.56);
     color: #2C0576; */
@@ -191,11 +191,85 @@ body {
     line-height: 2;
 }
 
-.track-list li {
+.track-list > li {
     width: 0%;
     max-height: 2em;
+    padding-left: 15px;
+    display: flex;
     overflow: hidden;
-    animation: growFromLeft 4s forwards; /* timing-function delay iteration-count direction; */
+    animation: expandFromLeft 4s forwards; /* timing-function delay iteration-count direction; */
+
+}
+
+.track-list li.selected {
+    background: #299eb099;
+    border-radius: 30px;
+}
+
+.track-list .track-name {
+    cursor: pointer;
+}
+
+/* .track-list li.selected:before {
+    content: "";
+    width: 100px;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 19px solid #299eb0;
+    border-left: 19px solid rgba(3, 142, 165, 0.93);;
+    border-right: 19px solid rgba(3, 142, 165, 0.93);;
+  } */
+
+.track-list li.selected .hiscore-list-container {
+    background: #299eb099;
+    flex: 1;
+    border-radius: 30px;
+}
+
+.track-list-track-line {
+    flex: none;
+    align-self: flex-start;
+}
+
+.hiscore-list-container {
+    flex: none;
+    align-self: flex-end;
+}
+
+.hiscore-list-container h3 {
+    font-family: 'Rocketrinder';
+    font-style: italic;
+    letter-spacing: 2;
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0;
+}
+
+.hiscore-list {
+    list-style: none;
+    font-family: 'Rocketrinder';
+    line-height: 1.8;
+
+    /* visibility: hidden;
+    max-height: 0; */
+    /* animation: expandFromTop 4s forwards;  */
+}
+
+.hiscore-header {
+    font-weight: bold;
+    /* display: inline-block; */
+}
+
+.hiscore-time {
+    width: 68px;
+    display: inline-block;
+}
+
+.hiscore-name {
+    /* width: 500px; */
+    display: inline-block;
 }
 
 @keyframes backgroundwave {
@@ -203,7 +277,7 @@ body {
     100% { background-position: 0% 50% }
   }
 
-@keyframes growFromLeft {
+@keyframes expandFromLeft {
     0% {
       display: none;
       width: 0%;
@@ -214,6 +288,32 @@ body {
     }
     100% {
       width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: visible;
+    }
+}
+
+@keyframes expandFromTop {
+    0% {
+      display: none;
+      visibility: hidden;
+      max-height: 0;
+    }
+    1% {
+      display: block;
+      visibility: visible;
+      max-height: 1%;
+    }
+    100% {
+      max-height: 100%;
+      display: block;
+      visibility: visible;
+      /* display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: visible; */
     }
 }
 

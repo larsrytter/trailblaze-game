@@ -158,7 +158,7 @@ export default class Physics {
         // body.setRollingFriction(0.1);
         body.setRestitution(0.0);
         body.linearDamping = 1;
-        console.log('body', body);
+        // console.log('body', body);
 
         this._physicsWorld.addRigidBody(body);
 
