@@ -48,6 +48,16 @@ export default class GameStateManager {
         return this._gameState;
     }
 
+    reset() {
+        this._track = null;
+        this._trackGuid = null;
+        this._gameId = null;
+        this._timeElapsed = 0;
+        this._player = null;
+        this.setStateTrackPicker();
+        
+    }
+
     /**
      * 
      * @param {Player} player 

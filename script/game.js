@@ -24,17 +24,19 @@ function initialize(trackListData) {
     const gameStateManager = new GameStateManager(gameService);
     const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager, audioHandler);
 
-    const physics = new Physics(movementHandler, gameStateManager);
+    // const physics = new Physics(movementHandler, gameStateManager);
 
     gameStateManager.setStateTrackPicker();
+    const physics = new Physics(movementHandler, gameStateManager);
+    const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
     
     uiControlHandler.setStartGameCallback(trackInfo => {
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
-            gameStateManager.setStateInitializingGame(trackInfo.guid);
-            physics.init(trackData);
+            // gameStateManager.setStateInitializingGame(trackInfo.guid);
+            // physics.init(trackData);
     
-            const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
-            sceneManager.init(trackData);
+            // const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
+            // sceneManager.init(trackData);
         });
     });
 
@@ -47,8 +49,6 @@ function initialize(trackListData) {
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
             gameStateManager.setStateInitializingGame(trackInfo.guid);
             physics.init(trackData);
-    
-            const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
             sceneManager.init(trackData);
         });
     })

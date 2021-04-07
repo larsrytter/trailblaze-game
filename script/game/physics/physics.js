@@ -31,8 +31,18 @@ export default class Physics {
     }
 
     init() {
+        this.reset();
+        
         this.setupPhysicsWorld()
         this._transformAux = new Ammo.btTransform();
+    }
+
+    reset() {
+        this._rigidBodies = [];
+        this._playerBody = null;
+        this._physicsWorld = null;
+        this._dispatcher = null;
+        this._transformAux = null;
     }
 
     setupPlayerSpherePhysicsBody(sphereMesh) {

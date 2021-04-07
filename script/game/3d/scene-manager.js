@@ -15,6 +15,8 @@ export default class SceneManager {
     _gameStateManager;
     _audioHandler;
 
+    _animationFrameReqId;
+
     /**
      * 
      * @param {domElement} canvasObj 
@@ -34,6 +36,12 @@ export default class SceneManager {
      * @param {JSON} trackMetadata
      */
     init(trackData) {
+        if(this._scene) {
+            this.reset();
+        }
+        if(this._gameStateManager) {
+            this._gameStateManager.reset();
+        }
         this._clock = new THREE.Clock();
         this.setupRenderer();
         this.setupSceneAndLight();
@@ -42,10 +50,25 @@ export default class SceneManager {
         this.setupPlayer().then(() => {
             this.setupPhysics();
 
-            requestAnimationFrame((t) => this.render(t));
-            // this._gameStateManager.startGame();
+            this._animationFrameReqId = requestAnimationFrame((t) => this.render(t));
         });
 
+    }
+
+    reset() {
+        for( let i = this._scene.children.length - 1; i >= 0; i--) { 
+            let obj = this._scene.children[i];
+            this._scene.remove(obj); 
+        }
+        this._renderer = null;
+        this._player = null;
+        this._clock = null;
+        this._scene = null;
+
+        if(this._animationFrameReqId) {
+            cancelAnimationFrame(this._animationFrameReqId);
+            this._animationFrameReqId = null;
+        }
     }
 
     /**
@@ -57,8 +80,6 @@ export default class SceneManager {
         this._track3dManager.allTileMeshes.map((tileMesh) => {
             this._physics.createTilePhysicsBody(tileMesh);
         });
-
-        // this._physics.setPlayerVelocity(25);
     }
 
     /**
