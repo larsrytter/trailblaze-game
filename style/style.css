@@ -105,7 +105,7 @@ body {
     display: inline-block;
     color: #fff;
     position: absolute;
-    top: calc(24vh);
+    top: calc(14vh);
     left: 50%;
     transform: translateX(-50%);
     font-size: 3em;
@@ -270,6 +270,13 @@ body {
 .hiscore-name {
     /* width: 500px; */
     display: inline-block;
+}
+
+#completed-hiscorelist h3 {
+    font-size: 0.7em;
+}
+#completed-hiscorelist .hiscore-list {
+    font-size: 0.5em;
 }
 
 @keyframes backgroundwave {

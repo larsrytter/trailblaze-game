@@ -47,11 +47,11 @@ function initialize(trackListData) {
         });
 
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
-            gameStateManager.setStateInitializingGame(trackInfo.guid);
             physics.init(trackData);
             sceneManager.init(trackData);
+            gameStateManager.setStateInitializingGame(trackInfo.guid);
         });
-    })
+    });
 
     uiControlHandler.listTracks(trackListData);
 
@@ -59,10 +59,16 @@ function initialize(trackListData) {
 const trackService = new TrackService();
 const trackDataLoader = new TrackDataLoader(trackService);
 
-trackDataLoader.listTracks()
-    .then(trackListData => {
-        Ammo().then( () => { initialize(trackListData); });
-    });
+try {
+    trackDataLoader.listTracks()
+        .then(trackListData => {
+            Ammo().then( () => { initialize(trackListData); });       
+        });
+} catch(exception) {
+    const errorMsgElem = document.getElementById('errorMsgPanel');
+    errorMsgElem.innerText = exception.message;
+    errorMsgElem.classList.remove('hidden');
+}
 
 // const trackDataFileName = 'level1data.json';
 // let trackData = null;

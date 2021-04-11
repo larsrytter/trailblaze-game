@@ -31,7 +31,7 @@ export default class SceneManager {
     }
 
     /**
-     * 
+     * Setup objects and renderer for new game
      * @param {JSON} trackData 
      * @param {JSON} trackMetadata
      */
@@ -72,7 +72,7 @@ export default class SceneManager {
     }
 
     /**
-     * 
+     * Add objects to physics-manager
      */
     setupPhysics() {
         this._physics.setupPlayerSpherePhysicsBody(this._player.playerSphere);
@@ -115,8 +115,6 @@ export default class SceneManager {
         light2.position.set(-5, -10, 15);
         light2.castShadow = true;
         this._scene.add(light2);
-
-            
     }
 
     /**

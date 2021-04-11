@@ -125,6 +125,11 @@ export default class GameStateManager {
             this._gameService.finishGame(this._gameId, this._timeElapsed)
                 .then(ranking => {
                     console.log('ranking: ', ranking);
+                    if(ranking <= 10) {
+                        this._uiControlHandler.showNameInputForHiscoreList(this._trackGuid, this._gameId);
+                    } else {
+                        this._uiControlHandler.showHiscoreListForTrack(this._trackGuid);
+                    }
                 });
         }
     }

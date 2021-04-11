@@ -1,3 +1,5 @@
+import TrackService from '/script/game/service/track-service.js';
+
 export default class UiControlHandler {
     
     _inputHandler;
@@ -43,14 +45,6 @@ export default class UiControlHandler {
             trackNameElem.classList.add('track-name');
             trackListItemTrackContainer.appendChild(trackNameElem);
             
-            // const trackPreviewBtn = document.createElement('button');
-            // trackPreviewBtn.addEventListener('click', () => this.previewTrackWithHiscoresClicked(trackInfo, trackListItemElem, trackStartBtn));
-            // trackPreviewBtn.innerText = 'select';
-            // trackPreviewBtn.classList.add('preview-track-button');
-            // trackPreviewBtn.classList.add('select-track-button');
-            // trackListItemTrackContainer.appendChild(trackPreviewBtn);
-
-            
             trackStartBtn.addEventListener('click', () => this.onStartGameClick());
             trackStartBtn.innerText = 'Start game';
             trackStartBtn.classList.add('preview-track-button');
@@ -58,12 +52,6 @@ export default class UiControlHandler {
             trackStartBtn.classList.add('start-game-button');
             trackStartBtn.classList.add('hidden');
             trackListItemTrackContainer.appendChild(trackStartBtn);
-
-            // const trackStartBtn = document.createElement('button');
-            // trackStartBtn.addEventListener('click', () => this.startGameForTrack(trackInfo));
-            // trackStartBtn.innerText = 'start';
-            // trackStartBtn.classList.add('select-track-button');
-            // trackListItemTrackContainer.appendChild(trackStartBtn);
 
             trackListElem.appendChild(trackListItemElem);
 
@@ -147,6 +135,19 @@ export default class UiControlHandler {
         // trackListSectionElem.classList.add('hidden');
 
         this._startGameCallback(trackInfo);
+    }
+
+    showNameInputForHiscoreList(trackGuid, gameId) {
+        console.log('showNameInputForHiscoreList', trackGuid, gameId);
+        const containerElem = document.getElementById('completed-hiscorelist');
+        const trackService = new TrackService();
+        trackService.getHiscores(trackGuid).then(hiscores => {
+            this.displayHiscores(hiscores, containerElem);
+        });
+    }
+
+    showHiscoreListForTrack(trackGuid) {
+        console.log('showHiscoreListForTrack', trackGuid);
     }
 
     handleGameReady() {
