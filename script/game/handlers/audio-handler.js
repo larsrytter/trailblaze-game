@@ -15,7 +15,6 @@ export default class AudioHandler {
     _isMusicMuted = false;
 
     constructor() {
-        // this._audioCtx = new AudioContext();
         this._audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
 

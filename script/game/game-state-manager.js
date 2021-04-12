@@ -102,7 +102,7 @@ export default class GameStateManager {
     setGameStateReady() {
         console.log('setting state ready!');
         this._gameState = GameStateEnum.READY;
-        this._uiControlHandler.handleGameReady();
+        // this._uiControlHandler.handleGameReady();
     }
 
     startGame() {

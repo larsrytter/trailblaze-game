@@ -150,10 +150,7 @@ export default class UiControlHandler {
         console.log('showHiscoreListForTrack', trackGuid);
     }
 
-    handleGameReady() {
-        // const buttonElem = document.getElementById('btnStartGame');
-        // buttonElem.addEventListener('click', () => { this.onStartGameClick(); });
-
+    setupAudioControls() {
         const muteButtonElem = document.getElementById('btnMuteVolume');
         muteButtonElem.addEventListener('click', () => { this.onMuteMasterButtonClick(); });
 

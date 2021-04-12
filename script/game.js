@@ -24,8 +24,7 @@ function initialize(trackListData) {
     const gameStateManager = new GameStateManager(gameService);
     const uiControlHandler = new UiControlHandler(inputHandler, gameStateManager, audioHandler);
 
-    // const physics = new Physics(movementHandler, gameStateManager);
-
+    uiControlHandler.setupAudioControls();
     gameStateManager.setStateTrackPicker();
     const physics = new Physics(movementHandler, gameStateManager);
     const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
