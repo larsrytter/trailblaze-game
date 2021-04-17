@@ -121,6 +121,10 @@ body {
     /* transition: font-size 1.2s linear; */
 }
 
+.completed-message .hiscore-list-container {
+    -webkit-text-fill-color: #ea6950;
+}
+
 .completed-message-subject {
     font-family: 'Conv_Indelible';
 }
@@ -180,7 +184,7 @@ body {
     transform: skew(-15deg);
     border: 1px solid #8db3dd;
 
-    background: #D03EB9;
+    background: #e86807;
     margin: 1px 7px 1px 7px;
     color: #F4EAF3; 
 }

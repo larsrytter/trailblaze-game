@@ -118,6 +118,9 @@ export default class GameStateManager {
         const trackEndY = this._track.getTrackEndCoordY();
         if(playerPosY > trackEndY) {
             this._gameState = GameStateEnum.FINISHED;
+            // const completedMessageSection = document.getElementById('gameCompletedMessageSection');
+            // completedMessageSection.classList.remove('hidden');
+
             const msgCompleted = document.getElementById('msgLevelCompleted');
             msgCompleted.classList.remove('completed-message-hidden');
             msgCompleted.classList.add('completed-message');
