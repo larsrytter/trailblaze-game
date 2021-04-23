@@ -114,12 +114,13 @@ export default class GameStateManager {
             });
     }
 
-    isPlayerAtEndOfTrack(playerPosY) {
+    /**
+     * 
+     */
+    handleIsPlayerAtEndOfTrack(playerPosY) {
         const trackEndY = this._track.getTrackEndCoordY();
-        if(playerPosY > trackEndY) {
+        if (playerPosY > trackEndY) {
             this._gameState = GameStateEnum.FINISHED;
-            // const completedMessageSection = document.getElementById('gameCompletedMessageSection');
-            // completedMessageSection.classList.remove('hidden');
 
             const msgCompleted = document.getElementById('msgLevelCompleted');
             msgCompleted.classList.remove('completed-message-hidden');
@@ -134,7 +135,10 @@ export default class GameStateManager {
                         this._uiControlHandler.showHiscoreListForTrack(this._trackGuid);
                     }
                 });
+            
+            return true;
         }
+        return false;
     }
 
     updateTimeElapsed(deltaTime) {

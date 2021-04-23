@@ -215,7 +215,7 @@ export default class Physics {
             this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
         }
 
-        if(this._gameStateManager.isPlayerAtEndOfTrack(playerPosY)) {
+        if(this._gameStateManager.handleIsPlayerAtEndOfTrack(playerPosY)) {
 
         }
 

@@ -83,37 +83,10 @@ export default class UiControlHandler {
         }
         if(hiscores && hiscores.length > 0) {
             
-            
-            const headerElem = document.createElement('li');
-            const timeHeaderElem = document.createElement('span');
-            timeHeaderElem.innerText = 'Time';
-            timeHeaderElem.classList.add('hiscore-header');
-            timeHeaderElem.classList.add('hiscore-time');
-            headerElem.appendChild(timeHeaderElem);
-
-            const nameHeaderElem = document.createElement('span');
-            nameHeaderElem.innerText = 'Player';
-            nameHeaderElem.classList.add('hiscore-header');
-            nameHeaderElem.classList.add('hiscore-name');
-            headerElem.appendChild(nameHeaderElem);
-
+            const headerElem = this._createHiScoreListHeaderLine();
             hiscoreList.appendChild(headerElem);
-
             hiscores.map(hiscoreItem => {
-                const listItem = document.createElement('li');
-
-                const completedTimeElem = document.createElement('span');
-                completedTimeElem.innerText = hiscoreItem.time;
-                completedTimeElem.classList.add('hiscoreCompletedTime');
-                completedTimeElem.classList.add('hiscore-time');
-                listItem.appendChild(completedTimeElem);
-
-                const nameElem = document.createElement('span');
-                nameElem.innerText = hiscoreItem.name;
-                nameElem.classList.add('hiscoreName');
-                nameElem.classList.add('hiscore-name');
-                listItem.appendChild(nameElem);
-
+                const listItem = this._createHiScoreListLine(hiscoreItem);
                 hiscoreList.appendChild(listItem);
             });
             hiscoreListContainer.classList.remove('hidden');
@@ -127,6 +100,41 @@ export default class UiControlHandler {
             parentElement.appendChild(hiscoreListContainer);
         }
 
+    }
+
+    _createHiScoreListHeaderLine() {
+        const headerElem = document.createElement('li');
+        const timeHeaderElem = document.createElement('span');
+        timeHeaderElem.innerText = 'Time';
+        timeHeaderElem.classList.add('hiscore-header');
+        timeHeaderElem.classList.add('hiscore-time');
+        headerElem.appendChild(timeHeaderElem);
+
+        const nameHeaderElem = document.createElement('span');
+        nameHeaderElem.innerText = 'Player';
+        nameHeaderElem.classList.add('hiscore-header');
+        nameHeaderElem.classList.add('hiscore-name');
+        headerElem.appendChild(nameHeaderElem);
+
+        return headerElem;
+    }
+
+    _createHiScoreListLine(hiscoreItem) {
+        const listItem = document.createElement('li');
+
+        const completedTimeElem = document.createElement('span');
+        completedTimeElem.innerText = hiscoreItem.time;
+        completedTimeElem.classList.add('hiscoreCompletedTime');
+        completedTimeElem.classList.add('hiscore-time');
+        listItem.appendChild(completedTimeElem);
+
+        const nameElem = document.createElement('span');
+        nameElem.innerText = hiscoreItem.name;
+        nameElem.classList.add('hiscoreName');
+        nameElem.classList.add('hiscore-name');
+        listItem.appendChild(nameElem);
+
+        return listItem;
     }
 
     // Clicked start game button from tracks-list - not used - remove?
