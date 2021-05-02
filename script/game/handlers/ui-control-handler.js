@@ -75,7 +75,7 @@ export default class UiControlHandler {
         trackStartBtnElem.classList.remove('hidden');
     }
 
-    displayHiscores(hiscores, parentElement) {
+    displayHiscores(hiscores, parentElement, gameScoreData = null) {        
         const hiscoreListContainer = document.getElementById('hiscoreListContainer');
         const hiscoreList = document.getElementById('hiscoreList');
         while (hiscoreList.firstChild) {
@@ -85,8 +85,15 @@ export default class UiControlHandler {
             
             const headerElem = this._createHiScoreListHeaderLine();
             hiscoreList.appendChild(headerElem);
+            let lineCount = 0;
             hiscores.map(hiscoreItem => {
-                const listItem = this._createHiScoreListLine(hiscoreItem);
+                let listItem;
+                lineCount++;
+                if (gameScoreData && +(gameScoreData.ranking) === lineCount) {
+                    listItem = this._createHiscoreInputLine(gameScoreData);
+                } else {
+                    listItem = this._createHiScoreListLine(hiscoreItem);
+                }
                 hiscoreList.appendChild(listItem);
             });
             hiscoreListContainer.classList.remove('hidden');
@@ -96,7 +103,6 @@ export default class UiControlHandler {
 
         if (parentElement) {
             hiscoreListContainer.parentElement.removeChild(hiscoreListContainer);
-
             parentElement.appendChild(hiscoreListContainer);
         }
 
@@ -137,6 +143,30 @@ export default class UiControlHandler {
         return listItem;
     }
 
+    _createHiscoreInputLine(gameScoreData) {
+        const listItem = document.createElement('li');
+
+        const timeElapsedDisplay = +(gameScoreData.timeElapsed).toFixed(1);
+        const completedTimeElem = document.createElement('span');
+        completedTimeElem.innerText = timeElapsedDisplay;
+        completedTimeElem.classList.add('hiscoreCompletedTime');
+        completedTimeElem.classList.add('hiscore-time');
+        completedTimeElem.classList.add('hiscore-entry-input');
+        completedTimeElem.classList.add('wave-animate');
+        listItem.appendChild(completedTimeElem);
+
+        const hiscoreEntryInputElem = document.createElement('input');
+        hiscoreEntryInputElem.setAttribute('type', 'text');
+        hiscoreEntryInputElem.setAttribute('maxlength', 10);
+        hiscoreEntryInputElem.setAttribute('id', 'hiscoreEntryNameInput');
+        hiscoreEntryInputElem.setAttribute('placeholder', 'Enter your name');
+        hiscoreEntryInputElem.classList.add('hiscore-entry-input');
+        hiscoreEntryInputElem.classList.add('wave-animate');
+        listItem.appendChild(hiscoreEntryInputElem);
+
+        return listItem;
+    }
+
     // Clicked start game button from tracks-list - not used - remove?
     startGameForTrack(trackInfo) {
         // const trackListSectionElem = document.getElementById('trackListSection');
@@ -145,12 +175,24 @@ export default class UiControlHandler {
         this._startGameCallback(trackInfo);
     }
 
-    showNameInputForHiscoreList(trackGuid, gameId) {
-        console.log('showNameInputForHiscoreList', trackGuid, gameId);
+    /**
+     * 
+     * @param {string} trackGuid 
+     * @param {string} gameId 
+     * @param {int} ranking 
+     * @param {number} timeElapsed 
+     */
+    showNameInputForHiscoreList(trackGuid, gameId, ranking, timeElapsed) {
         const containerElem = document.getElementById('completed-hiscorelist');
+
+        const gameScoreData = !ranking ? null : {
+            gameId: gameId,
+            ranking: ranking,
+            timeElapsed: timeElapsed
+        };
         const trackService = new TrackService();
         trackService.getHiscores(trackGuid).then(hiscores => {
-            this.displayHiscores(hiscores, containerElem);
+            this.displayHiscores(hiscores, containerElem, gameScoreData);
         });
     }
 

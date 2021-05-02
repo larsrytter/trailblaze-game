@@ -25,7 +25,7 @@ body {
     margin: 4px;
     font-style: italic;
 }
- 
+
 .game-controls {
     padding: 10px;
     text-align: center;
@@ -101,7 +101,7 @@ body {
 }
 
 .completed-message {
-    
+
     display: inline-block;
     color: #fff;
     position: absolute;
@@ -168,8 +168,9 @@ body {
 
     width: 73vw;
     background: rgba(3, 142, 165, 0.93);
-    color: #F4EAF3;
-    min-height: 35vh; 
+    /* color: #F4EAF3; */
+    color: #DBBD1C;
+    min-height: 35vh;
 }
 
 .track-list-section h2 {
@@ -186,7 +187,7 @@ body {
 
     background: #e86807;
     margin: 1px 7px 1px 7px;
-    color: #F4EAF3; 
+    color: #F4EAF3;
 }
 
 .track-list {
@@ -281,6 +282,31 @@ body {
 }
 #completed-hiscorelist .hiscore-list {
     font-size: 0.5em;
+}
+
+.hiscore-list input {
+    border: none;
+    outline-width: 0;
+    caret-color: #8db4dd;
+    width: 200px;
+    font-family: 'Rocketrinder';
+    line-height: 1.8;
+    font-size: 1em;
+}
+
+.wave-animate {
+    background: linear-gradient(15deg,rgb(224, 239, 255),rgb(191, 205, 255),#7f85ee, #3c47ff, #a0aeff, rgb(224, 239, 255));
+    background-size: auto;
+    background-clip: border-box;
+    background-clip: border-box;
+    background-clip: border-box;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 1400% 100%;
+    -webkit-animation: backgroundwave 3.5s ease infinite;
+    -moz-animation: backgroundwave 3.5s ease infinite;
+    animation: backgroundwave 3.5s linear infinite;
 }
 
 @keyframes backgroundwave {
