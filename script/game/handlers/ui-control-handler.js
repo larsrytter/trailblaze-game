@@ -106,6 +106,11 @@ export default class UiControlHandler {
             parentElement.appendChild(hiscoreListContainer);
         }
 
+        const playerEntryInputElem = document.getElementById('hiscoreEntryNameInput');
+        if (playerEntryInputElem) {
+            playerEntryInputElem.focus();
+        }
+
     }
 
     _createHiScoreListHeaderLine() {
@@ -145,6 +150,7 @@ export default class UiControlHandler {
 
     _createHiscoreInputLine(gameScoreData) {
         const listItem = document.createElement('li');
+        listItem.classList.add('wave-animate');
 
         const timeElapsedDisplay = +(gameScoreData.timeElapsed).toFixed(1);
         const completedTimeElem = document.createElement('span');
@@ -152,7 +158,7 @@ export default class UiControlHandler {
         completedTimeElem.classList.add('hiscoreCompletedTime');
         completedTimeElem.classList.add('hiscore-time');
         completedTimeElem.classList.add('hiscore-entry-input');
-        completedTimeElem.classList.add('wave-animate');
+        // completedTimeElem.classList.add('wave-animate');
         listItem.appendChild(completedTimeElem);
 
         const hiscoreEntryInputElem = document.createElement('input');
@@ -161,7 +167,7 @@ export default class UiControlHandler {
         hiscoreEntryInputElem.setAttribute('id', 'hiscoreEntryNameInput');
         hiscoreEntryInputElem.setAttribute('placeholder', 'Enter your name');
         hiscoreEntryInputElem.classList.add('hiscore-entry-input');
-        hiscoreEntryInputElem.classList.add('wave-animate');
+        // hiscoreEntryInputElem.classList.add('wave-animate');
         listItem.appendChild(hiscoreEntryInputElem);
 
         return listItem;
