@@ -267,6 +267,11 @@ body {
     /* display: inline-block; */
 }
 
+.hiscore-ranking {
+    width: 40px;
+    display: inline-block;
+}
+
 .hiscore-time {
     width: 68px;
     display: inline-block;
@@ -292,14 +297,33 @@ body {
     font-family: 'Rocketrinder';
     line-height: 1.8;
     font-size: 1em;
-    background: inherit;
+}
+
+.hiscore-enter-button {
+    border: 3px solid #8db3dd;
+    margin: 1px 7px 1px 7px;
+    color: #f0b22c;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.wave-animate-background {
+    background: linear-gradient(15deg,rgb(224, 239, 255),rgb(191, 205, 255),#7f85ee, #3c47ff, #a0aeff, rgb(224, 239, 255));
+    background-size: auto;
+    background-clip: border-box;
+    background-clip: border-box;
+    background-clip: border-box;
+    background-size: 1400% 100%;
+    -webkit-animation: backgroundwave 3.5s ease infinite;
+    -moz-animation: backgroundwave 3.5s ease infinite;
+    animation: backgroundwave 3.5s linear infinite;
 }
 
 .wave-animate {
     background: linear-gradient(15deg,rgb(224, 239, 255),rgb(191, 205, 255),#7f85ee, #3c47ff, #a0aeff, rgb(224, 239, 255));
     background-size: auto;
-    background-clip: border-box;
-    background-clip: border-box;
+    /* background-clip: border-box;
+    background-clip: border-box; */
     background-clip: border-box;
     background-clip: text;
     -webkit-background-clip: text;

@@ -1,3 +1,4 @@
+import GameService from '/script/game/service/game-service.js';
 import TrackService from '/script/game/service/track-service.js';
 
 export default class UiControlHandler {
@@ -87,14 +88,15 @@ export default class UiControlHandler {
             hiscoreList.appendChild(headerElem);
             let lineCount = 0;
             hiscores.map(hiscoreItem => {
-                let listItem;
                 lineCount++;
                 if (gameScoreData && +(gameScoreData.ranking) === lineCount) {
-                    listItem = this._createHiscoreInputLine(gameScoreData);
-                } else {
-                    listItem = this._createHiScoreListLine(hiscoreItem);
-                }
+                    const entryItem = this._createHiscoreInputLine(gameScoreData, lineCount);
+                    hiscoreList.appendChild(entryItem);
+                    lineCount++;
+                } 
+                const listItem = this._createHiScoreListLine(hiscoreItem, lineCount);
                 hiscoreList.appendChild(listItem);
+                
             });
             hiscoreListContainer.classList.remove('hidden');
         } else {
@@ -115,6 +117,13 @@ export default class UiControlHandler {
 
     _createHiScoreListHeaderLine() {
         const headerElem = document.createElement('li');
+
+        const rankingHeaderElem = document.createElement('span');
+        rankingHeaderElem.innerText = '';
+        rankingHeaderElem.classList.add('hiscore-header');
+        rankingHeaderElem.classList.add('hiscore-ranking');
+        headerElem.appendChild(rankingHeaderElem);
+
         const timeHeaderElem = document.createElement('span');
         timeHeaderElem.innerText = 'Time';
         timeHeaderElem.classList.add('hiscore-header');
@@ -130,8 +139,13 @@ export default class UiControlHandler {
         return headerElem;
     }
 
-    _createHiScoreListLine(hiscoreItem) {
+    _createHiScoreListLine(hiscoreItem, lineCount) {
         const listItem = document.createElement('li');
+
+        const rankingElem = document.createElement('span');
+        rankingElem.innerText = lineCount;
+        rankingElem.classList.add('hiscore-ranking');
+        listItem.appendChild(rankingElem);
 
         const completedTimeElem = document.createElement('span');
         completedTimeElem.innerText = hiscoreItem.time;
@@ -148,16 +162,23 @@ export default class UiControlHandler {
         return listItem;
     }
 
-    _createHiscoreInputLine(gameScoreData) {
+    _createHiscoreInputLine(gameScoreData, lineCount) {
         const listItem = document.createElement('li');
-        listItem.classList.add('wave-animate');
+        // listItem.classList.add('wave-animate');
+
+        const rankingElem = document.createElement('span');
+        rankingElem.innerText = lineCount;
+        rankingElem.classList.add('hiscore-ranking');
+        rankingElem.classList.add('wave-animate');
+        listItem.appendChild(rankingElem);
 
         const timeElapsedDisplay = +(gameScoreData.timeElapsed).toFixed(1);
         const completedTimeElem = document.createElement('span');
         completedTimeElem.innerText = timeElapsedDisplay;
         completedTimeElem.classList.add('hiscoreCompletedTime');
         completedTimeElem.classList.add('hiscore-time');
-        completedTimeElem.classList.add('hiscore-entry-input');
+        // completedTimeElem.classList.add('hiscore-entry-input');
+        completedTimeElem.classList.add('wave-animate');
         // completedTimeElem.classList.add('wave-animate');
         listItem.appendChild(completedTimeElem);
 
@@ -167,10 +188,25 @@ export default class UiControlHandler {
         hiscoreEntryInputElem.setAttribute('id', 'hiscoreEntryNameInput');
         hiscoreEntryInputElem.setAttribute('placeholder', 'Enter your name');
         hiscoreEntryInputElem.classList.add('hiscore-entry-input');
+        hiscoreEntryInputElem.classList.add('wave-animate');
         // hiscoreEntryInputElem.classList.add('wave-animate');
         listItem.appendChild(hiscoreEntryInputElem);
 
+        const enterBtn = document.createElement('button');
+        enterBtn.setAttribute('type', 'button');
+        enterBtn.addEventListener('click', async () => await this.saveHiscoreEntry(gameScoreData.gameId, hiscoreEntryInputElem.value));
+        enterBtn.classList.add('hiscore-enter-button');
+        enterBtn.innerHTML = 'Enter';
+        listItem.appendChild(enterBtn);
+
         return listItem;
+    }
+
+    async saveHiscoreEntry(gameId, playerName) {
+        console.log('saveHiscoreEntry', gameId, playerName);
+        const gameService = new GameService();
+        const hiscores = await gameService.setplayername(gameId, playerName);
+        console.log(hiscores);
     }
 
     // Clicked start game button from tracks-list - not used - remove?
