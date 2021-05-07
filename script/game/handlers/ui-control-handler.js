@@ -76,32 +76,61 @@ export default class UiControlHandler {
         trackStartBtnElem.classList.remove('hidden');
     }
 
-    displayHiscores(hiscores, parentElement, gameScoreData = null) {        
+    displayHiscores(hiscores, parentElement, listLength = 10, gameScoreData = null) {        
         const hiscoreListContainer = document.getElementById('hiscoreListContainer');
         const hiscoreList = document.getElementById('hiscoreList');
         while (hiscoreList.firstChild) {
             hiscoreList.removeChild(hiscoreList.lastChild);
         }
-        if(hiscores && hiscores.length > 0) {
-            
+
+        if((hiscores && hiscores.length > 0) || gameScoreData) {
             const headerElem = this._createHiScoreListHeaderLine();
             hiscoreList.appendChild(headerElem);
+
             let lineCount = 0;
-            hiscores.map(hiscoreItem => {
-                lineCount++;
-                if (gameScoreData && +(gameScoreData.ranking) === lineCount) {
-                    const entryItem = this._createHiscoreInputLine(gameScoreData, lineCount);
-                    hiscoreList.appendChild(entryItem);
-                    lineCount++;
-                } 
-                const listItem = this._createHiScoreListLine(hiscoreItem, lineCount);
-                hiscoreList.appendChild(listItem);
+            let displayLineCount = 1;
+            while (lineCount < listLength) {
                 
-            });
+                if (gameScoreData && +(gameScoreData.ranking) === lineCount+1) {
+                    const entryItem = this._createHiscoreInputLine(gameScoreData, displayLineCount);
+                    hiscoreList.appendChild(entryItem);
+                    displayLineCount++;
+                }
+                const hiscoreItem = hiscores[lineCount];
+                if (hiscoreItem && displayLineCount <= listLength)
+                {
+                    const listItem = this._createHiScoreListLine(hiscoreItem, displayLineCount);
+                    hiscoreList.appendChild(listItem);    
+                }
+                lineCount++;
+                displayLineCount++;
+            }
             hiscoreListContainer.classList.remove('hidden');
         } else {
             hiscoreListContainer.classList.add('hidden');
         }
+        
+
+        // if (hiscores && hiscores.length > 0) {
+            
+        //     const headerElem = this._createHiScoreListHeaderLine();
+        //     hiscoreList.appendChild(headerElem);
+        //     let lineCount = 0;
+        //     hiscores.map(hiscoreItem => {
+        //         lineCount++;
+        //         if (gameScoreData && +(gameScoreData.ranking) === lineCount) {
+        //             const entryItem = this._createHiscoreInputLine(gameScoreData, lineCount);
+        //             hiscoreList.appendChild(entryItem);
+        //             lineCount++;
+        //         }
+        //         const listItem = this._createHiScoreListLine(hiscoreItem, lineCount);
+        //         hiscoreList.appendChild(listItem);
+                
+        //     });
+        //     hiscoreListContainer.classList.remove('hidden');
+        // } else {
+        //     hiscoreListContainer.classList.add('hidden');
+        // }
 
         if (parentElement) {
             hiscoreListContainer.parentElement.removeChild(hiscoreListContainer);
@@ -177,9 +206,7 @@ export default class UiControlHandler {
         completedTimeElem.innerText = timeElapsedDisplay;
         completedTimeElem.classList.add('hiscoreCompletedTime');
         completedTimeElem.classList.add('hiscore-time');
-        // completedTimeElem.classList.add('hiscore-entry-input');
         completedTimeElem.classList.add('wave-animate');
-        // completedTimeElem.classList.add('wave-animate');
         listItem.appendChild(completedTimeElem);
 
         const hiscoreEntryInputElem = document.createElement('input');
@@ -189,24 +216,42 @@ export default class UiControlHandler {
         hiscoreEntryInputElem.setAttribute('placeholder', 'Enter your name');
         hiscoreEntryInputElem.classList.add('hiscore-entry-input');
         hiscoreEntryInputElem.classList.add('wave-animate');
-        // hiscoreEntryInputElem.classList.add('wave-animate');
         listItem.appendChild(hiscoreEntryInputElem);
 
         const enterBtn = document.createElement('button');
         enterBtn.setAttribute('type', 'button');
-        enterBtn.addEventListener('click', async () => await this.saveHiscoreEntry(gameScoreData.gameId, hiscoreEntryInputElem.value));
+        enterBtn.addEventListener('click', async () => {
+            enterBtn.disabled = true;
+            const isSaved = await this.saveHiscoreEntry(gameScoreData.gameId, hiscoreEntryInputElem.value);
+            if (isSaved) {
+                hiscoreEntryInputElem.disabled = true;
+                enterBtn.parentElement.removeChild(enterBtn);
+            } else {
+                enterBtn.disabled = false;
+            }
+        });
         enterBtn.classList.add('hiscore-enter-button');
+        enterBtn.classList.add('glow-on-hover');
         enterBtn.innerHTML = 'Enter';
         listItem.appendChild(enterBtn);
 
         return listItem;
     }
 
+    /**
+     * 
+     * @param {string} gameId - guid 
+     * @param {string} playerName
+     * @returns {boolean} isSaved 
+     */
     async saveHiscoreEntry(gameId, playerName) {
-        console.log('saveHiscoreEntry', gameId, playerName);
+        if (!playerName) {
+            return false;
+        }
         const gameService = new GameService();
         const hiscores = await gameService.setplayername(gameId, playerName);
-        console.log(hiscores);
+        
+        return true;
     }
 
     // Clicked start game button from tracks-list - not used - remove?
@@ -234,7 +279,7 @@ export default class UiControlHandler {
         };
         const trackService = new TrackService();
         trackService.getHiscores(trackGuid).then(hiscores => {
-            this.displayHiscores(hiscores, containerElem, gameScoreData);
+            this.displayHiscores(hiscores, containerElem, 10, gameScoreData);
         });
     }
 
