@@ -109,28 +109,6 @@ export default class UiControlHandler {
         } else {
             hiscoreListContainer.classList.add('hidden');
         }
-        
-
-        // if (hiscores && hiscores.length > 0) {
-            
-        //     const headerElem = this._createHiScoreListHeaderLine();
-        //     hiscoreList.appendChild(headerElem);
-        //     let lineCount = 0;
-        //     hiscores.map(hiscoreItem => {
-        //         lineCount++;
-        //         if (gameScoreData && +(gameScoreData.ranking) === lineCount) {
-        //             const entryItem = this._createHiscoreInputLine(gameScoreData, lineCount);
-        //             hiscoreList.appendChild(entryItem);
-        //             lineCount++;
-        //         }
-        //         const listItem = this._createHiScoreListLine(hiscoreItem, lineCount);
-        //         hiscoreList.appendChild(listItem);
-                
-        //     });
-        //     hiscoreListContainer.classList.remove('hidden');
-        // } else {
-        //     hiscoreListContainer.classList.add('hidden');
-        // }
 
         if (parentElement) {
             hiscoreListContainer.parentElement.removeChild(hiscoreListContainer);
@@ -175,9 +153,8 @@ export default class UiControlHandler {
         rankingElem.innerText = lineCount;
         rankingElem.classList.add('hiscore-ranking');
         listItem.appendChild(rankingElem);
-
         const completedTimeElem = document.createElement('span');
-        completedTimeElem.innerText = hiscoreItem.time;
+        completedTimeElem.innerText = parseFloat(hiscoreItem.time).toFixed(1);
         completedTimeElem.classList.add('hiscoreCompletedTime');
         completedTimeElem.classList.add('hiscore-time');
         listItem.appendChild(completedTimeElem);
@@ -201,7 +178,7 @@ export default class UiControlHandler {
         rankingElem.classList.add('wave-animate');
         listItem.appendChild(rankingElem);
 
-        const timeElapsedDisplay = +(gameScoreData.timeElapsed).toFixed(1);
+        const timeElapsedDisplay = parseFloat(gameScoreData.timeElapsed).toFixed(1);
         const completedTimeElem = document.createElement('span');
         completedTimeElem.innerText = timeElapsedDisplay;
         completedTimeElem.classList.add('hiscoreCompletedTime');
