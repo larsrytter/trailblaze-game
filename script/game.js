@@ -41,7 +41,6 @@ function initialize(trackListData) {
 
     uiControlHandler.setPreviewTrackCallback((trackInfo, trackListItemElement) => {
         trackService.getHiscores(trackInfo.guid).then(hiscores => {
-            console.log('hiscores', hiscores);
             uiControlHandler.displayHiscores(hiscores, trackListItemElement, 10);
         });
 
@@ -49,6 +48,17 @@ function initialize(trackListData) {
             physics.init(trackData);
             sceneManager.init(trackData);
             gameStateManager.setStateInitializingGame(trackInfo.guid);
+        });
+    });
+
+    uiControlHandler.setRestartLevelCallback((trackInfo) => {
+        trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
+            physics.init(trackData);
+            sceneManager.init(trackData);
+            gameStateManager.setStateInitializingGame(trackInfo.guid);
+
+            document.getElementById('msgLevelCompleted').classList.add('hidden');
+            uiControlHandler.onStartGameClick();
         });
     });
 

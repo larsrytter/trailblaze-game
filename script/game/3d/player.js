@@ -137,7 +137,8 @@ export default class Player {
             radius, widthSegments, heightSegments);
         
         const textureLoader = new THREE.TextureLoader();
-        const textureUrl = '/resources/images/cloudy.png';
+        // const textureUrl = '/resources/images/cloudy.png';
+        const textureUrl = '/resources/images/green-lines.png';
         
         let playerMaterial;
 

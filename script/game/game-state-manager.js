@@ -132,6 +132,7 @@ export default class GameStateManager {
                         this._uiControlHandler.showNameInputForHiscoreList(this._trackGuid, this._gameId, ranking, this._timeElapsed);
                     } else {
                         this._uiControlHandler.showHiscoreListForTrack(this._trackGuid);
+                        this._uiControlHandler.toggleRestartButtonsDisplay();
                     }
                 });
             

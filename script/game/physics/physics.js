@@ -111,7 +111,7 @@ export default class Physics {
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
         } else {
-            // Sometimes ball will jump when crossing to new tile - small gap between tiles in physics model??
+            // Sometimes ball will jump when crossing to new tile - could be small gap between tiles in physics model??
             // Handle by resetting z-vector if moving up while no tileeffect on player
             let playerTileEffect = this._gameStateManager.player.tileEffect;
             let z = playerVector.z();

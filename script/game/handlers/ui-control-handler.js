@@ -17,6 +17,17 @@ export default class UiControlHandler {
         this._previewTrackCallback = callback;
     }
 
+    _restartLevelCallback;
+    setRestartLevelCallback(callbackFn) {
+        this._restartLevelCallback = callbackFn;
+    }
+
+    setupRestartLevelClick(trackInfo) {
+        const btnRestartLevel = document.getElementById('btnRestartLevel');
+        btnRestartLevel.addEventListener('click', () => this._restartLevelCallback(trackInfo));
+    }
+    
+
     constructor(inputHandler, gameStateManager, audioHandler) {
         this._inputHandler = inputHandler;
         this._gameStateManager = gameStateManager;
@@ -46,7 +57,10 @@ export default class UiControlHandler {
             trackNameElem.classList.add('track-name');
             trackListItemTrackContainer.appendChild(trackNameElem);
             
-            trackStartBtn.addEventListener('click', () => this.onStartGameClick());
+            trackStartBtn.addEventListener('click', () => {
+                this.onStartGameClick();
+                this.setupRestartLevelClick(trackInfo);
+            });
             trackStartBtn.innerText = 'Start game';
             trackStartBtn.classList.add('preview-track-button');
             trackStartBtn.classList.add('select-track-button');
@@ -203,6 +217,7 @@ export default class UiControlHandler {
             if (isSaved) {
                 hiscoreEntryInputElem.disabled = true;
                 enterBtn.parentElement.removeChild(enterBtn);
+                this.toggleRestartButtonsDisplay();
             } else {
                 enterBtn.disabled = false;
             }
@@ -238,6 +253,19 @@ export default class UiControlHandler {
 
         this._startGameCallback(trackInfo);
     }
+
+    toggleRestartButtonsDisplay() {
+        const btnRestartLevel = document.getElementById('btnRestartLevel');
+        btnRestartLevel.classList.toggle('hidden');
+        const btnChangeLevel = document.getElementById('btnNewGame');
+        btnChangeLevel.classList.toggle('hidden');
+    }
+
+
+    // setRestartLevelCallback(callbackFn) {
+    //     const btnRestartLevel = document.getElementById('btnRestartLevel');
+    //     // btnRestartLevel.
+    // }
 
     /**
      * 
