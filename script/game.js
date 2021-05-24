@@ -56,8 +56,10 @@ function initialize(trackListData) {
             physics.init(trackData);
             sceneManager.init(trackData);
             gameStateManager.setStateInitializingGame(trackInfo.guid);
-
-            document.getElementById('msgLevelCompleted').classList.add('hidden');
+            
+            const msgLevelCompletedElem = document.getElementById('msgLevelCompleted');
+            console.log('msgLevelCompletedElem', msgLevelCompletedElem);
+            msgLevelCompletedElem.classList.add('completed-message-hidden');
             uiControlHandler.onStartGameClick();
         });
     });

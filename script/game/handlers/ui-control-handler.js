@@ -261,12 +261,6 @@ export default class UiControlHandler {
         btnChangeLevel.classList.toggle('hidden');
     }
 
-
-    // setRestartLevelCallback(callbackFn) {
-    //     const btnRestartLevel = document.getElementById('btnRestartLevel');
-    //     // btnRestartLevel.
-    // }
-
     /**
      * 
      * @param {string} trackGuid 
