@@ -60,6 +60,13 @@ function initialize(trackListData) {
             const msgLevelCompletedElem = document.getElementById('msgLevelCompleted');
             console.log('msgLevelCompletedElem', msgLevelCompletedElem);
             msgLevelCompletedElem.classList.add('completed-message-hidden');
+            document.getElementById('btnRestartLevel').classList.add('hidden');
+            document.getElementById('btnNewGame').classList.add('hidden');
+            const hiscoreList = document.getElementById('completed-hiscorelist');
+            while (hiscoreList.firstChild) {
+                hiscoreList.removeChild(hiscoreList.lastChild);
+            }
+            
             uiControlHandler.onStartGameClick();
         });
     });

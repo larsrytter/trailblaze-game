@@ -269,21 +269,20 @@ export default class UiControlHandler {
      * @param {number} timeElapsed 
      */
     showNameInputForHiscoreList(trackGuid, gameId, ranking, timeElapsed) {
-        const containerElem = document.getElementById('completed-hiscorelist');
-
         const gameScoreData = !ranking ? null : {
             gameId: gameId,
             ranking: ranking,
             timeElapsed: timeElapsed
         };
+        this.showHiscoreListForTrack(trackGuid, gameScoreData);
+    }
+
+    showHiscoreListForTrack(trackGuid, gameScoreData = null) {
+        const containerElem = document.getElementById('completed-hiscorelist');
         const trackService = new TrackService();
         trackService.getHiscores(trackGuid).then(hiscores => {
             this.displayHiscores(hiscores, containerElem, 10, gameScoreData);
         });
-    }
-
-    showHiscoreListForTrack(trackGuid) {
-        console.log('showHiscoreListForTrack', trackGuid);
     }
 
     setupAudioControls() {
