@@ -144,7 +144,7 @@ export default class Player {
 
         playerMaterial = new THREE.MeshPhongMaterial({
             map: textureLoader.load(textureUrl),
-            shininess: 30
+            shininess: 20
         });
         // const playerMaterial = new THREE.MeshPhongMaterial({emissive: '#222222'});
         
