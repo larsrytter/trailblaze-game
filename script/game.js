@@ -62,7 +62,7 @@ function initialize(trackListData) {
             msgLevelCompletedElem.classList.add('completed-message-hidden');
             document.getElementById('btnRestartLevel').classList.add('hidden');
             document.getElementById('btnNewGame').classList.add('hidden');
-            const hiscoreList = document.getElementById('completed-hiscorelist');
+            const hiscoreList = document.getElementById('hiscoreList');
             while (hiscoreList.firstChild) {
                 hiscoreList.removeChild(hiscoreList.lastChild);
             }
