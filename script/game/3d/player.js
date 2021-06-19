@@ -1,6 +1,8 @@
-import * as THREE from '/script/threejs/build/three.module.js';
-import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
+// @ts-check
+import * as THREE from './../../../script/threejs/build/three.module.js';
+import { EffectTypeEnum, TileContactEffect } from './../../../script/game/3d/tile-contact-effect.js';
 import TrackTile3d from './track-tile-3d.js';
+import { Mesh, PerspectiveCamera } from './../../../script/threejs/build/three.module.js';
 
 export const PlayerStateEnum = {
     'DROPPING': 'DROPPING',
@@ -57,10 +59,10 @@ export default class Player {
 
     /**
      * Set the playerState
-     * @param PlayerStateEnum
+     * @param { PlayerStateEnum } playerState
      */
-    set playerState(val) {
-        this._playerState = val;
+    set playerState(playerState) {
+        this._playerState = playerState;
     }
 
     /**
@@ -89,7 +91,7 @@ export default class Player {
 
     /**
      * Get the active tileEffect
-     * @returns {TileContactEffect}
+     * @returns { TileContactEffect }
      */
     get tileEffect() {
         return this._tileEffect;
@@ -127,7 +129,7 @@ export default class Player {
 
     /**
      * Create and configure 3D sphere object
-     * @returns {THREE.Mesh}
+     * @returns { Promise<Mesh> }
      */
     async createPlayerSphere() {
         const radius = 2;
@@ -154,12 +156,17 @@ export default class Player {
         // playerMaterial.color.setHSL(hue, saturation, luminance);
 
         const playerMesh = new THREE.Mesh(sphereGeometry, playerMaterial);
+        // @ts-ignore
         playerMesh.castShadow = true;
+        // @ts-ignore
         playerMesh.receiveShadow = false;
 
+        // @ts-ignore
         playerMesh.userData.isPlayer = true;
+        // @ts-ignore
         playerMesh.userData.playerObject = this;
 
+        // @ts-ignore
         playerMesh.onAfterRender = () => {
             this.updateCameraPosition();
         }
@@ -170,7 +177,7 @@ export default class Player {
     /**
      * Create 3D camera object
      * @param {number} fov 
-     * @returns {Three.PerspectiveCamera}
+     * @returns { PerspectiveCamera }
      */
     makeCamera(fov = 40) {
         const aspect = 2;  // the canvas default
@@ -221,11 +228,11 @@ export default class Player {
 
     /**
      * Play audio for tile-effect
-     * @param {EffectTypeEnum} effectType 
+     * @param { string } effectType from EffectTypeEnum
      */
     playEffectAudio(effectType) {
-        switch(effectType) {
-            case(EffectTypeEnum.JUMP): {
+        switch (effectType) {
+            case (EffectTypeEnum.JUMP): {
                 this._audioHandler.playJumpEffect();
             }
         }

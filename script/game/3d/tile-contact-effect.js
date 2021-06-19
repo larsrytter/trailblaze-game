@@ -1,3 +1,4 @@
+// @ts-check
 export const EffectTypeEnum = {
     'TURBO' : 'TURBO',
     'SLOW' : 'SLOW',

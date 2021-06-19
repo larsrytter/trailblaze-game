@@ -1,3 +1,6 @@
+// @ts-check
+
+// @ts-ignore
 import Player from '/script/game/3d/player.js';
 
 export const GameStateEnum = {

@@ -1,5 +1,6 @@
-import * as THREE from '/script/threejs/build/three.module.js';
-import TrackTile3d from '/script/game/3d/track-tile-3d.js';
+// @ts-check
+import * as THREE from './../../../script/threejs/build/three.module.js';
+import TrackTile3d from './../../..//script/game/3d/track-tile-3d.js';
 import { EffectTypeEnum } from './tile-contact-effect.js';
 
 export default class Track3d {
@@ -88,13 +89,16 @@ export default class Track3d {
         let row = new THREE.Object3D();
         if (this._tileRows.length > 0) {
             const lastRow = this._tileRows[this._tileRows.length - 1];
+            // @ts-ignore
             row.position.y = lastRow.position.y + this._tileLength;
         }
         
+        // @ts-ignore
         const trackWidth = rowData.tiles.length * this._tileWidth;
         const edgePosX = -(trackWidth / 2);
 
         let count = 0;
+        // @ts-ignore
         rowData.tiles.map(tileData => {
             console.log('tileData', tileData);
             if(tileData.effect.toUpperCase() === EffectTypeEnum.HOLE) {
@@ -103,6 +107,7 @@ export default class Track3d {
                 const tile = new TrackTile3d(this._tileWidth, this._tileLength, this._tileHeight, tileData, this._trackData.colorDefinitions);
                 const x = edgePosX + (count * this._tileWidth) + (this._tileWidth/2); // TODO: Why do I need to add half a tileWidth?
                 tile.setPosition(x, 0);
+                // @ts-ignore
                 row.add(tile.mesh);
                 this._allTileMeshes.push(tile.mesh);
             }

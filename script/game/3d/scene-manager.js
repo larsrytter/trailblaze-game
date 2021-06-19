@@ -1,8 +1,14 @@
+// @ts-check
+// @ts-ignore
 import * as THREE from '/script/threejs/build/three.module.js';
+// @ts-ignore
 import Track3d from '/script/game/3d/track-3d.js';
+// @ts-ignore
 import Player from '/script/game/3d/player.js';
+// @ts-ignore
 import Physics from '/script/game/physics/physics.js';
-import { GameStateEnum } from '/script/game/game-state-manager.js';
+import { GameStateEnum } from './../../../script/game/game-state-manager.js';
+import GameStateManager from './../../../script/game/game-state-manager.js';
 
 export default class SceneManager {
     _renderer;
@@ -19,7 +25,7 @@ export default class SceneManager {
 
     /**
      * 
-     * @param {domElement} canvasObj 
+     * @param {Element} canvasObj 
      * @param {Physics} physics 
      * @param {GameStateManager} gameStateManager 
      */
@@ -33,7 +39,6 @@ export default class SceneManager {
     /**
      * Setup objects and renderer for new game
      * @param {JSON} trackData 
-     * @param {JSON} trackMetadata
      */
     init(trackData) {
         if(this._scene) {

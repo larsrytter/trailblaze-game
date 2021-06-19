@@ -1,9 +1,11 @@
+// @ts-check
+
 export default class TrackService {
 
     _baseUrl = 'http://speedroller.larsrytter.dk';
 
     /**
-     * @returns {JSON} track metadata
+     * @returns {Promise<JSON>} track metadata
      */
     async getAll() {
         let tracks = [];
@@ -23,7 +25,7 @@ export default class TrackService {
     /**
      * 
      * @param {string} trackGuid
-     * @returns {JSON} hiscores 
+     * @returns {Promise<JSON>} hiscores 
      */
     async getHiscores(trackGuid) {
         let hiscores

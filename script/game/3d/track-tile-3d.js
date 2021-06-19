@@ -1,5 +1,9 @@
+// @ts-check
+// @ts-ignore
 import * as THREE from '/script/threejs/build/three.module.js';
+// @ts-ignore
 import { TileContactEffect } from '/script/game/3d/tile-contact-effect.js';
+// @ts-ignore
 import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
 
 export default class TrackTile3d {

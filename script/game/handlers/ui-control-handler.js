@@ -1,5 +1,6 @@
-import GameService from '/script/game/service/game-service.js';
-import TrackService from '/script/game/service/track-service.js';
+// @ts-check
+import GameService from './../../../script/game/service/game-service.js';
+import TrackService from './../../../script/game/service/track-service.js';
 
 export default class UiControlHandler {
     
@@ -69,7 +70,7 @@ export default class UiControlHandler {
             trackListItemTrackContainer.appendChild(trackStartBtn);
 
             trackListElem.appendChild(trackListItemElem);
-
+            // @ts-ignore
             trackListItemElem.style = `animation-delay: ${animationDelay}s;`;
             animationDelay++;
         });
@@ -202,7 +203,7 @@ export default class UiControlHandler {
 
         const hiscoreEntryInputElem = document.createElement('input');
         hiscoreEntryInputElem.setAttribute('type', 'text');
-        hiscoreEntryInputElem.setAttribute('maxlength', 10);
+        hiscoreEntryInputElem.setAttribute('maxlength', '10');
         hiscoreEntryInputElem.setAttribute('id', 'hiscoreEntryNameInput');
         hiscoreEntryInputElem.setAttribute('placeholder', 'Enter your name');
         hiscoreEntryInputElem.classList.add('hiscore-entry-input');
@@ -234,7 +235,7 @@ export default class UiControlHandler {
      * 
      * @param {string} gameId - guid 
      * @param {string} playerName
-     * @returns {boolean} isSaved 
+     * @returns {Promise<boolean>} isSaved 
      */
     async saveHiscoreEntry(gameId, playerName) {
         if (!playerName) {
@@ -265,7 +266,7 @@ export default class UiControlHandler {
      * 
      * @param {string} trackGuid 
      * @param {string} gameId 
-     * @param {int} ranking 
+     * @param {number} ranking 
      * @param {number} timeElapsed 
      */
     showNameInputForHiscoreList(trackGuid, gameId, ranking, timeElapsed) {
@@ -325,11 +326,11 @@ export default class UiControlHandler {
             this._currentTime = displayTime;
 
             const timerElem = document.getElementById('timerDisplay');
-            timerElem.innerText = this._currentTime;
+            timerElem.innerText = `${this._currentTime}`;
 
             const completedTimeElem = document.getElementById('completedTime');
             if(completedTimeElem) {
-                completedTimeElem.innerText = this._currentTime;
+                completedTimeElem.innerText = `${this._currentTime}`;
             }
         }
     }

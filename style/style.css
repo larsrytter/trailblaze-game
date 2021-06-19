@@ -359,7 +359,7 @@ body {
 
 .button-glow:before {
     content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #eedddd, #ff7300, #fffb00, #48ff00, #7c9c97, #00ff62, #7a00ff, #f19696, #f8ffbb);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -373,6 +373,12 @@ body {
     opacity: 1;
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
+}
+
+.button-glow:hover:before {
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    animation: glowing 18s linear infinite;
+    /* transition: opacity .3s ease-in-out; */
 }
 
 .button-glow:after {

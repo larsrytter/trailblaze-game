@@ -1,10 +1,12 @@
+// @ts-check
+
 export default class GameService {
     _baseUrl = 'http://speedroller.larsrytter.dk';
 
     /**
      * 
      * @param {string} trackGuid
-     * @returns {string} gameGuid 
+     * @returns {Promise<string>} gameGuid 
      */
     async startGame(trackGuid) {
         let gameGuid = null;
@@ -24,7 +26,7 @@ export default class GameService {
      * 
      * @param {string} gameGuid 
      * @param {number} completedTime
-     * @returns {number} ranking 
+     * @returns {Promise<number>} ranking 
      */
     async finishGame(gameGuid, completedTime) {
         let ranking = null;
@@ -44,7 +46,7 @@ export default class GameService {
      * 
      * @param {string} gameGuid
      * @param {string} playerName
-     * @returns {JSON} hiscores 
+     * @returns {Promise<JSON>} hiscores 
      */
     async setplayername(gameGuid, playerName) {
         let hiscores;
