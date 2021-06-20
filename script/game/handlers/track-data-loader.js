@@ -1,3 +1,4 @@
+// @ts-check
 export default class TrackDataLoader {
     _basePath = '';
 

@@ -38,7 +38,7 @@ export default class SceneManager {
 
     /**
      * Setup objects and renderer for new game
-     * @param {JSON} trackData 
+     * @param {any} trackData JSON
      */
     init(trackData) {
         if(this._scene) {

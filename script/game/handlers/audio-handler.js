@@ -1,3 +1,4 @@
+// @ts-check
 export default class AudioHandler {    
     _audioCtx;
 
@@ -15,6 +16,7 @@ export default class AudioHandler {
     _isMusicMuted = false;
 
     constructor() {
+        //@ts-ignore - window.webkitAudioContext is not recognized by ts
         this._audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
 

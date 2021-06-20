@@ -1,26 +1,15 @@
 // @ts-check
-// @ts-ignore
-import * as THREE from '/script/threejs/build/three.module.js';
-// @ts-ignore
-import SceneManager from '/script/game/3d/scene-manager.js';
-// @ts-ignore
-import Physics from '/script/game/physics/physics.js';
-// @ts-ignore
-import MovementHandler from '/script/game/handlers/movement-handler.js';
-// @ts-ignore
-import InputHandler from '/script/game/handlers/input-handler.js';
-// @ts-ignore
-import TrackService from '/script/game/service/track-service.js';
-// @ts-ignore
-import GameService from '/script/game/service/game-service.js';
-// @ts-ignore
-import TrackDataLoader from '/script/game/handlers/track-data-loader.js';
-// @ts-ignore
-import GameStateManager from '/script/game/game-state-manager.js';
-// @ts-ignore
-import UiControlHandler from '/script/game/handlers/ui-control-handler.js';
-// @ts-ignore
-import AudioHandler from '/script/game/handlers/audio-handler.js';
+import * as THREE from './../script/threejs/build/three.module.js';
+import SceneManager from './../script/game/3d/scene-manager.js';
+import Physics from './../script/game/physics/physics.js';
+import MovementHandler from './../script/game/handlers/movement-handler.js';
+import InputHandler from './../script/game/handlers/input-handler.js';
+import TrackService from './../script/game/service/track-service.js';
+import GameService from './../script/game/service/game-service.js';
+import TrackDataLoader from './../script/game/handlers/track-data-loader.js';
+import GameStateManager from './../script/game/game-state-manager.js';
+import UiControlHandler from './../script/game/handlers/ui-control-handler.js';
+import AudioHandler from './../script/game/handlers/audio-handler.js';
 
 // function initialize(trackData) {
 function initialize(trackListData) {
@@ -58,7 +47,7 @@ function initialize(trackListData) {
         });
 
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
-            physics.init(trackData);
+            physics.init();
             sceneManager.init(trackData);
             gameStateManager.setStateInitializingGame(trackInfo.guid);
         });
@@ -66,7 +55,7 @@ function initialize(trackListData) {
 
     uiControlHandler.setRestartLevelCallback((trackInfo) => {
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
-            physics.init(trackData);
+            physics.init();
             sceneManager.init(trackData);
             gameStateManager.setStateInitializingGame(trackInfo.guid);
             

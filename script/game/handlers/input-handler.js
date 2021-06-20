@@ -1,4 +1,5 @@
-import MovementHandler from '/script/game/handlers/movement-handler.js';
+// @ts-check
+import MovementHandler from './../../../script/game/handlers/movement-handler.js';
 
 export default class InputHandler {
     _movementHandler;

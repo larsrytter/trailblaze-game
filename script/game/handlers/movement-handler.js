@@ -1,4 +1,4 @@
-
+// @ts-check
 export default class MovementHandler {
     _moveDirection = { 
         left: 0, 

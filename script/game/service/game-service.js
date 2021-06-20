@@ -1,5 +1,4 @@
 // @ts-check
-
 export default class GameService {
     _baseUrl = 'http://speedroller.larsrytter.dk';
 
