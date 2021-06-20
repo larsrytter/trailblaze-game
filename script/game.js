@@ -11,8 +11,7 @@ import GameStateManager from './../script/game/game-state-manager.js';
 import UiControlHandler from './../script/game/handlers/ui-control-handler.js';
 import AudioHandler from './../script/game/handlers/audio-handler.js';
 
-// function initialize(trackData) {
-function initialize(trackListData) {
+function initialize(argTrackListData) {
     const canvas = document.querySelector('#c');
     const movementHandler = new MovementHandler();
     const inputHandler = new InputHandler(movementHandler);
@@ -29,9 +28,16 @@ function initialize(trackListData) {
     gameStateManager.setStateTrackPicker();
     const physics = new Physics(movementHandler, gameStateManager);
     const sceneManager = new SceneManager(canvas, physics, gameStateManager, audioHandler);
+
+    let trackListData = argTrackListData;
+
+    uiControlHandler.setPlayAgainCallback(() => {
+        // TODO: Hide replay-buttons + hiscore-list
+        uiControlHandler.listTracks(trackListData);
+    });
     
     uiControlHandler.setStartGameCallback(trackInfo => {
-        // @ts-ignore
+        
         trackDataLoader.loadTrackData(trackInfo.file).then(trackData => {
             // gameStateManager.setStateInitializingGame(trackInfo.guid);
             // physics.init(trackData);

@@ -1,3 +1,4 @@
+// @ts-check
 export default class TrackList {
     _trackDataLoader;
     _tracks; 

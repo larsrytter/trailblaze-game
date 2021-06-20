@@ -18,17 +18,41 @@ export default class UiControlHandler {
         this._previewTrackCallback = callback;
     }
 
+    /**
+     * @callback _restartLevelCallback
+     * @param {any} trackInfo
+     */
     _restartLevelCallback;
+    /**
+     * @param {_restartLevelCallback} callbackFn 
+     */
     setRestartLevelCallback(callbackFn) {
         this._restartLevelCallback = callbackFn;
     }
 
+    /**
+     * @param {any} trackInfo 
+     */
     setupRestartLevelClick(trackInfo) {
         const btnRestartLevel = document.getElementById('btnRestartLevel');
         btnRestartLevel.addEventListener('click', () => this._restartLevelCallback(trackInfo));
     }
-    
 
+    /**
+     * @callback _playAgainCallback
+     */
+    _playAgainCallback;
+
+    /**
+     * 
+     * @param {_playAgainCallback} callbackFn 
+     */
+    setPlayAgainCallback(callbackFn) {
+        this._playAgainCallback = callbackFn;
+        const btnPlayAgain = document.getElementById('btnNewGame');
+        btnPlayAgain.addEventListener('click', () =>{ this._playAgainCallback(); });
+    }
+    
     constructor(inputHandler, gameStateManager, audioHandler) {
         this._inputHandler = inputHandler;
         this._gameStateManager = gameStateManager;
@@ -39,6 +63,10 @@ export default class UiControlHandler {
     listTracks(trackListData) {
         const trackListSectionElem = document.getElementById('trackListSection');
         const trackListElem = document.getElementById('trackList');
+
+        while (trackListElem.firstChild) {
+            trackListElem.removeChild(trackListElem.lastChild);
+        }
 
         let animationDelay = 0;
         
