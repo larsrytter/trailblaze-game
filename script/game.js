@@ -32,7 +32,14 @@ function initialize(argTrackListData) {
     let trackListData = argTrackListData;
 
     uiControlHandler.setPlayAgainCallback(() => {
-        // TODO: Hide replay-buttons + hiscore-list
+        uiControlHandler.hideLevelCompletedMessage();
+        uiControlHandler.toggleRestartButtonsDisplay();
+        // TODO: Move to separate method
+        const hiscoreList = document.getElementById('hiscoreList');
+        while (hiscoreList.firstChild) {
+            hiscoreList.removeChild(hiscoreList.lastChild);
+        }
+        
         uiControlHandler.listTracks(trackListData);
     });
     
@@ -65,9 +72,9 @@ function initialize(argTrackListData) {
             sceneManager.init(trackData);
             gameStateManager.setStateInitializingGame(trackInfo.guid);
             
-            const msgLevelCompletedElem = document.getElementById('msgLevelCompleted');
-            console.log('msgLevelCompletedElem', msgLevelCompletedElem);
-            msgLevelCompletedElem.classList.add('completed-message-hidden');
+            uiControlHandler.hideLevelCompletedMessage();
+            // const msgLevelCompletedElem = document.getElementById('msgLevelCompleted');
+            // msgLevelCompletedElem.classList.add('completed-message-hidden');
             document.getElementById('btnRestartLevel').classList.add('hidden');
             document.getElementById('btnNewGame').classList.add('hidden');
             const hiscoreList = document.getElementById('hiscoreList');

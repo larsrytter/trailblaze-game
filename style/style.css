@@ -230,7 +230,7 @@ body {
 .track-list li.selected .hiscore-list-container {
     background: #299eb099;
     flex: 1;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .track-list-track-line {
@@ -359,7 +359,7 @@ body {
 
 .button-glow:before {
     content: '';
-    background: linear-gradient(45deg, #eedddd, #ff7300, #fffb00, #48ff00, #7c9c97, #00ff62, #7a00ff, #f19696, #f8ffbb);
+    background-image: linear-gradient(45deg, #edd, #95b9eb, #89878e, #77b9df, #7c9c97, #b2e5f9, #fff, #ccbdb9, #f8ffbb);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -376,7 +376,8 @@ body {
 }
 
 .button-glow:hover:before {
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-image: linear-gradient(45deg, #df922f, #ffcb00, #fffb00, #f2d910, #d29f05, #e3a717, #ea5c31, #ec5526, #e36a11);
+    /* background-image: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); */
     animation: glowing 18s linear infinite;
     /* transition: opacity .3s ease-in-out; */
 }

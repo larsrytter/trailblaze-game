@@ -283,6 +283,11 @@ export default class UiControlHandler {
         this._startGameCallback(trackInfo);
     }
 
+    hideLevelCompletedMessage() {
+        const msgLevelCompletedElem = document.getElementById('msgLevelCompleted');
+        msgLevelCompletedElem.classList.add('completed-message-hidden');
+    }
+
     toggleRestartButtonsDisplay() {
         const btnRestartLevel = document.getElementById('btnRestartLevel');
         btnRestartLevel.classList.toggle('hidden');
