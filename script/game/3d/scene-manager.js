@@ -160,7 +160,7 @@ export default class SceneManager {
 
         }
         
-        if(this.resizeRendererToDisplaySize(this._renderer)) {
+        if(time < 0.1 || this.needResizeRendererToDisplaySize(this._renderer)) {
             const canvas = this._renderer.domElement;
             this._player._camera.aspect = canvas.clientWidth / canvas.clientHeight;
             this._player._camera.updateProjectionMatrix();
@@ -175,7 +175,7 @@ export default class SceneManager {
      * @param {THREE.WebGLRenderer} renderer 
      * @returns {boolean}
      */
-    resizeRendererToDisplaySize(renderer) {
+    needResizeRendererToDisplaySize(renderer) {
         const canvas = renderer.domElement;
         const width = canvas.clientWidth;
         const height = canvas.clientHeight;
