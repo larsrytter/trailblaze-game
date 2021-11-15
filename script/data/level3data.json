@@ -1,0 +1,1816 @@
+{
+	"colorDefinitions": [
+		{
+			"colorName": "grey1",
+			"colorCode": "#6B6B6B"
+		},
+		{
+			"colorName": "grey2",
+			"colorCode": "RGB(84, 59, 59)"
+		},
+		{
+			"colorName": "blue1",
+			"colorCode": "#0000DD"
+		},
+		{
+			"colorName": "purple",
+			"colorCode": "#EE00EE"
+		},
+		{
+			"colorName": "yellow",
+			"colorCode": "#FFFF00"
+		},
+		{
+			"colorName": "blue2",
+			"colorCode": "#0000EE"
+		},
+		{
+			"colorName": "blue3",
+			"colorCode": "#0000CC"
+		},
+		{
+			"colorCode": "#ffffff",
+			"colorName": "#ffffff"
+		},
+		{
+			"colorCode": "#ffff00",
+			"colorName": "#ffff00"
+		},
+		{},
+		{
+			"colorCode": "#f09800",
+			"colorName": "#f09800"
+		},
+		{
+			"colorCode": "#6b6b6b",
+			"colorName": "#6b6b6b"
+		},
+		{
+			"colorCode": "#0000dd",
+			"colorName": "#0000dd"
+		},
+		{
+			"colorCode": "#ee00ee",
+			"colorName": "#ee00ee"
+		}
+	],
+	"rows": [
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#0000dd",
+					"effect": "SLOW"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#0000dd",
+					"effect": "SLOW"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#0000dd",
+					"effect": "SLOW"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#0000dd",
+					"effect": "SLOW"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffff00",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#6b6b6b",
+					"effect": "none"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "none"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "purple",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#f09800",
+					"effect": "JUMP"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				},
+				{
+					"colorName": "#ee00ee",
+					"effect": "INVERTCONTROLS"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				},
+				{
+					"colorName": "#ffffff",
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "blue2",
+					"effect": "slow"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "blue2",
+					"effect": "slow"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"effect": "hole"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "grey2",
+					"effect": "none"
+				}
+			]
+		},
+		{
+			"tiles": [
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				},
+				{
+					"colorName": "yellow",
+					"effect": "TURBO"
+				},
+				{
+					"colorName": "grey1",
+					"effect": "none"
+				}
+			]
+		}
+	]
+}
