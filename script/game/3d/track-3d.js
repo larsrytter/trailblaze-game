@@ -12,7 +12,7 @@ export default class Track3d {
 
     _tileLength = 45;
     _tileWidth = 8;
-    _tileHeight = 3;
+    _tileHeight = 1;
 
     constructor() {
         // this.init(); //TODO: Call from somewhere else?

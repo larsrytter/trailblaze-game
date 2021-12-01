@@ -46,7 +46,7 @@ export default class Player {
         this._camera.lookAt(this._playerSphere.position);
 
         this._playerState = PlayerStateEnum.DROPPING;
-        this._velocityDefault = 50;
+        this._velocityDefault = 65;
     }
 
     /**
@@ -98,6 +98,14 @@ export default class Player {
     }
 
     /**
+     * Get the default velocity
+     * @returns { number }
+     */
+    get velocityDefault() {
+        return this._velocityDefault;
+    }
+
+    /**
      * Get calculated velocity based on tile-effects
      * @returns {number} velocity
      */
@@ -113,7 +121,7 @@ export default class Player {
                     && this._tileEffect != null 
                     && this._tileEffect.effectType === EffectTypeEnum.TURBO) {
             // Turbo
-            return this._velocityDefault * 2.5;
+            return this._velocityDefault * 2.2;
         } else {
             // Normal speed
             return this._velocityDefault;

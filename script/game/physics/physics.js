@@ -1,6 +1,7 @@
 import * as THREE from '/script/threejs/build/three.module.js';
 import MovementHandler from '/script/game/handlers/movement-handler.js';
 import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
+import { PlayerStateEnum } from '../3d/player.js';
 
 export default class Physics {
     _physicsWorld;
@@ -29,6 +30,18 @@ export default class Physics {
         this._physicsWorld.setGravity(new Ammo.btVector3(0, 0, gravity));
    
     }
+
+    // updateGravity() {
+    //     const velocity = this._playerBody.threeObject.userData.playerObject.getVelocity();
+    //     const velocityDefault = this._playerBody.threeObject.userData.playerObject.velocityDefault;
+    //     // const playerVector = this._playerBody.getLinearVelocity();
+    //     // console.log('updateGravity - playerVector', playerVector);
+    //     // if (velocity > velocityDefault) {
+    //     //     this._physicsWorld.setGravity(this._gameStateManager.gravity * 2);
+    //     // } else {
+    //     //     this._physicsWorld.setGravity(this._gameStateManager.gravity);
+    //     // }
+    // }
 
     init() {
         this.reset();
@@ -107,7 +120,7 @@ export default class Physics {
         resultantImpulse.op_mul(velocity);
         
         if (tileEffect != null && tileEffect.effectType === EffectTypeEnum.JUMP) {
-            resultantImpulse.setZ(30);
+            resultantImpulse.setZ(this._gameStateManager.jumpImpulsePower); //TODO: define as constant
             // let jumpImpulse = new Ammo.btVector3(0, 0, 200);
             // this._playerBody.applyImpulse(jumpImpulse);
         } else {
@@ -155,7 +168,6 @@ export default class Physics {
         //                                                         (scale.y/2) * geomParams.depth));
 
         colShape.setMargin( 0.05 );
-        // colShape.setMargin(1);
 
         let localInertia = new Ammo.btVector3(0, 0, 0);
         colShape.calculateLocalInertia( mass, localInertia );
@@ -165,10 +177,9 @@ export default class Physics {
         body.threeObject = tileMesh;
 
         body.setFriction(0.8);
-        // body.setRollingFriction(0.1);
+
         body.setRestitution(0.0);
         body.linearDamping = 1;
-        // console.log('body', body);
 
         this._physicsWorld.addRigidBody(body);
 
@@ -203,16 +214,31 @@ export default class Physics {
         const playerPosZ = this._playerBody.getWorldTransform().getOrigin().z();
         let playerPosY = this._playerBody.getWorldTransform().getOrigin().y();
         if (playerPosZ < -5) {
-            this._playerBody.getWorldTransform().getOrigin().setZ(15);
-            this._playerBody.getWorldTransform().getOrigin().setX(0);
+            
+            // if (this._playerBody.threeObject.userData.playerObject.playerState !== PlayerStateEnum.DROPPING) {
+            //     this._playerBody.threeObject.userData.posAtDropY = playerPosY;
+            //     this._gameStateManager.setPlayerDropping();
+            // }
+            
+            if (playerPosZ < -50) {
+                // this._playerBody.getWorldTransform().getOrigin().setZ(15);
+                this._playerBody.threeObject.userData.playerObject.handleTileContact(null);
 
-            const tileLength = this._gameStateManager.track.tileLength;
-            let posY = Math.round(playerPosY - (1 * tileLength), 0);
-            posY = posY < 0 ? 0 : posY;
-            this._playerBody.getWorldTransform().getOrigin().setY(posY);
-            this._gameStateManager.setPlayerDropping();
+                this._playerBody.getWorldTransform().getOrigin().setZ(15);
+                this._playerBody.getWorldTransform().getOrigin().setX(0);
 
-            this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
+                const tileLength = this._gameStateManager.track.tileLength;
+                // let posY = Math.round(this._playerBody.threeObject.userData.posAtDropY - (1 * tileLength), 0);
+                let posY = Math.round(playerPosY - (1.5 * tileLength), 0);
+                posY = posY < 0 ? 0 : posY;
+                this._playerBody.getWorldTransform().getOrigin().setY(posY);
+
+                this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
+                this._gameStateManager.setPlayerDropping();
+                this._playerBody.threeObject.userData.posAtDropY = null;
+            }
+        } else {
+            // this._playerBody.threeObject.userData.posAtDropY = null;
         }
 
         if(this._gameStateManager.handleIsPlayerAtEndOfTrack(playerPosY)) {
