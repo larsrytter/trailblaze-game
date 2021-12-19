@@ -31,18 +31,6 @@ export default class Physics {
    
     }
 
-    // updateGravity() {
-    //     const velocity = this._playerBody.threeObject.userData.playerObject.getVelocity();
-    //     const velocityDefault = this._playerBody.threeObject.userData.playerObject.velocityDefault;
-    //     // const playerVector = this._playerBody.getLinearVelocity();
-    //     // console.log('updateGravity - playerVector', playerVector);
-    //     // if (velocity > velocityDefault) {
-    //     //     this._physicsWorld.setGravity(this._gameStateManager.gravity * 2);
-    //     // } else {
-    //     //     this._physicsWorld.setGravity(this._gameStateManager.gravity);
-    //     // }
-    // }
-
     init() {
         this.reset();
         
