@@ -215,28 +215,45 @@ export default class Physics {
         let playerPosY = this._playerBody.getWorldTransform().getOrigin().y();
         if (playerPosZ < -5) {
             
-            // if (this._playerBody.threeObject.userData.playerObject.playerState !== PlayerStateEnum.DROPPING) {
-            //     this._playerBody.threeObject.userData.posAtDropY = playerPosY;
-            //     this._gameStateManager.setPlayerDropping();
-            // }
-            
-            if (playerPosZ < -50) {
-                // this._playerBody.getWorldTransform().getOrigin().setZ(15);
-                this._playerBody.threeObject.userData.playerObject.handleTileContact(null);
-
-                this._playerBody.getWorldTransform().getOrigin().setZ(15);
-                this._playerBody.getWorldTransform().getOrigin().setX(0);
-
-                const tileLength = this._gameStateManager.track.tileLength;
-                // let posY = Math.round(this._playerBody.threeObject.userData.posAtDropY - (1 * tileLength), 0);
-                let posY = Math.round(playerPosY - (1.5 * tileLength), 0);
-                posY = posY < 0 ? 0 : posY;
-                this._playerBody.getWorldTransform().getOrigin().setY(posY);
-
-                this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
+            if (this._playerBody.threeObject.userData.playerObject.playerState !== PlayerStateEnum.DROPPING) {
+                this._playerBody.threeObject.userData.posAtDropY = playerPosY;
                 this._gameStateManager.setPlayerDropping();
-                this._playerBody.threeObject.userData.posAtDropY = null;
             }
+
+            this._playerBody.getWorldTransform().getOrigin().setZ(15);
+            this._playerBody.getWorldTransform().getOrigin().setX(0);
+
+            const tileLength = this._gameStateManager.track.tileLength;
+            let posY = Math.round(playerPosY - (2 * tileLength), 0);
+            posY = posY < 0 ? 0 : posY;
+            
+            this._playerBody.getWorldTransform().getOrigin().setY(posY);
+            this._gameStateManager.setPlayerDropping();
+
+            // Update threeJs object position and update camera-pos
+            this._playerBody.threeObject.position.set(this._playerBody.getWorldTransform().getOrigin().x(), posY, this._playerBody.getWorldTransform().getOrigin().z());
+            this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
+            
+        //     if (playerPosZ < -50) {
+        //         // this._playerBody.getWorldTransform().getOrigin().setZ(15);
+        //         this._playerBody.threeObject.userData.playerObject.handleTileContact(null);
+
+        //         this._playerBody.getWorldTransform().getOrigin().setZ(15);
+        //         this._playerBody.getWorldTransform().getOrigin().setX(0);
+
+        //         const tileLength = this._gameStateManager.track.tileLength;
+        //         // let posY = Math.round(this._playerBody.threeObject.userData.posAtDropY - (1 * tileLength), 0);
+        //         let posY = Math.round(playerPosY - (1.5 * tileLength), 0);
+        //         posY = posY < 0 ? 0 : posY;
+        //         this._playerBody.getWorldTransform().getOrigin().setY(posY);
+
+        //         const updatedPlayerPosZ = this._playerBody.getWorldTransform().getOrigin().z();
+        //         console.log('reset - posY', posY, 'posZ', playerPosZ, 'updatedPlayerPosZ', updatedPlayerPosZ);
+
+        //         this._playerBody.threeObject.userData.playerObject.updateCameraPosition();
+        //         this._gameStateManager.setPlayerDropping();
+        //         this._playerBody.threeObject.userData.posAtDropY = null;
+        //     }
         } else {
             // this._playerBody.threeObject.userData.posAtDropY = null;
         }

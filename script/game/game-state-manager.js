@@ -21,7 +21,7 @@ export default class GameStateManager {
 
     // _gravity = -60;
     _gravity = -250;
-    _jumpImpulsePower = 70;
+    _jumpImpulsePower = 75;
 
     _uiControlHandler;
     _gameService;

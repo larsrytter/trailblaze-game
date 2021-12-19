@@ -19,7 +19,16 @@ export default class TrackTile3d {
         // const tileColor = colorData.colorCode;
         const color = new THREE.Color(colorData.colorCode);
         this._geometry = new THREE.BoxGeometry(width, length, height);
-        this._material = new THREE.MeshPhongMaterial({color: color});
+        // this._material = new THREE.MeshPhongMaterial({color: color});
+        // this._material = new THREE.MeshLambertMaterial({color: color});
+        this._material = new THREE.MeshPhysicalMaterial({
+            color: color,
+            metalness: 0.8,  
+            roughness: 0.75,
+            transmission: 0,
+            thickness: 1, // Add refraction!
+        });
+
         this._mesh = new THREE.Mesh(this._geometry, this._material);
         this._mesh.castShadow = false;
         this._mesh.receiveShadow = true;
