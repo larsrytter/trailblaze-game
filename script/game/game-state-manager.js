@@ -20,8 +20,8 @@ export default class GameStateManager {
     _timeElapsed;
 
     // _gravity = -60;
-    _gravity = -250;
-    _jumpImpulsePower = 75;
+    _gravity = -265;
+    _jumpImpulsePower = 78;
 
     _uiControlHandler;
     _gameService;

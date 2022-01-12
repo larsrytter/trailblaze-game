@@ -106,6 +106,13 @@ export default class Player {
     }
 
     /**
+     * Sets tileEffect to null
+     */
+    removeTileEffect() {
+        this._tileEffect = null;
+    }
+
+    /**
      * Get calculated velocity based on tile-effects
      * @returns {number} velocity
      */
@@ -140,7 +147,7 @@ export default class Player {
      * @returns { Promise<Mesh> }
      */
     async createPlayerSphere() {
-        const radius = 2;
+        const radius = 2.2;
         const widthSegments = 16;
         const heightSegments = 16;
         const sphereGeometry = new THREE.SphereBufferGeometry(

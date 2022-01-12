@@ -2,6 +2,7 @@ import * as THREE from '/script/threejs/build/three.module.js';
 import MovementHandler from '/script/game/handlers/movement-handler.js';
 import { EffectTypeEnum } from '/script/game/3d/tile-contact-effect.js';
 import { PlayerStateEnum } from '../3d/player.js';
+import { TileContactEffect } from '../3d/tile-contact-effect.js';
 
 export default class Physics {
     _physicsWorld;
@@ -188,7 +189,7 @@ export default class Physics {
                 objThree.position.set(position.x(), position.y(), position.z());
                 objThree.quaternion.set(quat.x(), quat.y(), quat.z(), quat.w());
 
-                if(objThree.userData.isPlayer) {
+                if (objThree.userData.isPlayer) {
                     this.setPlayerMovement(deltaTime);
                     this.checkPlayerLocation();
                 }
@@ -201,8 +202,8 @@ export default class Physics {
     checkPlayerLocation() {
         const playerPosZ = this._playerBody.getWorldTransform().getOrigin().z();
         let playerPosY = this._playerBody.getWorldTransform().getOrigin().y();
+
         if (playerPosZ < -5) {
-            
             if (this._playerBody.threeObject.userData.playerObject.playerState !== PlayerStateEnum.DROPPING) {
                 this._playerBody.threeObject.userData.posAtDropY = playerPosY;
                 this._gameStateManager.setPlayerDropping();
@@ -210,9 +211,12 @@ export default class Physics {
 
             this._playerBody.getWorldTransform().getOrigin().setZ(15);
             this._playerBody.getWorldTransform().getOrigin().setX(0);
+            
 
             const tileLength = this._gameStateManager.track.tileLength;
-            let posY = Math.round(playerPosY - (2 * tileLength), 0);
+            let moveBackTiles = 2;
+
+            let posY = Math.round(playerPosY - (moveBackTiles * tileLength), 0);
             posY = posY < 0 ? 0 : posY;
             
             this._playerBody.getWorldTransform().getOrigin().setY(posY);
